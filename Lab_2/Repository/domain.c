@@ -1,5 +1,5 @@
 
-#include "C:\Users\Gabi\Desktop\Lab_2\Repository\domain.h"
+#include "C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\Lab_2\Repository\domain.h"
 
 Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
 {

@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "C:\Users\Gabi\Desktop\Lab_2\Repository\domain.h"
+#include "C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\Lab_2\Repository\domain.h"
 #include <string.h>
 
 void teste_repository();
@@ -45,6 +45,6 @@ void teste_repository()
     assert(suma_nou==get_suma(tranz));
     assert(ziua_nou==get_ziua(tranz));
     assert(strcmp(descriere_nou, get_descriere(tranz))==0);
-
+    free(tranz);
 
 }

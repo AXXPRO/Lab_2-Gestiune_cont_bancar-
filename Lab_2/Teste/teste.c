@@ -1,23 +1,52 @@
 #include <assert.h>
 #include "C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\Lab_2\Repository\domain.h"
+#include "C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\Lab_2\Repository\repo.h"
 #include <string.h>
 
+void teste_domain();
 void teste_repository();
 /*
     Functia de rulare a tuturor testelor
 */
 void run_all_tests()
 {
+    teste_domain();
+    printf("Teste domain trecute!\n");
     teste_repository();
     printf("Teste repository trecute!\n");
+
+
 }
 
 /*
 Teste pentru functiile legate de repository
 */
 void teste_repository()
+{ 
+    lista* l = creaza_lista();
+    assert(numar_elemente(l) == 0);
+    Tranzactie *tranz1,*tranz2,*tranz3;
+    tranz1 = creaza_tranzactie(0,13,5,iesire,"cadou");
+    tranz2 = creaza_tranzactie(1,15,2,iesire,"cerere");
+    tranz3 = creaza_tranzactie(2,177,6,intrare,"imprumut");
+
+    adaugare_tranzactie(l,tranz1);
+    assert(numar_elemente(l) == 1);
+    adaugare_tranzactie(l,tranz2);
+    adaugare_tranzactie(l,tranz3);
+    assert(numar_elemente(l) == 3);
+
+    distruge(l);
+
+    
+
+}
+/*
+Teste pentru functiile legate de domain
+*/
+void teste_domain()
 {
-    Tranzactie* tranz = (Tranzactie*)malloc(sizeof(Tranzactie));
+    Tranzactie* tranz;
     int id=1;
     int suma=50;
     int ziua=4;

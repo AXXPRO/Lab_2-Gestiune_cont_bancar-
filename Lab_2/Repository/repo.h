@@ -18,12 +18,6 @@ Postconditii: returneaza o lista goala
 lista* creaza_lista();
 
 /*
-Destructorul unei liste
-Preconditii: l este o lista
-Postconditii: l este distrus, memoria acestuia dispare
-*/
-void sterge_lista(lista* l);
-/*
 Va adauga tranzactia tranz in lista l
 Preconditii: l este o lista iar tranz este o tranzactie
 Postconditii: l are un element in plus, tranz
@@ -46,6 +40,13 @@ Preconditii: l este o lista
 Postconditii: tranzactia cu id-ul dat devine modificata
 */
 void modificare_tranzactie(lista* l, Tranzactie* tranz_noua, int id);
+/*
+Functia va returna un pointer catre un element de tip tranzactie cu id-ul specificat, sau NULL daca nu exista
+Preconditii: l este o lista
+             id este numar natural
+Postconditii: adresa unei structuri de tip Tranzactie, sau NULL daca nu exista
+*/
+Tranzactie* get_tranzactie(lista* l, int id);
 /*
 Va sterge tranzitia cu id-ul dat din lista l
 Daca nu exista, nu se schibma nimic

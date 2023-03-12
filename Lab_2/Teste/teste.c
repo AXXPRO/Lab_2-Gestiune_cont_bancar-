@@ -25,7 +25,7 @@ void teste_repository()
 { 
     lista* l = creaza_lista();
     assert(numar_elemente(l) == 0);
-    Tranzactie *tranz1,*tranz2,*tranz3;
+    Tranzactie *tranz,*tranz1,*tranz2,*tranz3, *tranz_noua;
     tranz1 = creaza_tranzactie(0,13,5,iesire,"cadou");
     tranz2 = creaza_tranzactie(1,15,2,iesire,"cerere");
     tranz3 = creaza_tranzactie(2,177,6,intrare,"imprumut");
@@ -36,6 +36,19 @@ void teste_repository()
     adaugare_tranzactie(l,tranz3);
     assert(numar_elemente(l) == 3);
 
+    adaugare_tranzactie(l,tranz3);
+    assert(numar_elemente(l) == 3);
+    
+    tranz = get_tranzactie(l, 1);
+    assert(get_suma(tranz)==get_suma(tranz2));
+
+    tranz = get_tranzactie(l, 3);
+    assert(tranz==NULL);
+   
+
+
+    tranz_noua = creaza_tranzactie(2,900,30,iesire,"taxe");
+    modificare_tranzactie(l, tranz_noua, get_id(tranz3));
     distruge(l);
 
     

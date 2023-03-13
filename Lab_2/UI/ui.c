@@ -37,7 +37,8 @@ void interface()
   printf("1.Adaugare de tranzactii.\n");
   printf("2.Modificare tranzactie existenta.\n");
   printf("3.Stergere tranzactie existenta.\n");
-  printf("6.Inchidere aplicatie.\n");
+  printf("6.Afisarea tranzactiilor din aplicatie.\n");
+  printf("7.Inchidere aplicatie.\n");
   printf(">>>");
 
 }
@@ -51,7 +52,7 @@ Functia ce va rula interfata de utilizator
 
 void run_ui()
 {   lista* lista_tranzactii = creaza_lista();
-    char choices[]="123456";
+    
     char choice[20];
     int program_running = 1;
     int number_choice;
@@ -83,7 +84,13 @@ void run_ui()
                     /* code */
                     break;
                     case 6:
+                    afisare_tranzactii(lista_tranzactii);
+                    getchar();
+
+                    break;
+                    case 7:
                     program_running = 0;
+                    distruge(lista_tranzactii);
                     break;
                 default:
                 {
@@ -150,23 +157,17 @@ getchar();
         ok = 0;
     }
 
-    char descriere[50];
-    strcpy(descriere, true_params[4]);
+  
  if(ok)
     {
+    char* descriere=(char*)malloc(sizeof(char)*50);
+    strcpy(descriere, true_params[4]);
     int id = atoi(true_params[0]);
     int ziua = atoi(true_params[1]);
     int suma = atoi(true_params[2]);
         adaugare_service(id,suma,ziua,tip,descriere,l);
+           // free(descriere);
     }
-
-
-
-
-   
-
-
-
 
    
     else 

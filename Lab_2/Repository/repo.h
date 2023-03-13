@@ -11,6 +11,11 @@ int capacitate_maxima;
 }lista;
 
 /*
+Va afisa toate tranzactiile din aplicatie
+
+*/
+void afisare_tranzactii(lista* l);
+/*
 Constructorul unei liste, va returna un pointer catre o lista
 Preconditii: Nimic
 Postconditii: returneaza o lista goala

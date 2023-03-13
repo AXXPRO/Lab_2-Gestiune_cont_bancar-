@@ -16,6 +16,12 @@ typedef struct
 }Tranzactie;
 
 /*
+Functia returneaza un pointer la un string ce contine datele tranz
+Preconditii: tranz este tranzactie
+Postconditii: returneaza pointer la char
+*/
+char* string_tranzactie(Tranzactie* tranz);
+/*
 Constructorul unei tranzactii. Functia returneaza un pointer catre un obiect de tip tranzactie
 Preconditii: - ziua apartine intervalului {1,...,31}
              - suma este un numar intreg

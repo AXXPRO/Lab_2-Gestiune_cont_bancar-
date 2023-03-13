@@ -61,6 +61,8 @@ void modificare_tranzactie(lista* l, Tranzactie* tranz_noua, int id)
         {   set_suma(l->elemente[i],get_suma(tranz_noua));
             set_ziua(l->elemente[i],get_ziua(tranz_noua));
             set_tip(l->elemente[i],get_tip(tranz_noua));
+
+            free(l->elemente[i]->descriere);
             set_descriere(l->elemente[i],get_descriere(tranz_noua));
         }
     }
@@ -75,8 +77,22 @@ void distruge(lista* l)
 {
     int i;
 for (i = 0; i < l->lungime_actuala; i++) 
+{
+free(l->elemente[i]->descriere);
 free(l->elemente[i]);
+}
 
 free(l->elemente);
 free(l);
+}
+
+void afisare_tranzactii(lista* l)
+{char* text;
+    for(int i=0; i<l->lungime_actuala; i++)
+    {
+       text =string_tranzactie(l->elemente[i]);
+        printf("%s\n", text);
+        free(text);
+
+    }
 }

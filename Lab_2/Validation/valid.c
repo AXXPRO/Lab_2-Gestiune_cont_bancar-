@@ -8,6 +8,7 @@ int tranzactie_valida(Tranzactie* tranz)
     
     char descriere[50];
     strcpy(descriere, get_descriere(tranz));
+ 
 
     
 

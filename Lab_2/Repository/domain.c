@@ -1,5 +1,6 @@
 
 #include "C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\Lab_2\Repository\domain.h"
+#include <stdlib.h>
 
 Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
 {
@@ -54,4 +55,40 @@ char* get_descriere(Tranzactie* tranzactie)
 void set_descriere(Tranzactie* tranzactie, char* descriere)
 {
     tranzactie->descriere = descriere;
+}
+
+char* string_tranzactie(Tranzactie* tranz)
+{ 
+
+    char* string = (char*)malloc(sizeof(char)*100);
+    string[0]='\0';
+    strcat(string,"Tranzactia cu id-ul ");
+
+   // char id[100], suma[100], ziua[100]
+   char id[10] ,suma[10],ziua[10];
+     itoa(get_id(tranz),id,10);
+    strcat(string,id);
+    strcat(string," si suma ");
+     itoa(get_suma(tranz),suma,10);
+    strcat(string,suma);
+
+    strcat(string," din ziua ");
+     itoa(get_ziua(tranz),ziua,10);
+    strcat(string,ziua);
+
+    strcat(string," de tipul ");
+
+    enum tip tip = get_tip(tranz);
+    if(tip == intrare)
+    strcat(string,"intrare");
+    else
+    strcat(string,"iesire"); 
+
+     strcat(string," are descrierea ");
+
+     char *p = get_descriere(tranz);
+     strcat(string, p);
+     return string;
+
+    
 }

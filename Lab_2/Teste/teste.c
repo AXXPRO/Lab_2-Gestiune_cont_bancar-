@@ -26,9 +26,17 @@ void teste_repository()
     lista* l = creaza_lista();
     assert(numar_elemente(l) == 0);
     Tranzactie *tranz,*tranz1,*tranz2,*tranz3, *tranz_noua;
-    tranz1 = creaza_tranzactie(0,13,5,iesire,"cadou");
-    tranz2 = creaza_tranzactie(1,15,2,iesire,"cerere");
-    tranz3 = creaza_tranzactie(2,177,6,intrare,"imprumut");
+    char *d1,*d2,*d3, *d4;
+    d1 = (char*)malloc(sizeof(char)*10); d1[0] = '\n';
+    d2 = (char*)malloc(sizeof(char)*10); d2[0] = '\n';
+    d3 = (char*)malloc(sizeof(char)*10); d3[0] = '\n';
+
+    strcpy(d1,"cadou");
+    strcpy(d2,"cerere");
+    strcpy(d3,"imprumut");
+    tranz1 = creaza_tranzactie(0,13,5,iesire,d1);
+    tranz2 = creaza_tranzactie(1,15,2,iesire,d2);
+    tranz3 = creaza_tranzactie(2,177,6,intrare,d3);
 
     adaugare_tranzactie(l,tranz1);
     assert(numar_elemente(l) == 1);
@@ -46,8 +54,11 @@ void teste_repository()
     assert(tranz==NULL);
    
 
+    d4 = (char*)malloc(sizeof(char)*10); d4[0] = '\n';
+    strcpy(d4,"taxe");
 
-    tranz_noua = creaza_tranzactie(2,900,30,iesire,"taxe");
+
+    tranz_noua = creaza_tranzactie(2,900,30,iesire,d4);
     modificare_tranzactie(l, tranz_noua, get_id(tranz3));
     distruge(l);
 

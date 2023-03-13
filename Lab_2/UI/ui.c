@@ -7,7 +7,26 @@ void adaugare(lista*);
 void modificare(lista*);
 void stergere(lista*);
 
-char null_var;
+/*
+Functia ia un sir de caractere si returneaza daca este sau nu numar
+PreconditiiL s - sir de caractere cu \0 la sfarsit
+Postconditii: 1 daca poate fi numar, 0 altfel
+*/
+int is_number(char* s)
+{   
+
+    if (strlen(s)==0)
+    return 0;
+    if(s[0]=='-')
+    return is_number(s+1);
+    for(int i = 0; i<strlen(s); i++)
+    {
+        if(s[i] - '0' < 0 || s[i]- '0' > 9)
+        return 0;
+    }
+
+    return 1;
+}
 
 /*
 Functia responsabila pentru afisarea optiunilor utilizatorului
@@ -112,11 +131,8 @@ printf("Paramtetrii invalizi!");
 getchar();
     }
     else 
-    { int id = atoi(true_params[0]);
-    int ziua = atoi(true_params[1]);
-    int suma = atoi(true_params[2]);
-
-
+    {
+        
 
     enum tip tip;
     int ok = 0;
@@ -128,14 +144,31 @@ getchar();
       {tip = iesire; ok=1;}
 
 
+    for(int i =0; i<3; i++)
+    {
+        if(!is_number(true_params[i]))
+        ok = 0;
+    }
 
     char descriere[50];
     strcpy(descriere, true_params[4]);
-
-    if(ok)
+ if(ok)
     {
+    int id = atoi(true_params[0]);
+    int ziua = atoi(true_params[1]);
+    int suma = atoi(true_params[2]);
         adaugare_service(id,suma,ziua,tip,descriere,l);
     }
+
+
+
+
+   
+
+
+
+
+   
     else 
     {
 printf("Paramtetrii invalizi!");

@@ -54,12 +54,12 @@ Postconditii: adresa unei structuri de tip Tranzactie, sau NULL daca nu exista
 Tranzactie* get_tranzactie(lista* l, int id);
 /*
 Va sterge tranzitia cu id-ul dat din lista l
-Daca nu exista, nu se schibma nimic
+Daca nu exista, returneaza 0, altfel 1
 Preconditii: l este lista
              id este un numar natural
 Postconditii: din lista l dispare elementul cu id-ul dat
 */
-void sterge_tranzactie(lista* l, int id);
+int sterge_tranzactie(lista* l, int id);
 /*
 Operatie necesara pentru vectori dinamici. Dubleaza capacitatea acestuia de stocare
 Preconditii: l este o lista

@@ -10,7 +10,28 @@ lista* creaza_lista()
     return v;
 }
 
+int sterge_tranzactie(lista* l, int id)
+{ int ok =0;
+    for(int i=0; i<l->lungime_actuala; i++)
+    {
+        if(get_id(l->elemente[i]) == id)
+        {
+                ok = 1;
+            free(l->elemente[i]);
 
+            for(int j=i; j<l->lungime_actuala-1; j++)
+            {
+                l->elemente[j] = l->elemente[j+1];
+            }
+
+            l->lungime_actuala--;
+
+
+        }
+    }
+    return ok;
+
+}
 void adaugare_tranzactie(lista* l, Tranzactie* tranz)
 {
 for (int i =0; i<l->lungime_actuala; i++)

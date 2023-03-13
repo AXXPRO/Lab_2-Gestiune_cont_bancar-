@@ -139,8 +139,6 @@ getchar();
     }
     else 
     {
-        
-
     enum tip tip;
     int ok = 0;
     char tipul[50];
@@ -168,26 +166,111 @@ getchar();
         adaugare_service(id,suma,ziua,tip,descriere,l);
            // free(descriere);
     }
-
-   
     else 
     {
 printf("Paramtetrii invalizi!");
 getchar();
-
     }
-
     }
-
-   
-
 
 }
 void stergere(lista* l)
-{
+{char params[5];
+int ok = 1;
+    printf("Dati id-ul tranzactiei pe care dorim sa o stergem: \n");
+    gets(params);
 
+     if(!is_number(params))
+        ok = 0;
+    
+    if(!ok)
+    {
+        printf("Id invalid!\n");
+        getchar();
+
+    }
+    else
+    {       int id = atoi(params);
+            if(!stergere_service(id, l))
+            {
+                printf("Stergere neefectuata!");
+                 getchar();  
+            }
+
+    }
+    
 }
+/*
+Functia din ui responsabila pentru a modifica o tranzactie existenta
+Anunta utilziatorul daca id-ul nu exista
+Preconditii: l este o lista
+Postconditii: se va schimba tranzactia cu un id dat cu alta
+*/
 void modificare(lista* l)
 {
+char params[100];
+    char true_params[5][50];
+    char* cuvant;
+    //printf
+    printf("Dati id-ul tranzactiei pe care doriti sa o modificam, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
+     //getchar();
+    gets(params);
+    //scanf("%s",params);
+    cuvant = strtok(params, ";");
+    int i;
+
+    for(i=0;cuvant != NULL; i++)
+     {strcpy(true_params[i], cuvant);   
+     cuvant = strtok(NULL, ";");
+     }
+
+    if(i!=5)
+    {
+printf("Paramtetrii invalizi!");
+getchar();
+    }
+    else 
+    {
+    enum tip tip;
+    int ok = 0;
+    char tipul[50];
+    strcpy(tipul, true_params[3]);
+    if(strstr("intrare", tipul)!=NULL)
+      {tip = intrare; ok =1;}
+    if(strstr("iesire", tipul)!=NULL)
+      {tip = iesire; ok=1;}
+
+
+    for(int i =0; i<3; i++)
+    {
+        if(!is_number(true_params[i]))
+        ok = 0;
+    }
+
+  
+ if(ok)
+    {
+    char* descriere=(char*)malloc(sizeof(char)*50);
+    strcpy(descriere, true_params[4]);
+    int id = atoi(true_params[0]);
+    int ziua = atoi(true_params[1]);
+    int suma = atoi(true_params[2]);
+    ///MODIFICARE SERVICE
+
+        
+       if( !modificare_service(id,suma,ziua,tip,descriere,l))
+       {
+
+    printf("Modificare neefectuata!");
+    getchar();
+       }
+           // free(descriere);
+    }
+    else 
+    {
+printf("Paramtetrii invalizi!");
+getchar();
+    }
+    }
 
 }

@@ -1,0 +1,3 @@
+C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir
+C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/rebuild_cache.dir

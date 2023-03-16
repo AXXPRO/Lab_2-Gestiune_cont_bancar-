@@ -1,6 +1,10 @@
-#include "..\Repository\repo.h"
+#include "..\Infrastructura\repo.h"
 
 
+/*
+ Functia returneaza un pointer la un string ce contine "descrerea" pentru fiecare functie
+ */
+char* afisare_service(lista* l);
 /*
 MODIFY TO INT
 Functia de service de adaugare a unei tranzactii in repository

@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Lab_2_Gestiune_cont_bancar_::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Lab_2_Gestiune_cont_bancar_-Debug-fe163400287bf57b2d62.json",
+					"jsonFile" : "target-Lab_2_Gestiune_cont_bancar_-Debug-c245428a2591960b3637.json",
 					"name" : "Lab_2_Gestiune_cont_bancar_",
 					"projectIndex" : 0
 				}
@@ -49,7 +49,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug",
+		"build" : "C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage",
 		"source" : "C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-"
 	},
 	"version" : 

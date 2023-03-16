@@ -1,5 +1,5 @@
 
-#include "..\Repository\domain.h"
+#include "..\Infrastructura\domain.h"
 #include <stdlib.h>
 #include <string.h>
 Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
@@ -36,7 +36,10 @@ void set_tip(Tranzactie* tranzactie, enum tip tip)
 {
   tranzactie->tip = tip;
 }
-
+void set_id(Tranzactie* tranzactie, int id)
+{
+    tranzactie->id = id;
+}
 int get_ziua(Tranzactie* tranzactie)
 {
     return tranzactie->ziua;
@@ -88,6 +91,7 @@ char* string_tranzactie(Tranzactie* tranz)
 
      char *p = get_descriere(tranz);
      strcat(string, p);
+
      return string;
 
     

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "repo.h"
-
+#include <string.h>
 lista* creaza_lista()
 {
     lista* v = (lista*)malloc(sizeof(lista));
@@ -120,3 +120,27 @@ void afisare_tranzactii(lista* l)
     }
 }
 */
+
+Tranzactie ** get_all(lista* l)
+{
+    Tranzactie ** vector_tranzactii = (Tranzactie**)malloc(sizeof(Tranzactie*)*l->lungime_actuala);
+
+    //Tranzactie* tranzactie_copie = (Tranzactie*) malloc(sizeof(Tranzactie));
+    char* descriere_copie;
+
+
+    for(int i=0; i<l->lungime_actuala; i++)
+    {descriere_copie = (char*)malloc(sizeof(char)*50);
+        strcpy(descriere_copie, get_descriere(l->elemente[i]));
+        vector_tranzactii[i] = (Tranzactie*) malloc(sizeof (Tranzactie));
+        set_descriere(vector_tranzactii[i], descriere_copie);
+        set_suma(vector_tranzactii[i], get_suma(l->elemente[i]))  ;
+        set_tip(vector_tranzactii[i], get_tip(l->elemente[i]));
+        set_ziua(vector_tranzactii[i], get_ziua(l->elemente[i]));
+        set_id(vector_tranzactii[i], get_id(l->elemente[i]));
+
+    }
+
+    return vector_tranzactii;
+
+}

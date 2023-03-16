@@ -1,6 +1,6 @@
 #include <assert.h>
-#include "..\Repository\domain.h"
-#include "..\Repository\repo.h"
+#include "..\Infrastructura\domain.h"
+#include "..\Infrastructura\repo.h"
 #include "..\Service\service.h"
 #include "../Validation/valid.h"
 #include <string.h>
@@ -42,6 +42,11 @@ void teste_service()
 
 
     adaugare_service(id_1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
+    adaugare_service(1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
+    char* var_afisare = afisare_service(lista_test);
+    assert(strcmp("Tranzactia cu id-ul 0 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\nTranzactia cu id-ul 1 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\n", var_afisare)==0);
+
+    stergere_service(1, lista_test);
    assert(adaugare_service(-3,  suma_1, ziua_1,  tip_1, descriere, lista_test)==0);
     assert(get_tranzactie(lista_test, 0) != (Tranzactie*)NULL);
 
@@ -120,7 +125,22 @@ void teste_repository()
     assert(tranzactie_cautata_invalida == (Tranzactie*)NULL);
 
     assert(numar_elemente(l) == 2);
+
+
+    Tranzactie ** lista_tranzactii = get_all(l);
+
+    assert(get_id(lista_tranzactii[0])==0);
+    assert(get_id(lista_tranzactii[1])==1);
+
+    for(int i =0; i< numar_elemente(l); i++)
+    {
+        free(lista_tranzactii[i]);
+    }
+    free(lista_tranzactii);
     distruge(l);
+
+
+
 
     
 

@@ -39,6 +39,13 @@ Postconditii: Functia returneaza id-ul lui tranzactie
 */
 int get_id(Tranzactie* tranzactie);
 /*
+Functia schimba id pentru o tranzactie
+Preconditii: id - numar natural
+             tranzactie - pointer catre o structura de tip tranzactie
+Postconditii: Se va schimba campul id din tranzactie in id specificata
+*/
+void set_id(Tranzactie* tranzactie, int id);
+/*
 Functia returneaza suma-ul unei tranzactii
 Preconditii: tranzactie este un pointer catre o structura de tip tranzactie
 Postconditii: Functia returneaza suma lui tranzactie

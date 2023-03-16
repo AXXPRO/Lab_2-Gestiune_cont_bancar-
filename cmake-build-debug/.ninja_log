@@ -1,10 +1,9 @@
 # ninja log v5
-1	53	7006777865831936	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj	c11bb2f8c78910f
-50	118	7006775814092709	Lab_2_Gestiune_cont_bancar_.exe	365be455e1224c9d
-2	59	7006778447005181	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/domain.c.obj	ea4ba48b2a72cfae
-15	61	7006778447025193	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.obj	6cff4af49e6a6554
-6	68	7006778447095233	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/repo.c.obj	2312e45430540a56
-18	73	7006778447155198	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj	95e977712014b8b4
-9	74	7006778447165182	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj	64b608991e6fe68c
-12	78	7006778447205166	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj	e4a2341ede59bc8e
-78	147	7006778447875140	Lab_2_Gestiune_cont_bancar_.exe	303f5ba6e2e2a469
+2	576	7006781576759047	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj	9f178ccfc080807
+714	1175	7006781582859099	Lab_2_Gestiune_cont_bancar_.exe	1d7166d9ae810119
+112	675	7006781578729167	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/domain.c.obj	bdcd857c704a1903
+149	676	7006781578779155	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj	1344d1212157be0e
+165	656	7006781578479123	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.obj	6778a1351b867e84
+129	713	7006781579179096	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/repo.c.obj	49ef477600e00e5c
+33	690	7006781578879122	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj	19439e9be9f4cadc
+20	661	7006781578669122	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj	92186c3b80d924a8

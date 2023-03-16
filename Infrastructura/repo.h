@@ -11,7 +11,7 @@ int capacitate_maxima;
 }lista;
 
 /*
-Va afisa toate tranzactiile din aplicatie
+Va afisa tranzactii
 
 */
 void afisare_tranzactii(lista* l);
@@ -72,4 +72,10 @@ Preconditii: l este o lista
 Postconditii: l nu mai este o lista si memoria este eliberata
 */
 void distruge(lista* l);
+
+
+/// Returnam un pointer la o lista cu toate elementele
+/// \param l - lista la care ii facem o copie si o returnam
+/// \return
+Tranzactie ** get_all(lista* l);
 

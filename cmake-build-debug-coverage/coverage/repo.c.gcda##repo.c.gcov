@@ -1,0 +1,249 @@
+        -:    0:Source:C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Infrastructura/repo.c
+        -:    0:Graph:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\repo.c.gcno
+        -:    0:Data:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\repo.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <stdlib.h>
+        -:    2:#include <stdio.h>
+        -:    3:#include "repo.h"
+        -:    4:#include <string.h>
+function creaza_lista called 2 returned 100% blocks executed 100%
+        2:    5:lista* creaza_lista()
+        -:    6:{
+        2:    7:    lista* v = (lista*)malloc(sizeof(lista));
+        2:    8:    v->lungime_actuala=0;
+        2:    9:    v->capacitate_maxima=2;
+        2:   10:    v->elemente = (Tranzactie**)malloc(sizeof(Tranzactie*)*v->capacitate_maxima);
+        2:   11:    return v;
+        2:   11-block  0
+        -:   12:}
+        -:   13:
+function sterge_tranzactie called 5 returned 100% blocks executed 100%
+        5:   14:int sterge_tranzactie(lista* l, int id)
+        5:   15:{ int ok =0;
+       13:   16:    for(int i=0; i<l->lungime_actuala; i++)
+        5:   16-block  0
+        8:   16-block  1
+       13:   16-block  2
+branch  0 taken 8
+branch  1 taken 5 (fallthrough)
+        -:   17:    {
+        8:   18:        if(get_id(l->elemente[i]) == id)
+        8:   18-block  0
+call    0 returned 8
+branch  1 taken 4 (fallthrough)
+branch  2 taken 4
+        -:   19:        {
+        4:   20:                ok = 1;
+        4:   21:            free(l->elemente[i]);
+        -:   22:
+        6:   23:            for(int j=i; j<l->lungime_actuala-1; j++)
+        4:   23-block  0
+        6:   23-block  1
+branch  0 taken 2
+branch  1 taken 4 (fallthrough)
+        -:   24:            {
+        2:   25:                l->elemente[j] = l->elemente[j+1];
+        2:   25-block  0
+        -:   26:            }
+        -:   27:
+        4:   28:            l->lungime_actuala--;
+        4:   28-block  0
+        -:   29:
+        -:   30:
+        -:   31:        }
+        -:   32:    }
+        5:   33:    return ok;
+        5:   33-block  0
+        -:   34:
+        -:   35:}
+function adaugare_tranzactie called 7 returned 100% blocks executed 100%
+        7:   36:void adaugare_tranzactie(lista* l, Tranzactie* tranz)
+        -:   37:{
+       15:   38:for (int i =0; i<l->lungime_actuala; i++)
+        7:   38-block  0
+        8:   38-block  1
+       15:   38-block  2
+branch  0 taken 9
+branch  1 taken 6 (fallthrough)
+        -:   39:{
+        9:   40:    if(get_id(tranz)==get_id(l->elemente[i]))
+        9:   40-block  0
+call    0 returned 9
+call    1 returned 9
+branch  2 taken 1 (fallthrough)
+branch  3 taken 8
+        1:   41:    return;
+        1:   41-block  0
+        -:   42:}
+        -:   43:
+        6:   44:if(l->lungime_actuala == l->capacitate_maxima)
+        6:   44-block  0
+branch  0 taken 1 (fallthrough)
+branch  1 taken 5
+        1:   45:resize(l);
+        1:   45-block  0
+call    0 returned 1
+        -:   46:
+        6:   47:l->elemente[l->lungime_actuala] = tranz;
+        6:   48:l->lungime_actuala++;
+        6:   48-block  0
+        -:   49:
+        -:   50:
+        -:   51:}
+function resize called 1 returned 100% blocks executed 100%
+        1:   52:void resize(lista* l)
+        -:   53:{
+        1:   54:     int capacitate_noua = 2*l->capacitate_maxima;
+        1:   55: Tranzactie** elemente_noi=(Tranzactie**)malloc(sizeof(Tranzactie*)*capacitate_noua);
+        -:   56://copiez din vectorul existent
+        -:   57: int i;
+        3:   58: for (i = 0; i < l->lungime_actuala; i++) {
+        1:   58-block  0
+        3:   58-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        2:   59:elemente_noi[i] = l->elemente[i];
+        2:   59-block  0
+        -:   60: }
+        -:   61: //dealocam memoria ocupata de vector
+        1:   62: free(l->elemente);
+        1:   63: l->elemente= elemente_noi;
+        1:   64: l->capacitate_maxima = capacitate_noua;
+        -:   65:
+        1:   66:}
+        -:   67:
+function get_tranzactie called 10 returned 100% blocks executed 100%
+       10:   68:Tranzactie* get_tranzactie(lista* l, int id)
+        -:   69:{
+       21:   70:    for(int i=0; i<l->lungime_actuala; i++)
+       10:   70-block  0
+       11:   70-block  1
+       21:   70-block  2
+branch  0 taken 16
+branch  1 taken 5 (fallthrough)
+        -:   71:    {
+       16:   72:      if(get_id(l->elemente[i])==id)
+       16:   72-block  0
+call    0 returned 16
+branch  1 taken 5 (fallthrough)
+branch  2 taken 11
+        5:   73:      return l->elemente[i];
+        5:   73-block  0
+        -:   74:    }
+        5:   75:    return (Tranzactie*)NULL;
+        5:   75-block  0
+        -:   76:}
+        -:   77:
+function modificare_tranzactie called 2 returned 100% blocks executed 100%
+        2:   78:void modificare_tranzactie(lista* l, Tranzactie* tranz_noua, int id)
+        -:   79:{
+        6:   80:    for(int i=0; i<l->lungime_actuala; i++)
+        2:   80-block  0
+        4:   80-block  1
+        6:   80-block  2
+branch  0 taken 4
+branch  1 taken 2 (fallthrough)
+        -:   81:    {
+        4:   82:        if(get_id(l->elemente[i]) == id)
+        4:   82-block  0
+call    0 returned 4
+branch  1 taken 2 (fallthrough)
+branch  2 taken 2
+        2:   83:        {   set_suma(l->elemente[i],get_suma(tranz_noua));
+        2:   83-block  0
+call    0 returned 2
+call    1 returned 2
+        2:   84:            set_ziua(l->elemente[i],get_ziua(tranz_noua));
+call    0 returned 2
+call    1 returned 2
+        2:   85:            set_tip(l->elemente[i],get_tip(tranz_noua));
+call    0 returned 2
+call    1 returned 2
+        -:   86:
+        2:   87:            free(l->elemente[i]->descriere);
+        2:   88:            set_descriere(l->elemente[i],get_descriere(tranz_noua));
+call    0 returned 2
+call    1 returned 2
+        -:   89:        }
+        -:   90:    }
+        2:   91:}
+        -:   92:
+function numar_elemente called 11 returned 100% blocks executed 100%
+       11:   93:int numar_elemente(lista* l)
+        -:   94:{
+       11:   95:    return l->lungime_actuala;
+       11:   95-block  0
+        -:   96:}
+        -:   97:
+function distruge called 1 returned 100% blocks executed 100%
+        1:   98:void distruge(lista* l)
+        -:   99:{
+        -:  100:    int i;
+        3:  101:for (i = 0; i < l->lungime_actuala; i++) 
+        1:  101-block  0
+        3:  101-block  1
+branch  0 taken 2
+branch  1 taken 1 (fallthrough)
+        -:  102:{
+        2:  103:free(l->elemente[i]->descriere);
+        2:  104:free(l->elemente[i]);
+        2:  104-block  0
+        -:  105:}
+        -:  106:
+        1:  107:free(l->elemente);
+        1:  108:free(l);
+        1:  109:}
+        -:  110:
+        -:  111:/*
+        -:  112:void afisare_tranzactii(lista* l)
+        -:  113:{char* text;
+        -:  114:    for(int i=0; i<l->lungime_actuala; i++)
+        -:  115:    {
+        -:  116:       text =string_tranzactie(l->elemente[i]);
+        -:  117:        printf("%s\n", text);
+        -:  118:        free(text);
+        -:  119:
+        -:  120:    }
+        -:  121:}
+        -:  122:*/
+        -:  123:
+function get_all called 2 returned 100% blocks executed 100%
+        2:  124:Tranzactie ** get_all(lista* l)
+        -:  125:{
+        2:  126:    Tranzactie ** vector_tranzactii = (Tranzactie**)malloc(sizeof(Tranzactie*)*l->lungime_actuala);
+        -:  127:
+        -:  128:    //Tranzactie* tranzactie_copie = (Tranzactie*) malloc(sizeof(Tranzactie));
+        -:  129:    char* descriere_copie;
+        -:  130:
+        -:  131:
+        6:  132:    for(int i=0; i<l->lungime_actuala; i++)
+        2:  132-block  0
+        6:  132-block  1
+branch  0 taken 4
+branch  1 taken 2 (fallthrough)
+        4:  133:    {descriere_copie = (char*)malloc(sizeof(char)*50);
+        4:  134:        strcpy(descriere_copie, get_descriere(l->elemente[i]));
+        4:  134-block  0
+call    0 returned 4
+        4:  135:        vector_tranzactii[i] = (Tranzactie*) malloc(sizeof (Tranzactie));
+        4:  136:        set_descriere(vector_tranzactii[i], descriere_copie);
+call    0 returned 4
+        4:  137:        set_suma(vector_tranzactii[i], get_suma(l->elemente[i]))  ;
+call    0 returned 4
+call    1 returned 4
+        4:  138:        set_tip(vector_tranzactii[i], get_tip(l->elemente[i]));
+call    0 returned 4
+call    1 returned 4
+        4:  139:        set_ziua(vector_tranzactii[i], get_ziua(l->elemente[i]));
+call    0 returned 4
+call    1 returned 4
+        4:  140:        set_id(vector_tranzactii[i], get_id(l->elemente[i]));
+call    0 returned 4
+call    1 returned 4
+        -:  141:
+        -:  142:    }
+        -:  143:
+        2:  144:    return vector_tranzactii;
+        2:  144-block  0
+        -:  145:
+        -:  146:}

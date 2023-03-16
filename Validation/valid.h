@@ -1,4 +1,4 @@
-#include "..\Repository\domain.h"
+#include "..\Infrastructura\domain.h"
 /*
 Functia returneaza 1 daca tranz respecta conditiile unei tranzactii, si fals altfel
 tip-ul este validat deja

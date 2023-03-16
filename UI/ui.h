@@ -2,8 +2,9 @@
 // Created by Gabi on 16.03.2023.
 //
 
-#include "../Repository/repo.h"
+#include "../Infrastructura//repo.h"
 
+void afisare(lista*);
 void adaugare(lista*);
 void modificare(lista*);
 void stergere(lista*);

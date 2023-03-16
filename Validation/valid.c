@@ -1,5 +1,5 @@
 #include <string.h>
-#include "..\Repository\domain.h"
+#include "..\Infrastructura\domain.h"
 int tranzactie_valida(Tranzactie* tranz)
 {
     int id = get_id(tranz);

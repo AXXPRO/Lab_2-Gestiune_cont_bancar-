@@ -55,17 +55,17 @@ build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj: C_COMPILER__Lab_2_G
   OBJECT_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir
   OBJECT_FILE_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir
 
-build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/domain.c.obj: C_COMPILER__Lab_2_Gestiune_cont_bancar__Debug C$:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Repository/domain.c || cmake_object_order_depends_target_Lab_2_Gestiune_cont_bancar_
-  DEP_FILE = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Repository\domain.c.obj.d
+build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/domain.c.obj: C_COMPILER__Lab_2_Gestiune_cont_bancar__Debug C$:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Infrastructura/domain.c || cmake_object_order_depends_target_Lab_2_Gestiune_cont_bancar_
+  DEP_FILE = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\domain.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir
-  OBJECT_FILE_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Repository
+  OBJECT_FILE_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura
 
-build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/repo.c.obj: C_COMPILER__Lab_2_Gestiune_cont_bancar__Debug C$:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Repository/repo.c || cmake_object_order_depends_target_Lab_2_Gestiune_cont_bancar_
-  DEP_FILE = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Repository\repo.c.obj.d
+build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/repo.c.obj: C_COMPILER__Lab_2_Gestiune_cont_bancar__Debug C$:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Infrastructura/repo.c || cmake_object_order_depends_target_Lab_2_Gestiune_cont_bancar_
+  DEP_FILE = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\repo.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir
-  OBJECT_FILE_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Repository
+  OBJECT_FILE_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura
 
 build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj: C_COMPILER__Lab_2_Gestiune_cont_bancar__Debug C$:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Service/service.c || cmake_object_order_depends_target_Lab_2_Gestiune_cont_bancar_
   DEP_FILE = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Service\service.c.obj.d
@@ -99,7 +99,7 @@ build CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.obj: C_COMPI
 #############################################
 # Link the executable Lab_2_Gestiune_cont_bancar_.exe
 
-build Lab_2_Gestiune_cont_bancar_.exe: C_EXECUTABLE_LINKER__Lab_2_Gestiune_cont_bancar__Debug CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/domain.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Repository/repo.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.obj
+build Lab_2_Gestiune_cont_bancar_.exe: C_EXECUTABLE_LINKER__Lab_2_Gestiune_cont_bancar__Debug CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/domain.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/repo.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir

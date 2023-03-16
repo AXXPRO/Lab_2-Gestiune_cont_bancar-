@@ -1,0 +1,487 @@
+        -:    0:Source:C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Teste/teste.c
+        -:    0:Graph:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Teste\teste.c.gcno
+        -:    0:Data:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Teste\teste.c.gcda
+        -:    0:Runs:1
+        -:    1:#include <assert.h>
+        -:    2:#include "..\Infrastructura\domain.h"
+        -:    3:#include "..\Infrastructura\repo.h"
+        -:    4:#include "..\Service\service.h"
+        -:    5:#include "../Validation/valid.h"
+        -:    6:#include <string.h>
+        -:    7:#include <stdlib.h>
+        -:    8:#include <stdio.h>
+        -:    9:
+        -:   10:void teste_validation();
+        -:   11:void teste_domain();
+        -:   12:void teste_repository();
+        -:   13:void teste_service();
+        -:   14:/*
+        -:   15:    Functia de rulare a tuturor testelor
+        -:   16:*/
+function run_all_tests called 1 returned 100% blocks executed 100%
+        1:   17:void run_all_tests()
+        -:   18:{
+        1:   19:    teste_domain();
+        1:   19-block  0
+call    0 returned 1
+        1:   20:    printf("Teste domain trecute!\n");
+call    0 returned 1
+        1:   21:    teste_repository();
+call    0 returned 1
+        1:   22:    printf("Teste repository trecute!\n");
+call    0 returned 1
+        1:   23:    teste_service();
+call    0 returned 1
+        1:   24:    printf("Teste service trecute!\n");
+call    0 returned 1
+        1:   25:    teste_validation();
+call    0 returned 1
+        1:   26:    printf("Teste validation trecute!\n");
+call    0 returned 1
+        -:   27:
+        1:   28:}
+        -:   29:/*
+        -:   30:Teste pentru functiile legate de service
+        -:   31:*/
+function teste_service called 1 returned 100% blocks executed 65%
+        1:   32:void teste_service()
+        -:   33:{       
+        1:   34:    int id_1 = 0;
+        1:   35:    int suma_1  =50;
+        1:   36:    int ziua_1 = 23;
+        1:   37:    enum tip tip_1 = intrare;
+        1:   38:    char* descriere = (char*)malloc(sizeof(char));
+        1:   39:    strcpy(descriere, "Lemne");
+        -:   40:
+        1:   41:    lista* lista_test = creaza_lista();
+        1:   41-block  0
+call    0 returned 1
+        -:   42:
+        -:   43:
+        1:   44:    adaugare_service(id_1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
+call    0 returned 1
+        1:   45:    adaugare_service(1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
+call    0 returned 1
+        1:   46:    char* var_afisare = afisare_service(lista_test);
+call    0 returned 1
+       1*:   47:    assert(strcmp("Tranzactia cu id-ul 0 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\nTranzactia cu id-ul 1 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\n", var_afisare)==0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   47-block  0
+call    2 never executed
+        1:   47-block  1
+        -:   48:
+        1:   49:    stergere_service(1, lista_test);
+        1:   49-block  0
+call    0 returned 1
+       1*:   50:   assert(adaugare_service(-3,  suma_1, ziua_1,  tip_1, descriere, lista_test)==0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   50-block  0
+call    3 never executed
+        1:   50-block  1
+       1*:   51:    assert(get_tranzactie(lista_test, 0) != (Tranzactie*)NULL);
+        1:   51-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   51-block  1
+call    3 never executed
+        1:   51-block  2
+        -:   52:
+       1*:   53:   assert(modificare_service(1,suma_1+1, ziua_1,  tip_1, descriere, lista_test) == 0 );
+        1:   53-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   53-block  1
+call    3 never executed
+        1:   53-block  2
+       1*:   54:    assert(modificare_service(0,suma_1+1, ziua_1,  tip_1, descriere, lista_test) == 1 );
+        1:   54-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   54-block  1
+call    3 never executed
+        1:   54-block  2
+        -:   55:
+        1:   56:    Tranzactie* tranz_modificata = get_tranzactie(lista_test, 0);
+        1:   56-block  0
+call    0 returned 1
+       1*:   57:    assert(get_suma(tranz_modificata)==51);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   57-block  0
+call    3 never executed
+        1:   57-block  1
+        -:   58:
+       1*:   59:    assert(stergere_service(2,lista_test) == 0);
+        1:   59-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   59-block  1
+call    3 never executed
+        1:   59-block  2
+       1*:   60:    assert(stergere_service(0,lista_test) == 1);
+        1:   60-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   60-block  1
+call    3 never executed
+        1:   60-block  2
+        1:   61:  tranz_modificata = get_tranzactie(lista_test, 0);
+        1:   61-block  0
+call    0 returned 1
+       1*:   62:    assert(tranz_modificata == (Tranzactie*)NULL);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:   62-block  0
+call    2 never executed
+        1:   62-block  1
+        -:   63:   
+        1:   64:    free(lista_test);
+        -:   65:
+        1:   66:}
+        -:   67:
+        -:   68:/*
+        -:   69:Teste pentru functiile legate de repository
+        -:   70:*/
+function teste_repository called 1 returned 100% blocks executed 71%
+        1:   71:void teste_repository()
+        -:   72:{ 
+        1:   73:    lista* l = creaza_lista();
+        1:   73-block  0
+call    0 returned 1
+       1*:   74:    assert(numar_elemente(l) == 0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   74-block  0
+call    3 never executed
+        1:   74-block  1
+        -:   75:    Tranzactie *tranz,*tranz1,*tranz2,*tranz3, *tranz_noua;
+        -:   76:    char *d1,*d2,*d3, *d4;
+        1:   77:    d1 = (char*)malloc(sizeof(char)*10); d1[0] = '\n';
+        1:   78:    d2 = (char*)malloc(sizeof(char)*10); d2[0] = '\n';
+        1:   79:    d3 = (char*)malloc(sizeof(char)*10); d3[0] = '\n';
+        -:   80:
+        1:   81:    strcpy(d1,"cadou");
+        1:   82:    strcpy(d2,"cerere");
+        1:   83:    strcpy(d3,"imprumut");
+        1:   84:    tranz1 = creaza_tranzactie(0,13,5,iesire,d1);
+        1:   84-block  0
+call    0 returned 1
+        1:   85:    tranz2 = creaza_tranzactie(1,15,2,iesire,d2);
+call    0 returned 1
+        1:   86:    tranz3 = creaza_tranzactie(2,177,6,intrare,d3);
+call    0 returned 1
+        -:   87:
+        1:   88:    adaugare_tranzactie(l,tranz1);
+call    0 returned 1
+       1*:   89:    assert(numar_elemente(l) == 1);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   89-block  0
+call    3 never executed
+        1:   89-block  1
+        1:   90:    adaugare_tranzactie(l,tranz2);
+        1:   90-block  0
+call    0 returned 1
+        1:   91:    adaugare_tranzactie(l,tranz3);
+call    0 returned 1
+       1*:   92:    assert(numar_elemente(l) == 3);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   92-block  0
+call    3 never executed
+        1:   92-block  1
+        -:   93:
+        -:   94:
+        1:   95:    adaugare_tranzactie(l,tranz3);
+        1:   95-block  0
+call    0 returned 1
+       1*:   96:    assert(numar_elemente(l) == 3);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:   96-block  0
+call    3 never executed
+        1:   96-block  1
+        -:   97:
+        1:   98:    sterge_tranzactie(l, 1);
+        1:   98-block  0
+call    0 returned 1
+        -:   99:
+        1:  100:    adaugare_tranzactie(l, tranz2);
+call    0 returned 1
+        1:  101:    tranz2 = creaza_tranzactie(1,15,2,iesire,d2);
+call    0 returned 1
+        1:  102:    tranz = get_tranzactie(l, 1);
+call    0 returned 1
+       1*:  103:    assert(get_suma(tranz)==get_suma(tranz2));
+call    0 returned 1
+call    1 returned 1
+branch  2 taken 0 (fallthrough)
+branch  3 taken 1
+    %%%%%:  103-block  0
+call    4 never executed
+        1:  103-block  1
+        -:  104:
+        1:  105:    tranz = get_tranzactie(l, 3);
+        1:  105-block  0
+call    0 returned 1
+       1*:  106:    assert(tranz==NULL);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  106-block  0
+call    2 never executed
+        1:  106-block  1
+        -:  107:   
+        -:  108:
+        1:  109:    d4 = (char*)malloc(sizeof(char)*10); d4[0] = '\n';
+        1:  110:    strcpy(d4,"taxe");
+        -:  111:
+        -:  112:
+        1:  113:    tranz_noua = creaza_tranzactie(2,900,30,iesire,d4);
+        1:  113-block  0
+call    0 returned 1
+        1:  114:    modificare_tranzactie(l, tranz_noua, get_id(tranz3));
+call    0 returned 1
+call    1 returned 1
+        -:  115:
+        1:  116:    Tranzactie* tranzactie_cautata_invalida = get_tranzactie(l,7);
+call    0 returned 1
+       1*:  117:    assert(tranzactie_cautata_invalida == (Tranzactie*)NULL);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  117-block  0
+call    2 never executed
+        1:  117-block  1
+        -:  118:
+        1:  119:    Tranzactie* tranzactie_cautata = get_tranzactie(l,0);
+        1:  119-block  0
+call    0 returned 1
+       1*:  120:    assert(tranzactie_cautata ==tranz1);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  120-block  0
+call    2 never executed
+        1:  120-block  1
+        -:  121:
+        -:  122:
+        1:  123:    sterge_tranzactie(l, 2);
+        1:  123-block  0
+call    0 returned 1
+        1:  124:    tranzactie_cautata_invalida =get_tranzactie(l,2);
+call    0 returned 1
+       1*:  125:    assert(tranzactie_cautata_invalida == (Tranzactie*)NULL);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  125-block  0
+call    2 never executed
+        1:  125-block  1
+        -:  126:
+       1*:  127:    assert(numar_elemente(l) == 2);
+        1:  127-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  127-block  1
+call    3 never executed
+        1:  127-block  2
+        -:  128:
+        -:  129:
+        1:  130:    Tranzactie ** lista_tranzactii = get_all(l);
+        1:  130-block  0
+call    0 returned 1
+        -:  131:
+       1*:  132:    assert(get_id(lista_tranzactii[0])==0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  132-block  0
+call    3 never executed
+        1:  132-block  1
+       1*:  133:    assert(get_id(lista_tranzactii[1])==1);
+        1:  133-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  133-block  1
+call    3 never executed
+        1:  133-block  2
+        -:  134:
+        3:  135:    for(int i =0; i< numar_elemente(l); i++)
+        1:  135-block  0
+        3:  135-block  1
+call    0 returned 3
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+        -:  136:    {
+        2:  137:        free(lista_tranzactii[i]);
+        2:  137-block  0
+        -:  138:    }
+        1:  139:    free(lista_tranzactii);
+        1:  140:    distruge(l);
+        1:  140-block  0
+call    0 returned 1
+        -:  141:
+        -:  142:
+        -:  143:
+        -:  144:
+        -:  145:    
+        -:  146:
+        1:  147:}
+        -:  148:/*
+        -:  149:Teste pentru functiile legate de domain
+        -:  150:*/
+function teste_domain called 1 returned 100% blocks executed 65%
+        1:  151:void teste_domain()
+        -:  152:{
+        -:  153:    Tranzactie* tranz;
+        1:  154:    int id=1;
+        1:  155:    int suma=50;
+        1:  156:    int ziua=4;
+        1:  157:    enum tip tip = intrare;
+        1:  158:    char descriere[] = "cadou";
+        -:  159:
+        1:  160:    tranz = creaza_tranzactie(id,suma,ziua,tip,descriere);
+        1:  160-block  0
+call    0 returned 1
+       1*:  161:    assert(id==get_id(tranz));
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  161-block  0
+call    3 never executed
+        1:  161-block  1
+       1*:  162:    assert(suma==get_suma(tranz));
+        1:  162-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  162-block  1
+call    3 never executed
+        1:  162-block  2
+       1*:  163:    assert(ziua==get_ziua(tranz));
+        1:  163-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  163-block  1
+call    3 never executed
+        1:  163-block  2
+       1*:  164:    assert(strcmp(descriere, get_descriere(tranz))==0);
+        1:  164-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  164-block  1
+call    3 never executed
+        1:  164-block  2
+        -:  165:   
+        -:  166:   //int id_nou = 7;
+        1:  167:   int suma_nou = 100;
+        1:  168:   int ziua_nou=9;
+        1:  169:   enum tip tip_nou = iesire;
+        1:  170:   char descriere_nou[] = "cerere";
+        -:  171:
+        1:  172:   set_suma(tranz,suma_nou);
+        1:  172-block  0
+call    0 returned 1
+        1:  173:   set_ziua(tranz,ziua_nou);
+call    0 returned 1
+        1:  174:   set_tip(tranz,tip_nou);
+call    0 returned 1
+        1:  175:   set_descriere(tranz,descriere_nou);
+call    0 returned 1
+        -:  176:
+       1*:  177:   assert(id==get_id(tranz));
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  177-block  0
+call    3 never executed
+        1:  177-block  1
+       1*:  178:    assert(suma_nou==get_suma(tranz));
+        1:  178-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  178-block  1
+call    3 never executed
+        1:  178-block  2
+       1*:  179:    assert(ziua_nou==get_ziua(tranz));
+        1:  179-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  179-block  1
+call    3 never executed
+        1:  179-block  2
+       1*:  180:    assert(strcmp(descriere_nou, get_descriere(tranz))==0);
+        1:  180-block  0
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  180-block  1
+call    3 never executed
+        1:  180-block  2
+        -:  181:    
+        1:  182:    char* string_tranz = (char*)malloc(sizeof(char));
+        -:  183:
+        1:  184:   string_tranz = string_tranzactie(tranz);
+        1:  184-block  0
+call    0 returned 1
+        -:  185:   // printf("%s\n", string_tranz);
+       1*:  186:    assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul iesire are descrierea cerere" ) == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  186-block  0
+call    2 never executed
+        1:  186-block  1
+        -:  187:
+        1:  188:    set_tip(tranz,intrare);
+        1:  188-block  0
+call    0 returned 1
+        1:  189:    string_tranz = string_tranzactie(tranz);
+call    0 returned 1
+       1*:  190:    assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul intrare are descrierea cerere" ) == 0);
+branch  0 taken 0 (fallthrough)
+branch  1 taken 1
+    %%%%%:  190-block  0
+call    2 never executed
+        1:  190-block  1
+        -:  191:
+        1:  192:    free(string_tranz);
+        1:  193:    free(tranz);
+        -:  194:
+        1:  195:}
+        -:  196:
+        -:  197:/*
+        -:  198: Testele legate de validator
+        -:  199: */
+function teste_validation called 1 returned 100% blocks executed 71%
+        1:  200:void teste_validation()
+        -:  201:{
+        1:  202:    Tranzactie* tranz_invalida = creaza_tranzactie(-2,-23,90,iesire,"");
+        1:  202-block  0
+call    0 returned 1
+        -:  203:
+       1*:  204:   assert (tranzactie_valida(tranz_invalida) ==0);
+call    0 returned 1
+branch  1 taken 0 (fallthrough)
+branch  2 taken 1
+    %%%%%:  204-block  0
+call    3 never executed
+        1:  204-block  1
+        -:  205:
+        -:  206:
+        1:  207:}

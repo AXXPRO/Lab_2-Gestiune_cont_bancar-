@@ -34,7 +34,7 @@ void interface()
   printf("1.Adaugare de tranzactii.\n");
   printf("2.Modificare tranzactie existenta.\n");
   printf("3.Stergere tranzactie existenta.\n");
-//  printf("6.Afisarea tranzactiilor din aplicatie.\n");
+  printf("6.Afisarea tranzactiilor din aplicatie.\n");
   printf("7.Inchidere aplicatie.\n");
   printf(">>>");
 
@@ -78,8 +78,8 @@ void run_ui()
                     /* code */
                     break;
                     case 6:
-                   // afisare_tranzactii(lista_tranzactii);
-                    //getchar();
+                   afisare(lista_tranzactii);
+                    getchar();
 
                     break;
                     case 7:
@@ -105,6 +105,15 @@ void run_ui()
 
     }
     
+
+}
+
+void afisare(lista* l)
+{
+    char *de_afisat;
+    de_afisat= afisare_service(l);
+    printf("%s", de_afisat);
+    free (de_afisat);
 
 }
 

@@ -168,11 +168,11 @@ call    1 returned 2
         -:   90:    }
         2:   91:}
         -:   92:
-function numar_elemente called 11 returned 100% blocks executed 100%
-       11:   93:int numar_elemente(lista* l)
+function numar_elemente called 14 returned 100% blocks executed 100%
+       14:   93:int numar_elemente(lista* l)
         -:   94:{
-       11:   95:    return l->lungime_actuala;
-       11:   95-block  0
+       14:   95:    return l->lungime_actuala;
+       14:   95-block  0
         -:   96:}
         -:   97:
 function distruge called 1 returned 100% blocks executed 100%

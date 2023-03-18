@@ -1,6 +1,9 @@
 #include "..\Infrastructura\repo.h"
-
-
+///
+/// \param l -lista elementelor de tip tranzactie
+/// \param tip tipul dupa care returnam o noua lista de elemente
+/// \return un pointer la o noua lista care contine doar elementele cu tipul specificat
+lista* criteriu_tip_service(lista* l, enum tip tip);
 /*
  Functia returneaza un pointer la un string ce contine "descrerea" pentru fiecare functie
  */

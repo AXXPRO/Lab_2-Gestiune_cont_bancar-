@@ -14,7 +14,7 @@ function main called 1 returned 100% blocks executed 100%
         1:    9:{   run_all_tests();
         1:    9-block  0
 call    0 returned 1
-        -:   10:    //run_ui();
+        -:   10:   //run_ui();
         -:   11:
         1:   12:    return 0;
         -:   13:}

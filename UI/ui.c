@@ -34,6 +34,7 @@ void interface()
   printf("1.Adaugare de tranzactii.\n");
   printf("2.Modificare tranzactie existenta.\n");
   printf("3.Stergere tranzactie existenta.\n");
+  printf("4.Vizualizare tranzactii dupa un criteriu.\n");
   printf("6.Afisarea tranzactiilor din aplicatie.\n");
   printf("7.Inchidere aplicatie.\n");
   printf(">>>");
@@ -72,7 +73,7 @@ void run_ui()
                     stergere(lista_tranzactii);
                     break;
                     case 4:
-                    /* code */
+                    criteriu(lista_tranzactii);
                     break;
                     case 5:
                     /* code */
@@ -108,11 +109,87 @@ void run_ui()
 
 }
 
+void criteriu_tip(lista* l)
+{char alegere[50];
+    printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
+    gets(alegere);
+    if(is_number(alegere))
+    {
+        int numar = atoi(alegere);
+        if(numar <1 || numar >2)
+        {
+            printf("Varianta inexistenta!");
+            getchar();
+        }
+        else
+
+        {
+            enum tip tipul;
+            if(numar == 1)
+                tipul = intrare;
+            else
+             tipul = iesire;
+            lista* l_temporara;
+            l_temporara = criteriu_tip_service(l, tipul);
+            afisare(l_temporara);
+
+            free(l_temporara);
+
+        }
+
+    }
+    else
+
+    {
+        printf("Varianta inexistenta!");
+        getchar();
+    }
+
+
+}
+void criteriu(lista* l)
+{
+    char alegere[50];
+  printf("Ce criteriu de sortare doriti?\n 1. Dupa tip\n 2. Dupa suma\n");
+ gets(alegere);
+  if(is_number(alegere))
+  {
+int numar = atoi(alegere);
+
+switch(numar)
+
+{
+    case 1:
+         criteriu_tip(l);
+        break;
+    case 2:
+        //criteriu_suma(l);
+        break;
+    default:{
+        printf("Varianta inexistenta!");
+        getchar();
+    }
+
+}
+
+  }
+
+  else
+
+  {
+      printf("Varianta inexistenta!");
+      getchar();
+  }
+
+
+}
+
 void afisare(lista* l)
 {
     char *de_afisat;
     de_afisat= afisare_service(l);
     printf("%s", de_afisat);
+    getchar();
     free (de_afisat);
 
 }

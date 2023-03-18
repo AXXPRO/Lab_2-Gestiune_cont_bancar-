@@ -4,6 +4,9 @@
 
 #include "../Infrastructura//repo.h"
 
+void criteriu_tip(lista*);
+void criteriu_suma(lista*);
+void criteriu(lista*);
 void afisare(lista*);
 void adaugare(lista*);
 void modificare(lista*);

@@ -40,12 +40,16 @@ void teste_service()
 
     lista* lista_test = creaza_lista();
 
-
+    char* var_afisare;
+    var_afisare = afisare_service(lista_test);
+    assert(var_afisare[0]=='\0');
+    free(var_afisare);
     adaugare_service(id_1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
     adaugare_service(1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
-    char* var_afisare = afisare_service(lista_test);
+    var_afisare = afisare_service(lista_test);
     assert(strcmp("Tranzactia cu id-ul 0 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\nTranzactia cu id-ul 1 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\n", var_afisare)==0);
 
+    free(var_afisare);
     stergere_service(1, lista_test);
    assert(adaugare_service(-3,  suma_1, ziua_1,  tip_1, descriere, lista_test)==0);
     assert(get_tranzactie(lista_test, 0) != (Tranzactie*)NULL);

@@ -5,13 +5,42 @@
 #include "..\Infrastructura\repo.h"
 #include "..\Validation\valid.h"
 
+
+lista* criteriu_tip_service(lista* l, enum tip tip)
+{
+    lista* lista_returnat = creaza_lista();
+
+    Tranzactie** lista_tranzactii = get_all(l);
+
+    for(int i=0; i< numar_elemente(l); i++)
+    {
+        if(get_tip(lista_tranzactii[i])==tip)
+        {
+            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+
+        }
+    }
+
+
+    /*for(int i =0; i< numar_elemente(l); i++)
+    {
+        free(lista_tranzactii[i]);
+    }
+     */
+    free(lista_tranzactii);
+    return lista_returnat;
+}
+
 int modificare_service(int id_de_schimbat, int suma, int ziua, enum tip tip, char* descriere, lista* l)
 {
 Tranzactie* tranz = creaza_tranzactie(id_de_schimbat,suma,ziua,tip,descriere);
 
 Tranzactie* tranz_cautata = get_tranzactie(l,id_de_schimbat);
 if(tranz_cautata == (Tranzactie*)NULL || !tranzactie_valida(tranz))
+{ free(tranz);
     return 0;
+}
+
 
 modificare_tranzactie(l,tranz, id_de_schimbat);
 free(tranz);
@@ -23,8 +52,9 @@ char* afisare_service(lista* l)
 {
     char* descriere_returnat = (char*)malloc(sizeof (char)*500* numar_elemente(l));
 
-    descriere_returnat[0] = '\n';
-
+    descriere_returnat[0] = '\0';
+    if(numar_elemente(l) == 0)
+        return descriere_returnat;
     Tranzactie** lista_tranzactii = get_all(l);
 
     char* temp_char;
@@ -44,6 +74,11 @@ char* afisare_service(lista* l)
         strcat(descriere_returnat, "\n");
     }
 
+    for(int i =0; i< numar_elemente(l); i++)
+    {
+        free(lista_tranzactii[i]);
+    }
+    free(lista_tranzactii);
 
     return descriere_returnat;
 
@@ -66,7 +101,7 @@ int adaugare_service(int id, int suma, int ziua, enum tip tip, char* descriere, 
         return 1;
     }
     else 
-    {
+    { free(tranz);
         return 0;
     }
 

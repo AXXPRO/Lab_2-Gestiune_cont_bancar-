@@ -7,7 +7,7 @@
 
 int main()
 {  run_all_tests();
-   run_ui();
+   //run_ui();
 
     return 0;
 }

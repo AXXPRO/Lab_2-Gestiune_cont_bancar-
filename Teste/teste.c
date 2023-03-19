@@ -64,8 +64,35 @@ void teste_service()
     assert(stergere_service(0,lista_test) == 1);
   tranz_modificata = get_tranzactie(lista_test, 0);
     assert(tranz_modificata == (Tranzactie*)NULL);
-   
-    free(lista_test);
+
+    distruge(lista_test);
+
+
+
+    //TESTE CRITERII
+
+    lista_test = creaza_lista();
+    char* descriere1 = (char*)malloc(sizeof(char)*50);
+    strcpy(descriere1, "Prima");
+   adaugare_service(0,  100, 2,  intrare, descriere1, lista_test);
+
+    char* descriere2 = (char*)malloc(sizeof(char)*50);
+    strcpy(descriere2, "Doua");
+    adaugare_service(1,  300, 3,  iesire, descriere2, lista_test);
+
+    lista* lista_temp;
+
+    lista_temp = criteriu_tip_service(lista_test,intrare);
+    assert(numar_elemente(lista_temp)==1);
+    assert(get_id(get_all(lista_temp)[0]) == 0);
+
+    free(lista_temp);
+
+    lista_temp = criteriu_suma_service(lista_test,150,1);
+    assert(numar_elemente(lista_temp)==1);
+    assert(get_id(get_all(lista_temp)[0]) == 1);
+
+
 
 }
 

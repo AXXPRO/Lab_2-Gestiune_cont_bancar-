@@ -1,7 +1,15 @@
 #include "..\Infrastructura\repo.h"
 ///
+
 /// \param l -lista elementelor de tip tranzactie
-/// \param tip tipul dupa care returnam o noua lista de elemente
+/// \param suma -suma dupa care returnam o noua lista de elemente
+/// \param comparatie -2 valori posibile >0 daca vrem mai >suma, si <0 daca vrem <suma
+/// \return un pointer la o noua lista care contine doar elementele dupa criteriul ales
+lista* criteriu_suma_service(lista* l, int suma, int comparatie);
+
+///
+/// \param l -lista elementelor de tip tranzactie
+/// \param tip -tipul dupa care returnam o noua lista de elemente
 /// \return un pointer la o noua lista care contine doar elementele cu tipul specificat
 lista* criteriu_tip_service(lista* l, enum tip tip);
 /*

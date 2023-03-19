@@ -6,6 +6,25 @@
 #include "..\Validation\valid.h"
 
 
+lista* criteriu_suma_service(lista* l, int suma, int comparatie)
+{
+    lista* lista_returnat = creaza_lista();
+
+    Tranzactie** lista_tranzactii = get_all(l);
+
+    for(int i=0; i< numar_elemente(l); i++)
+    {
+        if(get_suma(lista_tranzactii[i])*comparatie > suma*comparatie)
+        {
+            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+
+        }
+    }
+    free(lista_tranzactii);
+    return lista_returnat;
+
+
+}
 lista* criteriu_tip_service(lista* l, enum tip tip)
 {
     lista* lista_returnat = creaza_lista();

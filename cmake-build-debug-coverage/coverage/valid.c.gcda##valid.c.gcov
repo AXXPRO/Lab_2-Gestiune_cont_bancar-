@@ -4,48 +4,48 @@
         -:    0:Runs:1
         -:    1:#include <string.h>
         -:    2:#include "..\Infrastructura\domain.h"
-function tranzactie_valida called 5 returned 100% blocks executed 100%
-        5:    3:int tranzactie_valida(Tranzactie* tranz)
+function tranzactie_valida called 7 returned 100% blocks executed 100%
+        7:    3:int tranzactie_valida(Tranzactie* tranz)
         -:    4:{
-        5:    5:    int id = get_id(tranz);
-        5:    5-block  0
-call    0 returned 5
-        5:    6:    int suma = get_suma(tranz);
-call    0 returned 5
-        5:    7:    int ziua = get_ziua(tranz);
-call    0 returned 5
+        7:    5:    int id = get_id(tranz);
+        7:    5-block  0
+call    0 returned 7
+        7:    6:    int suma = get_suma(tranz);
+call    0 returned 7
+        7:    7:    int ziua = get_ziua(tranz);
+call    0 returned 7
         -:    8:    
         -:    9:    char descriere[50];
-        5:   10:    strcpy(descriere, get_descriere(tranz));
-call    0 returned 5
+        7:   10:    strcpy(descriere, get_descriere(tranz));
+call    0 returned 7
         -:   11: 
-        5:   12:    int ok =1;
+        7:   12:    int ok =1;
         -:   13:    
         -:   14:
-        5:   15:    if(id < 0)
+        7:   15:    if(id < 0)
 branch  0 taken 2 (fallthrough)
-branch  1 taken 3
+branch  1 taken 5
         2:   16:    ok=0;
         2:   16-block  0
-        5:   17:    if (ziua <1 || ziua >31)
-        5:   17-block  0
-branch  0 taken 5 (fallthrough)
+        7:   17:    if (ziua <1 || ziua >31)
+        7:   17-block  0
+branch  0 taken 7 (fallthrough)
 branch  1 taken 0
-        5:   17-block  1
+        7:   17-block  1
 branch  2 taken 1 (fallthrough)
-branch  3 taken 4
+branch  3 taken 6
         1:   18:    ok=0;
         1:   18-block  0
         -:   19:    
-        5:   20:    if(descriere[0]=='\0')
-        5:   20-block  0
+        7:   20:    if(descriere[0]=='\0')
+        7:   20-block  0
 branch  0 taken 1 (fallthrough)
-branch  1 taken 4
+branch  1 taken 6
         1:   21:    ok=0;
         1:   21-block  0
         -:   22:
-        5:   23:    return ok;
-        5:   23-block  0
+        7:   23:    return ok;
+        7:   23-block  0
         -:   24:
         -:   25:
         -:   26:

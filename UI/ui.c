@@ -108,7 +108,56 @@ void run_ui()
     
 
 }
+void criteriu_suma(lista* l)
+{
+    char alegere[50];
+    char suma[50];
+    printf("Cum doriti sa filtram dupa suma?\n1. Mai mari decat o suma data\n2. Mai mici decat o suma data\n");
+    gets(alegere);
 
+    if(is_number(alegere))
+    {
+        int numar = atoi(alegere);
+        if(numar <1 || numar >2)
+        {
+            printf("Varianta inexistenta!");
+            getchar();
+        }
+        else
+
+        {
+            printf("Dati suma cu care comparam\n");
+            gets(suma);
+            if(is_number(suma))
+            {
+                int suma_numar = atoi(suma);
+                lista* l_temporara;
+                if(numar == 1)
+                {
+                     l_temporara= criteriu_suma_service(l,suma_numar,1);
+                }
+                else
+                {
+                   l_temporara= criteriu_suma_service(l,suma_numar,-1);
+                }
+                afisare(l_temporara);
+                free(l_temporara);
+            }
+            else{
+                printf("Suma invalida!");
+                getchar();
+            }
+        }
+
+    }
+    else
+
+    {
+        printf("Varianta inexistenta!");
+        getchar();
+    }
+
+}
 void criteriu_tip(lista* l)
 {char alegere[50];
     printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
@@ -163,7 +212,7 @@ switch(numar)
          criteriu_tip(l);
         break;
     case 2:
-        //criteriu_suma(l);
+        criteriu_suma(l);
         break;
     default:{
         printf("Varianta inexistenta!");

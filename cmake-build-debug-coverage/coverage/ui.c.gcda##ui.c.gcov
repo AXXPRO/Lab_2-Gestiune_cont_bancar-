@@ -70,48 +70,50 @@ call    0 never executed
 call    0 never executed
     #####:   37:  printf("4.Vizualizare tranzactii dupa un criteriu.\n");
 call    0 never executed
-    #####:   38:  printf("6.Afisarea tranzactiilor din aplicatie.\n");
+    #####:   38:  printf("5.Vizualizare tranzactii ordonat dupa suma\n");
 call    0 never executed
-    #####:   39:  printf("7.Inchidere aplicatie.\n");
+    #####:   39:  printf("6.Afisarea tranzactiilor din aplicatie.\n");
 call    0 never executed
-    #####:   40:  printf(">>>");
+    #####:   40:  printf("7.Inchidere aplicatie.\n");
 call    0 never executed
-        -:   41:
-    #####:   42:}
-        -:   43:
+    #####:   41:  printf(">>>");
+call    0 never executed
+        -:   42:
+    #####:   43:}
         -:   44:
         -:   45:
         -:   46:
         -:   47:
+        -:   48:
 function run_ui called 0 returned 0% blocks executed 0%
-    #####:   48:void run_ui()
-    #####:   49:{   lista* lista_tranzactii = creaza_lista();
-    %%%%%:   49-block  0
+    #####:   49:void run_ui()
+    #####:   50:{   lista* lista_tranzactii = creaza_lista();
+    %%%%%:   50-block  0
 call    0 never executed
-        -:   50:    
-        -:   51:    char choice[20];
-    #####:   52:    int program_running = 1;
-        -:   53:    int number_choice;
-    #####:   54:    while(program_running)
-    %%%%%:   54-block  0
+        -:   51:    
+        -:   52:    char choice[20];
+    #####:   53:    int program_running = 1;
+        -:   54:    int number_choice;
+    #####:   55:    while(program_running)
+    %%%%%:   55-block  0
 branch  0 never executed
 branch  1 never executed
-        -:   55:    {
-    #####:   56:        interface();
-    %%%%%:   56-block  0
+        -:   56:    {
+    #####:   57:        interface();
+    %%%%%:   57-block  0
 call    0 never executed
-        -:   57:        //scanf("%s", choice);
-    #####:   58:        gets(choice);
+        -:   58:        //scanf("%s", choice);
+    #####:   59:        gets(choice);
 call    0 never executed
-    #####:   59:        if(strlen(choice)==1)
+    #####:   60:        if(strlen(choice)==1)
 branch  0 never executed
 branch  1 never executed
-        -:   60:        {
-        -:   61:           
-        -:   62:            //Run program
-    #####:   63:                number_choice = choice[0]-'0';
-    #####:   64:                switch (number_choice)
-    %%%%%:   64-block  0
+        -:   61:        {
+        -:   62:           
+        -:   63:            //Run program
+    #####:   64:                number_choice = choice[0]-'0';
+    #####:   65:                switch (number_choice)
+    %%%%%:   65-block  0
 branch  0 never executed
 branch  1 never executed
 branch  2 never executed
@@ -120,578 +122,573 @@ branch  4 never executed
 branch  5 never executed
 branch  6 never executed
 branch  7 never executed
-        -:   65:                {
-    #####:   66:                    case 1:
-    #####:   67:                    adaugare(lista_tranzactii);
-    %%%%%:   67-block  0
+        -:   66:                {
+    #####:   67:                    case 1:
+    #####:   68:                    adaugare(lista_tranzactii);
+    %%%%%:   68-block  0
 call    0 never executed
-    #####:   68:                    break;
-    #####:   69:                    case 2:
-    #####:   70:                    modificare(lista_tranzactii);
-    %%%%%:   70-block  0
+    #####:   69:                    break;
+    #####:   70:                    case 2:
+    #####:   71:                    modificare(lista_tranzactii);
+    %%%%%:   71-block  0
 call    0 never executed
-    #####:   71:                    break;
-    #####:   72:                    case 3:
-    #####:   73:                    stergere(lista_tranzactii);
-    %%%%%:   73-block  0
+    #####:   72:                    break;
+    #####:   73:                    case 3:
+    #####:   74:                    stergere(lista_tranzactii);
+    %%%%%:   74-block  0
 call    0 never executed
-    #####:   74:                    break;
-    #####:   75:                    case 4:
-    #####:   76:                    criteriu(lista_tranzactii);
-    %%%%%:   76-block  0
+    #####:   75:                    break;
+    #####:   76:                    case 4:
+    #####:   77:                    criteriu(lista_tranzactii);
+    %%%%%:   77-block  0
 call    0 never executed
-    #####:   77:                    break;
-    #####:   78:                    case 5:
-        -:   79:                    /* code */
-    #####:   80:                    break;
+    #####:   78:                    break;
+    #####:   79:                    case 5:
+    #####:   80:                        ordonat(lista_tranzactii);
     %%%%%:   80-block  0
-    #####:   81:                    case 6:
-    #####:   82:                   afisare(lista_tranzactii);
-    %%%%%:   82-block  0
 call    0 never executed
-    #####:   83:                    getchar();
+    #####:   81:                    break;
+    #####:   82:                    case 6:
+    #####:   83:                   afisare(lista_tranzactii);
+    %%%%%:   83-block  0
 call    0 never executed
-        -:   84:
-    #####:   85:                    break;
-    #####:   86:                    case 7:
-    #####:   87:                    program_running = 0;
-    #####:   88:                    distruge(lista_tranzactii);
-    %%%%%:   88-block  0
+    #####:   84:                    getchar();
 call    0 never executed
-    #####:   89:                    break;
-    #####:   90:                default:
-        -:   91:                {
-    #####:   92:                printf("Varianta inexistenta!\n");
-    %%%%%:   92-block  0
+        -:   85:
+    #####:   86:                    break;
+    #####:   87:                    case 7:
+    #####:   88:                    program_running = 0;
+    #####:   89:                    distruge(lista_tranzactii);
+    %%%%%:   89-block  0
 call    0 never executed
-    #####:   93:                gets(choice);
+    #####:   90:                    break;
+    #####:   91:                default:
+        -:   92:                {
+    #####:   93:                printf("Varianta inexistenta!\n");
+    %%%%%:   93-block  0
 call    0 never executed
-        -:   94:                }
-    #####:   95:                    break;
-        -:   96:                }
-        -:   97:
+    #####:   94:                gets(choice);
+call    0 never executed
+        -:   95:                }
+    #####:   96:                    break;
+        -:   97:                }
         -:   98:
-        -:   99:            
-        -:  100:          
-        -:  101:        }
-    #####:  102:        else{printf("Varianta inexistenta!\n");
-    %%%%%:  102-block  0
+        -:   99:
+        -:  100:            
+        -:  101:          
+        -:  102:        }
+    #####:  103:        else{printf("Varianta inexistenta!\n");
+    %%%%%:  103-block  0
 call    0 never executed
-    #####:  103:                gets(choice);}
+    #####:  104:                gets(choice);}
 call    0 never executed
-        -:  104:
         -:  105:
         -:  106:
-        -:  107:    }
-        -:  108:    
-        -:  109:
-    #####:  110:}
-function criteriu_suma called 0 returned 0% blocks executed 0%
-    #####:  111:void criteriu_suma(lista* l)
-        -:  112:{
-        -:  113:    char alegere[50];
-        -:  114:    char suma[50];
-    #####:  115:    printf("Cum doriti sa filtram dupa suma?\n1. Mai mari decat o suma data\n2. Mai mici decat o suma data\n");
-    %%%%%:  115-block  0
+        -:  107:
+        -:  108:    }
+        -:  109:    
+        -:  110:
+    #####:  111:}
+        -:  112:
+        -:  113:
+function ordonat called 0 returned 0% blocks executed 0%
+    #####:  114:void ordonat(lista* l)
+        -:  115:{
+        -:  116:    char alegere[50];
+    #####:  117:    printf("Cum doriti sa sortam lista?\n1. Crescator\n2. Descrescator\n");
+    %%%%%:  117-block  0
 call    0 never executed
-    #####:  116:    gets(alegere);
+    #####:  118:    gets(alegere);
 call    0 never executed
-        -:  117:
-    #####:  118:    if(is_number(alegere))
+        -:  119:
+        -:  120:
+    #####:  121:    if(is_number(alegere))
 call    0 never executed
 branch  1 never executed
 branch  2 never executed
-        -:  119:    {
-    #####:  120:        int numar = atoi(alegere);
-    %%%%%:  120-block  0
-call    0 never executed
-    #####:  121:        if(numar <1 || numar >2)
-branch  0 never executed
-branch  1 never executed
-    %%%%%:  121-block  0
-branch  2 never executed
-branch  3 never executed
-        -:  122:        {
-    #####:  123:            printf("Varianta inexistenta!");
+        -:  122:    {
+    #####:  123:        int numar = atoi(alegere);
     %%%%%:  123-block  0
 call    0 never executed
-    #####:  124:            getchar();
-call    0 never executed
-        -:  125:        }
-        -:  126:        else
-        -:  127:
-        -:  128:        {
-    #####:  129:            printf("Dati suma cu care comparam\n");
-    %%%%%:  129-block  0
-call    0 never executed
-    #####:  130:            gets(suma);
-call    0 never executed
-    #####:  131:            if(is_number(suma))
-call    0 never executed
-branch  1 never executed
-branch  2 never executed
-        -:  132:            {
-    #####:  133:                int suma_numar = atoi(suma);
-    %%%%%:  133-block  0
-call    0 never executed
-        -:  134:                lista* l_temporara;
-    #####:  135:                if(numar == 1)
+    #####:  124:        if(numar <1 || numar >2)
 branch  0 never executed
 branch  1 never executed
-        -:  136:                {
-    #####:  137:                     l_temporara= criteriu_suma_service(l,suma_numar,1);
-    %%%%%:  137-block  0
-call    0 never executed
-        -:  138:                }
-        -:  139:                else
-        -:  140:                {
-    #####:  141:                   l_temporara= criteriu_suma_service(l,suma_numar,-1);
-    %%%%%:  141-block  0
-call    0 never executed
-        -:  142:                }
-    #####:  143:                afisare(l_temporara);
-    %%%%%:  143-block  0
-call    0 never executed
-    #####:  144:                free(l_temporara);
-        -:  145:            }
-        -:  146:            else{
-    #####:  147:                printf("Suma invalida!");
-    %%%%%:  147-block  0
-call    0 never executed
-    #####:  148:                getchar();
-call    0 never executed
-        -:  149:            }
-        -:  150:        }
-        -:  151:
-        -:  152:    }
-        -:  153:    else
-        -:  154:
-        -:  155:    {
-    #####:  156:        printf("Varianta inexistenta!");
-    %%%%%:  156-block  0
-call    0 never executed
-    #####:  157:        getchar();
-call    0 never executed
-        -:  158:    }
-        -:  159:
-    #####:  160:}
-function criteriu_tip called 0 returned 0% blocks executed 0%
-    #####:  161:void criteriu_tip(lista* l)
-        -:  162:{char alegere[50];
-    #####:  163:    printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
-    %%%%%:  163-block  0
-call    0 never executed
-    #####:  164:    gets(alegere);
-call    0 never executed
-    #####:  165:    if(is_number(alegere))
-call    0 never executed
-branch  1 never executed
-branch  2 never executed
-        -:  166:    {
-    #####:  167:        int numar = atoi(alegere);
-    %%%%%:  167-block  0
-call    0 never executed
-    #####:  168:        if(numar <1 || numar >2)
-branch  0 never executed
-branch  1 never executed
-    %%%%%:  168-block  0
+    %%%%%:  124-block  0
 branch  2 never executed
 branch  3 never executed
-        -:  169:        {
-    #####:  170:            printf("Varianta inexistenta!");
-    %%%%%:  170-block  0
+        -:  125:        {
+    #####:  126:            printf("Varianta inexistenta!");
+    %%%%%:  126-block  0
 call    0 never executed
-    #####:  171:            getchar();
+    #####:  127:            getchar();
 call    0 never executed
-        -:  172:        }
-        -:  173:        else
-        -:  174:
-        -:  175:        {
-        -:  176:            enum tip tipul;
-    #####:  177:            if(numar == 1)
-    %%%%%:  177-block  0
+        -:  128:        }
+        -:  129:        else
+        -:  130:
+        -:  131:        {
+        -:  132:            lista* lista_ordonata;
+    #####:  133:            if(numar == 1)
+    %%%%%:  133-block  0
 branch  0 never executed
 branch  1 never executed
-    #####:  178:                tipul = intrare;
-    %%%%%:  178-block  0
-        -:  179:            else
-    #####:  180:             tipul = iesire;
-    %%%%%:  180-block  0
-        -:  181:            lista* l_temporara;
-    #####:  182:            l_temporara = criteriu_tip_service(l, tipul);
-    %%%%%:  182-block  0
+    #####:  134:            lista_ordonata = ordonat_service(l,1);
+    %%%%%:  134-block  0
 call    0 never executed
-    #####:  183:            afisare(l_temporara);
+        -:  135:            else
+    #####:  136:                lista_ordonata = ordonat_service(l,-1);
+    %%%%%:  136-block  0
 call    0 never executed
-        -:  184:
-    #####:  185:            free(l_temporara);
-        -:  186:
-        -:  187:        }
-        -:  188:
-        -:  189:    }
-        -:  190:    else
-        -:  191:
-        -:  192:    {
-    #####:  193:        printf("Varianta inexistenta!");
-    %%%%%:  193-block  0
+        -:  137:
+        -:  138:
+    #####:  139:            afisare(lista_ordonata);
+    %%%%%:  139-block  0
 call    0 never executed
-    #####:  194:        getchar();
+    #####:  140:            free(lista_ordonata);
+        -:  141:
+        -:  142:
+        -:  143:        }
+        -:  144:
+        -:  145:    }
+        -:  146:    else
+        -:  147:
+        -:  148:    {
+    #####:  149:        printf("Varianta inexistenta!");
+    %%%%%:  149-block  0
 call    0 never executed
-        -:  195:    }
+    #####:  150:        getchar();
+call    0 never executed
+        -:  151:    }
+    #####:  152:}
+function criteriu_suma called 0 returned 0% blocks executed 0%
+    #####:  153:void criteriu_suma(lista* l)
+        -:  154:{
+        -:  155:    char alegere[50];
+        -:  156:    char suma[50];
+    #####:  157:    printf("Cum doriti sa filtram dupa suma?\n1. Mai mari decat o suma data\n2. Mai mici decat o suma data\n");
+    %%%%%:  157-block  0
+call    0 never executed
+    #####:  158:    gets(alegere);
+call    0 never executed
+        -:  159:
+    #####:  160:    if(is_number(alegere))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  161:    {
+    #####:  162:        int numar = atoi(alegere);
+    %%%%%:  162-block  0
+call    0 never executed
+    #####:  163:        if(numar <1 || numar >2)
+branch  0 never executed
+branch  1 never executed
+    %%%%%:  163-block  0
+branch  2 never executed
+branch  3 never executed
+        -:  164:        {
+    #####:  165:            printf("Varianta inexistenta!");
+    %%%%%:  165-block  0
+call    0 never executed
+    #####:  166:            getchar();
+call    0 never executed
+        -:  167:        }
+        -:  168:        else
+        -:  169:
+        -:  170:        {
+    #####:  171:            printf("Dati suma cu care comparam\n");
+    %%%%%:  171-block  0
+call    0 never executed
+    #####:  172:            gets(suma);
+call    0 never executed
+    #####:  173:            if(is_number(suma))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  174:            {
+    #####:  175:                int suma_numar = atoi(suma);
+    %%%%%:  175-block  0
+call    0 never executed
+        -:  176:                lista* l_temporara;
+    #####:  177:                if(numar == 1)
+branch  0 never executed
+branch  1 never executed
+        -:  178:                {
+    #####:  179:                     l_temporara= criteriu_suma_service(l,suma_numar,1);
+    %%%%%:  179-block  0
+call    0 never executed
+        -:  180:                }
+        -:  181:                else
+        -:  182:                {
+    #####:  183:                   l_temporara= criteriu_suma_service(l,suma_numar,-1);
+    %%%%%:  183-block  0
+call    0 never executed
+        -:  184:                }
+    #####:  185:                afisare(l_temporara);
+    %%%%%:  185-block  0
+call    0 never executed
+    #####:  186:                free(l_temporara);
+        -:  187:            }
+        -:  188:            else{
+    #####:  189:                printf("Suma invalida!");
+    %%%%%:  189-block  0
+call    0 never executed
+    #####:  190:                getchar();
+call    0 never executed
+        -:  191:            }
+        -:  192:        }
+        -:  193:
+        -:  194:    }
+        -:  195:    else
         -:  196:
-        -:  197:
-    #####:  198:}
-function criteriu called 0 returned 0% blocks executed 0%
-    #####:  199:void criteriu(lista* l)
-        -:  200:{
-        -:  201:    char alegere[50];
-    #####:  202:  printf("Ce criteriu de sortare doriti?\n 1. Dupa tip\n 2. Dupa suma\n");
-    %%%%%:  202-block  0
+        -:  197:    {
+    #####:  198:        printf("Varianta inexistenta!");
+    %%%%%:  198-block  0
 call    0 never executed
-    #####:  203: gets(alegere);
+    #####:  199:        getchar();
 call    0 never executed
-    #####:  204:  if(is_number(alegere))
+        -:  200:    }
+        -:  201:
+    #####:  202:}
+function criteriu_tip called 0 returned 0% blocks executed 0%
+    #####:  203:void criteriu_tip(lista* l)
+        -:  204:{char alegere[50];
+    #####:  205:    printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
+    %%%%%:  205-block  0
+call    0 never executed
+    #####:  206:    gets(alegere);
+call    0 never executed
+    #####:  207:    if(is_number(alegere))
 call    0 never executed
 branch  1 never executed
 branch  2 never executed
-        -:  205:  {
-    #####:  206:int numar = atoi(alegere);
-    %%%%%:  206-block  0
+        -:  208:    {
+    #####:  209:        int numar = atoi(alegere);
+    %%%%%:  209-block  0
 call    0 never executed
-        -:  207:
-    #####:  208:switch(numar)
+    #####:  210:        if(numar <1 || numar >2)
 branch  0 never executed
 branch  1 never executed
+    %%%%%:  210-block  0
 branch  2 never executed
-        -:  209:
-        -:  210:{
-    #####:  211:    case 1:
-    #####:  212:         criteriu_tip(l);
+branch  3 never executed
+        -:  211:        {
+    #####:  212:            printf("Varianta inexistenta!");
     %%%%%:  212-block  0
 call    0 never executed
-    #####:  213:        break;
-    #####:  214:    case 2:
-    #####:  215:        criteriu_suma(l);
-    %%%%%:  215-block  0
+    #####:  213:            getchar();
 call    0 never executed
-    #####:  216:        break;
-    #####:  217:    default:{
-    #####:  218:        printf("Varianta inexistenta!");
-    %%%%%:  218-block  0
+        -:  214:        }
+        -:  215:        else
+        -:  216:
+        -:  217:        {
+        -:  218:            enum tip tipul;
+    #####:  219:            if(numar == 1)
+    %%%%%:  219-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  220:                tipul = intrare;
+    %%%%%:  220-block  0
+        -:  221:            else
+    #####:  222:             tipul = iesire;
+    %%%%%:  222-block  0
+        -:  223:            lista* l_temporara;
+    #####:  224:            l_temporara = criteriu_tip_service(l, tipul);
+    %%%%%:  224-block  0
 call    0 never executed
-    #####:  219:        getchar();
+    #####:  225:            afisare(l_temporara);
 call    0 never executed
-        -:  220:    }
-        -:  221:
-        -:  222:}
-        -:  223:
-        -:  224:  }
-        -:  225:
-        -:  226:  else
-        -:  227:
-        -:  228:  {
-    #####:  229:      printf("Varianta inexistenta!");
-    %%%%%:  229-block  0
-call    0 never executed
-    #####:  230:      getchar();
-call    0 never executed
-        -:  231:  }
-        -:  232:
+        -:  226:
+    #####:  227:            free(l_temporara);
+        -:  228:
+        -:  229:        }
+        -:  230:
+        -:  231:    }
+        -:  232:    else
         -:  233:
-    #####:  234:}
-        -:  235:
-function afisare called 0 returned 0% blocks executed 0%
-    #####:  236:void afisare(lista* l)
-        -:  237:{
-        -:  238:    char *de_afisat;
-    #####:  239:    de_afisat= afisare_service(l);
-    %%%%%:  239-block  0
+        -:  234:    {
+    #####:  235:        printf("Varianta inexistenta!");
+    %%%%%:  235-block  0
 call    0 never executed
-    #####:  240:    printf("%s", de_afisat);
+    #####:  236:        getchar();
 call    0 never executed
-    #####:  241:    getchar();
+        -:  237:    }
+        -:  238:
+        -:  239:
+    #####:  240:}
+function criteriu called 0 returned 0% blocks executed 0%
+    #####:  241:void criteriu(lista* l)
+        -:  242:{
+        -:  243:    char alegere[50];
+    #####:  244:  printf("Ce criteriu de sortare doriti?\n 1. Dupa tip\n 2. Dupa suma\n");
+    %%%%%:  244-block  0
 call    0 never executed
-    #####:  242:    free (de_afisat);
-        -:  243:
-    #####:  244:}
-        -:  245:
-function adaugare called 0 returned 0% blocks executed 0%
-    #####:  246:void adaugare(lista* l)
-        -:  247:{   
-        -:  248:    char params[100];
-        -:  249:    char true_params[5][50];
-        -:  250:    char* cuvant;
-        -:  251:    //printf
-    #####:  252:    printf("Dati id-ul, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
-    %%%%%:  252-block  0
+    #####:  245: gets(alegere);
 call    0 never executed
-        -:  253:     //getchar();
-    #####:  254:    gets(params);
+    #####:  246:  if(is_number(alegere))
 call    0 never executed
-        -:  255:    //scanf("%s",params);
-    #####:  256:    cuvant = strtok(params, ";");
+branch  1 never executed
+branch  2 never executed
+        -:  247:  {
+    #####:  248:int numar = atoi(alegere);
+    %%%%%:  248-block  0
 call    0 never executed
-        -:  257:    int i;
-        -:  258:
-    #####:  259:    for(i=0;cuvant != NULL; i++)
-    %%%%%:  259-block  0
+        -:  249:
+    #####:  250:switch(numar)
 branch  0 never executed
 branch  1 never executed
-    #####:  260:     {strcpy(true_params[i], cuvant);   
-    #####:  261:     cuvant = strtok(NULL, ";");
-    %%%%%:  261-block  0
+branch  2 never executed
+        -:  251:
+        -:  252:{
+    #####:  253:    case 1:
+    #####:  254:         criteriu_tip(l);
+    %%%%%:  254-block  0
 call    0 never executed
-        -:  262:     }
+    #####:  255:        break;
+    #####:  256:    case 2:
+    #####:  257:        criteriu_suma(l);
+    %%%%%:  257-block  0
+call    0 never executed
+    #####:  258:        break;
+    #####:  259:    default:{
+    #####:  260:        printf("Varianta inexistenta!");
+    %%%%%:  260-block  0
+call    0 never executed
+    #####:  261:        getchar();
+call    0 never executed
+        -:  262:    }
         -:  263:
-    #####:  264:    if(i!=5)
-    %%%%%:  264-block  0
-branch  0 never executed
-branch  1 never executed
-        -:  265:    {
-    #####:  266:printf("Paramtetrii invalizi!");
-    %%%%%:  266-block  0
+        -:  264:}
+        -:  265:
+        -:  266:  }
+        -:  267:
+        -:  268:  else
+        -:  269:
+        -:  270:  {
+    #####:  271:      printf("Varianta inexistenta!");
+    %%%%%:  271-block  0
 call    0 never executed
-    #####:  267:getchar();
+    #####:  272:      getchar();
 call    0 never executed
-        -:  268:    }
-        -:  269:    else 
-        -:  270:    {
-        -:  271:    enum tip tip;
-    #####:  272:    int ok = 0;
-        -:  273:    char tipul[50];
-    #####:  274:    strcpy(tipul, true_params[3]);
-    #####:  275:    if(strstr("intrare", tipul)!=NULL)
-    %%%%%:  275-block  0
-branch  0 never executed
-branch  1 never executed
-    #####:  276:      {tip = intrare; ok =1;}
-    %%%%%:  276-block  0
-    #####:  277:    if(strstr("iesire", tipul)!=NULL)
-    %%%%%:  277-block  0
-branch  0 never executed
-branch  1 never executed
-    #####:  278:      {tip = iesire; ok=1;}
-    %%%%%:  278-block  0
-        -:  279:
-        -:  280:
-    #####:  281:    for(int i =0; i<3; i++)
+        -:  273:  }
+        -:  274:
+        -:  275:
+    #####:  276:}
+        -:  277:
+function afisare called 0 returned 0% blocks executed 0%
+    #####:  278:void afisare(lista* l)
+        -:  279:{
+        -:  280:    char *de_afisat;
+    #####:  281:    de_afisat= afisare_service(l);
     %%%%%:  281-block  0
-    %%%%%:  281-block  1
-    %%%%%:  281-block  2
+call    0 never executed
+    #####:  282:    printf("%s", de_afisat);
+call    0 never executed
+    #####:  283:    getchar();
+call    0 never executed
+    #####:  284:    free (de_afisat);
+        -:  285:
+    #####:  286:}
+        -:  287:
+function adaugare called 0 returned 0% blocks executed 0%
+    #####:  288:void adaugare(lista* l)
+        -:  289:{   
+        -:  290:    char params[100];
+        -:  291:    char true_params[5][50];
+        -:  292:    char* cuvant;
+        -:  293:    //printf
+    #####:  294:    printf("Dati id-ul, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
+    %%%%%:  294-block  0
+call    0 never executed
+        -:  295:     //getchar();
+    #####:  296:    gets(params);
+call    0 never executed
+        -:  297:    //scanf("%s",params);
+    #####:  298:    cuvant = strtok(params, ";");
+call    0 never executed
+        -:  299:    int i;
+        -:  300:
+    #####:  301:    for(i=0;cuvant != NULL; i++)
+    %%%%%:  301-block  0
 branch  0 never executed
 branch  1 never executed
-        -:  282:    {
-    #####:  283:        if(!is_number(true_params[i]))
-    %%%%%:  283-block  0
+    #####:  302:     {strcpy(true_params[i], cuvant);   
+    #####:  303:     cuvant = strtok(NULL, ";");
+    %%%%%:  303-block  0
 call    0 never executed
-branch  1 never executed
-branch  2 never executed
-    #####:  284:        ok = 0;
-    %%%%%:  284-block  0
-        -:  285:    }
-        -:  286:
-        -:  287:  
-    #####:  288: if(ok)
-    %%%%%:  288-block  0
+        -:  304:     }
+        -:  305:
+    #####:  306:    if(i!=5)
+    %%%%%:  306-block  0
 branch  0 never executed
 branch  1 never executed
-        -:  289:    {
-    #####:  290:    char* descriere=(char*)malloc(sizeof(char)*50);
-    #####:  291:    strcpy(descriere, true_params[4]);
-    #####:  292:    int id = atoi(true_params[0]);
-    %%%%%:  292-block  0
+        -:  307:    {
+    #####:  308:printf("Paramtetrii invalizi!");
+    %%%%%:  308-block  0
 call    0 never executed
-    #####:  293:    int ziua = atoi(true_params[1]);
+    #####:  309:getchar();
 call    0 never executed
-    #####:  294:    int suma = atoi(true_params[2]);
-call    0 never executed
-        -:  295:
-    #####:  296:      if( adaugare_service(id,suma,ziua,tip,descriere,l)==0)
-call    0 never executed
+        -:  310:    }
+        -:  311:    else 
+        -:  312:    {
+        -:  313:    enum tip tip;
+    #####:  314:    int ok = 0;
+        -:  315:    char tipul[50];
+    #####:  316:    strcpy(tipul, true_params[3]);
+    #####:  317:    if(strstr("intrare", tipul)!=NULL)
+    %%%%%:  317-block  0
+branch  0 never executed
 branch  1 never executed
-branch  2 never executed
-        -:  297:      {
-    #####:  298:          printf("Paramtetrii invalizi!");
-    %%%%%:  298-block  0
-call    0 never executed
-    #####:  299:          getchar();
-call    0 never executed
-        -:  300:      }
-        -:  301:           // free(descriere);
-        -:  302:    }
-        -:  303:    else 
-        -:  304:    {
-    #####:  305:printf("Paramtetrii invalizi!");
-    %%%%%:  305-block  0
-call    0 never executed
-    #####:  306:getchar();
-call    0 never executed
-        -:  307:    }
-        -:  308:    }
-        -:  309:
-    #####:  310:}
-function stergere called 0 returned 0% blocks executed 0%
-    #####:  311:void stergere(lista* l)
-        -:  312:{char params[5];
-    #####:  313:int ok = 1;
-    #####:  314:    printf("Dati id-ul tranzactiei pe care dorim sa o stergem: \n");
-    %%%%%:  314-block  0
-call    0 never executed
-    #####:  315:    gets(params);
-call    0 never executed
-        -:  316:
-    #####:  317:     if(!is_number(params))
-call    0 never executed
-branch  1 never executed
-branch  2 never executed
-    #####:  318:        ok = 0;
+    #####:  318:      {tip = intrare; ok =1;}
     %%%%%:  318-block  0
-        -:  319:    
-    #####:  320:    if(!ok)
+    #####:  319:    if(strstr("iesire", tipul)!=NULL)
+    %%%%%:  319-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  320:      {tip = iesire; ok=1;}
     %%%%%:  320-block  0
+        -:  321:
+        -:  322:
+    #####:  323:    for(int i =0; i<3; i++)
+    %%%%%:  323-block  0
+    %%%%%:  323-block  1
+    %%%%%:  323-block  2
 branch  0 never executed
 branch  1 never executed
-        -:  321:    {
-    #####:  322:        printf("Id invalid!\n");
-    %%%%%:  322-block  0
-call    0 never executed
-    #####:  323:        getchar();
-call    0 never executed
-        -:  324:
-        -:  325:    }
-        -:  326:    else
-    #####:  327:    {       int id = atoi(params);
-    %%%%%:  327-block  0
-call    0 never executed
-    #####:  328:            if(!stergere_service(id, l))
+        -:  324:    {
+    #####:  325:        if(!is_number(true_params[i]))
+    %%%%%:  325-block  0
 call    0 never executed
 branch  1 never executed
 branch  2 never executed
-        -:  329:            {
-    #####:  330:                printf("Stergere neefectuata!");
+    #####:  326:        ok = 0;
+    %%%%%:  326-block  0
+        -:  327:    }
+        -:  328:
+        -:  329:  
+    #####:  330: if(ok)
     %%%%%:  330-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  331:    {
+    #####:  332:    char* descriere=(char*)malloc(sizeof(char)*50);
+    #####:  333:    strcpy(descriere, true_params[4]);
+    #####:  334:    int id = atoi(true_params[0]);
+    %%%%%:  334-block  0
 call    0 never executed
-    #####:  331:                 getchar();  
+    #####:  335:    int ziua = atoi(true_params[1]);
 call    0 never executed
-        -:  332:            }
-        -:  333:
-        -:  334:    }
-        -:  335:    
-    #####:  336:}
-        -:  337:/*
-        -:  338:Functia din ui responsabila pentru a modifica o tranzactie existenta
-        -:  339:Anunta utilziatorul daca id-ul nu exista
-        -:  340:Preconditii: l este o lista
-        -:  341:Postconditii: se va schimba tranzactia cu un id dat cu alta
-        -:  342:*/
-function modificare called 0 returned 0% blocks executed 0%
-    #####:  343:void modificare(lista* l)
-        -:  344:{
-        -:  345:char params[100];
-        -:  346:    char true_params[5][50];
-        -:  347:    char* cuvant;
-        -:  348:    //printf
-    #####:  349:    printf("Dati id-ul tranzactiei pe care doriti sa o modificam, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
-    %%%%%:  349-block  0
+    #####:  336:    int suma = atoi(true_params[2]);
 call    0 never executed
-        -:  350:     //getchar();
-    #####:  351:    gets(params);
+        -:  337:
+    #####:  338:      if( adaugare_service(id,suma,ziua,tip,descriere,l)==0)
 call    0 never executed
-        -:  352:    //scanf("%s",params);
-    #####:  353:    cuvant = strtok(params, ";");
+branch  1 never executed
+branch  2 never executed
+        -:  339:      {
+    #####:  340:          printf("Paramtetrii invalizi!");
+    %%%%%:  340-block  0
 call    0 never executed
-        -:  354:    int i;
-        -:  355:
-    #####:  356:    for(i=0;cuvant != NULL; i++)
+    #####:  341:          getchar();
+call    0 never executed
+        -:  342:      }
+        -:  343:           // free(descriere);
+        -:  344:    }
+        -:  345:    else 
+        -:  346:    {
+    #####:  347:printf("Paramtetrii invalizi!");
+    %%%%%:  347-block  0
+call    0 never executed
+    #####:  348:getchar();
+call    0 never executed
+        -:  349:    }
+        -:  350:    }
+        -:  351:
+    #####:  352:}
+function stergere called 0 returned 0% blocks executed 0%
+    #####:  353:void stergere(lista* l)
+        -:  354:{char params[5];
+    #####:  355:int ok = 1;
+    #####:  356:    printf("Dati id-ul tranzactiei pe care dorim sa o stergem: \n");
     %%%%%:  356-block  0
+call    0 never executed
+    #####:  357:    gets(params);
+call    0 never executed
+        -:  358:
+    #####:  359:     if(!is_number(params))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  360:        ok = 0;
+    %%%%%:  360-block  0
+        -:  361:    
+    #####:  362:    if(!ok)
+    %%%%%:  362-block  0
 branch  0 never executed
 branch  1 never executed
-    #####:  357:     {strcpy(true_params[i], cuvant);   
-    #####:  358:     cuvant = strtok(NULL, ";");
-    %%%%%:  358-block  0
+        -:  363:    {
+    #####:  364:        printf("Id invalid!\n");
+    %%%%%:  364-block  0
 call    0 never executed
-        -:  359:     }
-        -:  360:
-    #####:  361:    if(i!=5)
-    %%%%%:  361-block  0
-branch  0 never executed
+    #####:  365:        getchar();
+call    0 never executed
+        -:  366:
+        -:  367:    }
+        -:  368:    else
+    #####:  369:    {       int id = atoi(params);
+    %%%%%:  369-block  0
+call    0 never executed
+    #####:  370:            if(!stergere_service(id, l))
+call    0 never executed
 branch  1 never executed
-        -:  362:    {
-    #####:  363:printf("Paramtetrii invalizi!");
-    %%%%%:  363-block  0
-call    0 never executed
-    #####:  364:getchar();
-call    0 never executed
-        -:  365:    }
-        -:  366:    else 
-        -:  367:    {
-        -:  368:    enum tip tip;
-    #####:  369:    int ok = 0;
-        -:  370:    char tipul[50];
-    #####:  371:    strcpy(tipul, true_params[3]);
-    #####:  372:    if(strstr("intrare", tipul)!=NULL)
+branch  2 never executed
+        -:  371:            {
+    #####:  372:                printf("Stergere neefectuata!");
     %%%%%:  372-block  0
-branch  0 never executed
-branch  1 never executed
-    #####:  373:      {tip = intrare; ok =1;}
-    %%%%%:  373-block  0
-    #####:  374:    if(strstr("iesire", tipul)!=NULL)
-    %%%%%:  374-block  0
-branch  0 never executed
-branch  1 never executed
-    #####:  375:      {tip = iesire; ok=1;}
-    %%%%%:  375-block  0
-        -:  376:
-        -:  377:
-    #####:  378:    for(int i =0; i<3; i++)
-    %%%%%:  378-block  0
-    %%%%%:  378-block  1
-    %%%%%:  378-block  2
-branch  0 never executed
-branch  1 never executed
-        -:  379:    {
-    #####:  380:        if(!is_number(true_params[i]))
-    %%%%%:  380-block  0
 call    0 never executed
-branch  1 never executed
-branch  2 never executed
-    #####:  381:        ok = 0;
-    %%%%%:  381-block  0
-        -:  382:    }
-        -:  383:
-        -:  384:  
-    #####:  385: if(ok)
-    %%%%%:  385-block  0
-branch  0 never executed
-branch  1 never executed
-        -:  386:    {
-    #####:  387:    char* descriere=(char*)malloc(sizeof(char)*50);
-    #####:  388:    strcpy(descriere, true_params[4]);
-    #####:  389:    int id = atoi(true_params[0]);
-    %%%%%:  389-block  0
+    #####:  373:                 getchar();  
 call    0 never executed
-    #####:  390:    int ziua = atoi(true_params[1]);
+        -:  374:            }
+        -:  375:
+        -:  376:    }
+        -:  377:    
+    #####:  378:}
+        -:  379:/*
+        -:  380:Functia din ui responsabila pentru a modifica o tranzactie existenta
+        -:  381:Anunta utilziatorul daca id-ul nu exista
+        -:  382:Preconditii: l este o lista
+        -:  383:Postconditii: se va schimba tranzactia cu un id dat cu alta
+        -:  384:*/
+function modificare called 0 returned 0% blocks executed 0%
+    #####:  385:void modificare(lista* l)
+        -:  386:{
+        -:  387:char params[100];
+        -:  388:    char true_params[5][50];
+        -:  389:    char* cuvant;
+        -:  390:    //printf
+    #####:  391:    printf("Dati id-ul tranzactiei pe care doriti sa o modificam, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
+    %%%%%:  391-block  0
 call    0 never executed
-    #####:  391:    int suma = atoi(true_params[2]);
+        -:  392:     //getchar();
+    #####:  393:    gets(params);
 call    0 never executed
-        -:  392:    ///MODIFICARE SERVICE
-        -:  393:
-        -:  394:        
-    #####:  395:       if( !modificare_service(id,suma,ziua,tip,descriere,l))
+        -:  394:    //scanf("%s",params);
+    #####:  395:    cuvant = strtok(params, ";");
 call    0 never executed
-branch  1 never executed
-branch  2 never executed
-        -:  396:       {
+        -:  396:    int i;
         -:  397:
-    #####:  398:    printf("Modificare neefectuata!");
+    #####:  398:    for(i=0;cuvant != NULL; i++)
     %%%%%:  398-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  399:     {strcpy(true_params[i], cuvant);   
+    #####:  400:     cuvant = strtok(NULL, ";");
+    %%%%%:  400-block  0
 call    0 never executed
-    #####:  399:    getchar();
-call    0 never executed
-        -:  400:       }
-        -:  401:           // free(descriere);
-        -:  402:    }
-        -:  403:    else 
+        -:  401:     }
+        -:  402:
+    #####:  403:    if(i!=5)
+    %%%%%:  403-block  0
+branch  0 never executed
+branch  1 never executed
         -:  404:    {
     #####:  405:printf("Paramtetrii invalizi!");
     %%%%%:  405-block  0
@@ -699,6 +696,82 @@ call    0 never executed
     #####:  406:getchar();
 call    0 never executed
         -:  407:    }
-        -:  408:    }
-        -:  409:
-    #####:  410:}
+        -:  408:    else 
+        -:  409:    {
+        -:  410:    enum tip tip;
+    #####:  411:    int ok = 0;
+        -:  412:    char tipul[50];
+    #####:  413:    strcpy(tipul, true_params[3]);
+    #####:  414:    if(strstr("intrare", tipul)!=NULL)
+    %%%%%:  414-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  415:      {tip = intrare; ok =1;}
+    %%%%%:  415-block  0
+    #####:  416:    if(strstr("iesire", tipul)!=NULL)
+    %%%%%:  416-block  0
+branch  0 never executed
+branch  1 never executed
+    #####:  417:      {tip = iesire; ok=1;}
+    %%%%%:  417-block  0
+        -:  418:
+        -:  419:
+    #####:  420:    for(int i =0; i<3; i++)
+    %%%%%:  420-block  0
+    %%%%%:  420-block  1
+    %%%%%:  420-block  2
+branch  0 never executed
+branch  1 never executed
+        -:  421:    {
+    #####:  422:        if(!is_number(true_params[i]))
+    %%%%%:  422-block  0
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+    #####:  423:        ok = 0;
+    %%%%%:  423-block  0
+        -:  424:    }
+        -:  425:
+        -:  426:  
+    #####:  427: if(ok)
+    %%%%%:  427-block  0
+branch  0 never executed
+branch  1 never executed
+        -:  428:    {
+    #####:  429:    char* descriere=(char*)malloc(sizeof(char)*50);
+    #####:  430:    strcpy(descriere, true_params[4]);
+    #####:  431:    int id = atoi(true_params[0]);
+    %%%%%:  431-block  0
+call    0 never executed
+    #####:  432:    int ziua = atoi(true_params[1]);
+call    0 never executed
+    #####:  433:    int suma = atoi(true_params[2]);
+call    0 never executed
+        -:  434:    ///MODIFICARE SERVICE
+        -:  435:
+        -:  436:        
+    #####:  437:       if( !modificare_service(id,suma,ziua,tip,descriere,l))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  438:       {
+        -:  439:
+    #####:  440:    printf("Modificare neefectuata!");
+    %%%%%:  440-block  0
+call    0 never executed
+    #####:  441:    getchar();
+call    0 never executed
+        -:  442:       }
+        -:  443:           // free(descriere);
+        -:  444:    }
+        -:  445:    else 
+        -:  446:    {
+    #####:  447:printf("Paramtetrii invalizi!");
+    %%%%%:  447-block  0
+call    0 never executed
+    #####:  448:getchar();
+call    0 never executed
+        -:  449:    }
+        -:  450:    }
+        -:  451:
+    #####:  452:}

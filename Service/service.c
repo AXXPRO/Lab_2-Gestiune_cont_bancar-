@@ -5,7 +5,31 @@
 #include "..\Infrastructura\repo.h"
 #include "..\Validation\valid.h"
 
+int cmpfuncDescrescator(const void* el1, const void* el2)
+{
+return (get_suma(*((Tranzactie**)el2)) -  get_suma(*((Tranzactie**)el1)));
+}
+int cmpfuncCrescator(const void* el1, const void* el2)
+{
+    return (get_suma(*((Tranzactie**)el1)) -  get_suma(*((Tranzactie**)el2)));
+}
+lista* ordonat_service(lista* l, int criteriu)
+{
+    lista* lista_returnat = creaza_lista();
 
+    Tranzactie** lista_tranzactii = get_all(l);
+
+    for(int i=0; i< numar_elemente(l); i++)
+    {
+            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+    }
+    if(criteriu > 0)
+    qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncCrescator);
+    else
+        qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncDescrescator);
+    return lista_returnat;
+
+}
 lista* criteriu_suma_service(lista* l, int suma, int comparatie)
 {
     lista* lista_returnat = creaza_lista();

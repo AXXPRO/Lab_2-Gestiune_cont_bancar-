@@ -35,6 +35,7 @@ void interface()
   printf("2.Modificare tranzactie existenta.\n");
   printf("3.Stergere tranzactie existenta.\n");
   printf("4.Vizualizare tranzactii dupa un criteriu.\n");
+  printf("5.Vizualizare tranzactii ordonat dupa suma\n");
   printf("6.Afisarea tranzactiilor din aplicatie.\n");
   printf("7.Inchidere aplicatie.\n");
   printf(">>>");
@@ -76,7 +77,7 @@ void run_ui()
                     criteriu(lista_tranzactii);
                     break;
                     case 5:
-                    /* code */
+                        ordonat(lista_tranzactii);
                     break;
                     case 6:
                    afisare(lista_tranzactii);
@@ -107,6 +108,47 @@ void run_ui()
     }
     
 
+}
+
+
+void ordonat(lista* l)
+{
+    char alegere[50];
+    printf("Cum doriti sa sortam lista?\n1. Crescator\n2. Descrescator\n");
+    gets(alegere);
+
+
+    if(is_number(alegere))
+    {
+        int numar = atoi(alegere);
+        if(numar <1 || numar >2)
+        {
+            printf("Varianta inexistenta!");
+            getchar();
+        }
+        else
+
+        {
+            lista* lista_ordonata;
+            if(numar == 1)
+            lista_ordonata = ordonat_service(l,1);
+            else
+                lista_ordonata = ordonat_service(l,-1);
+
+
+            afisare(lista_ordonata);
+            free(lista_ordonata);
+
+
+        }
+
+    }
+    else
+
+    {
+        printf("Varianta inexistenta!");
+        getchar();
+    }
 }
 void criteriu_suma(lista* l)
 {

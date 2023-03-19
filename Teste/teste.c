@@ -92,6 +92,37 @@ void teste_service()
     assert(numar_elemente(lista_temp)==1);
     assert(get_id(get_all(lista_temp)[0]) == 1);
 
+    free(lista_temp);
+    distruge(lista_test);
+
+    lista_test = creaza_lista();
+     descriere1 = (char*)malloc(sizeof(char)*50);
+    descriere2 = (char*)malloc(sizeof(char)*50);
+    char* descriere3 = (char*)malloc(sizeof(char)*50);
+
+    strcpy(descriere1, "Una");
+    strcpy(descriere2, "Doua");
+    strcpy(descriere3, "Trei");
+    adaugare_service(0,300,2,iesire,descriere1,lista_test);
+    adaugare_service(1,1,2,iesire,descriere2,lista_test);
+    adaugare_service(2,150,4,intrare,descriere3,lista_test);
+
+    lista_temp = ordonat_service(lista_test,1);
+
+
+   //printf("%d%d%d",get_id(lista_temp->elemente[0]),get_id(lista_temp->elemente[1]),get_id(lista_temp->elemente[2]) );
+
+    assert(get_id(lista_temp->elemente[0]) ==1);
+    assert(get_id(lista_temp->elemente[2]) ==0);
+
+    free(lista_temp);
+    lista_temp = ordonat_service(lista_test,-1);
+    assert(get_id(lista_temp->elemente[0]) ==0);
+    assert(get_id(lista_temp->elemente[2]) ==1);
+
+    free(lista_temp);
+    free(lista_test);
+
 
 
 }

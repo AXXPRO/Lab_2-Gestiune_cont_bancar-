@@ -9,203 +9,255 @@
         -:    5:#include "..\Infrastructura\repo.h"
         -:    6:#include "..\Validation\valid.h"
         -:    7:
-        -:    8:
-function criteriu_suma_service called 1 returned 100% blocks executed 100%
-        1:    9:lista* criteriu_suma_service(lista* l, int suma, int comparatie)
-        -:   10:{
-        1:   11:    lista* lista_returnat = creaza_lista();
-        1:   11-block  0
-call    0 returned 1
-        -:   12:
-        1:   13:    Tranzactie** lista_tranzactii = get_all(l);
-call    0 returned 1
-        -:   14:
-        3:   15:    for(int i=0; i< numar_elemente(l); i++)
-        2:   15-block  0
-        3:   15-block  1
+function cmpfuncDescrescator called 3 returned 100% blocks executed 100%
+        3:    8:int cmpfuncDescrescator(const void* el1, const void* el2)
+        -:    9:{
+        3:   10:return (get_suma(*((Tranzactie**)el2)) -  get_suma(*((Tranzactie**)el1)));
+        3:   10-block  0
 call    0 returned 3
-branch  1 taken 2
-branch  2 taken 1 (fallthrough)
-        -:   16:    {
-        2:   17:        if(get_suma(lista_tranzactii[i])*comparatie > suma*comparatie)
-        2:   17-block  0
-call    0 returned 2
-branch  1 taken 1 (fallthrough)
-branch  2 taken 1
-        -:   18:        {
-        1:   19:            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
-        1:   19-block  0
-call    0 returned 1
-        -:   20:
-        -:   21:        }
-        -:   22:    }
-        1:   23:    free(lista_tranzactii);
-        1:   24:    return lista_returnat;
-        1:   24-block  0
-        -:   25:
-        -:   26:
-        -:   27:}
-function criteriu_tip_service called 1 returned 100% blocks executed 100%
-        1:   28:lista* criteriu_tip_service(lista* l, enum tip tip)
-        -:   29:{
-        1:   30:    lista* lista_returnat = creaza_lista();
-        1:   30-block  0
-call    0 returned 1
-        -:   31:
-        1:   32:    Tranzactie** lista_tranzactii = get_all(l);
-call    0 returned 1
-        -:   33:
-        3:   34:    for(int i=0; i< numar_elemente(l); i++)
-        2:   34-block  0
-        3:   34-block  1
+call    1 returned 3
+        -:   11:}
+function cmpfuncCrescator called 3 returned 100% blocks executed 100%
+        3:   12:int cmpfuncCrescator(const void* el1, const void* el2)
+        -:   13:{
+        3:   14:    return (get_suma(*((Tranzactie**)el1)) -  get_suma(*((Tranzactie**)el2)));
+        3:   14-block  0
 call    0 returned 3
-branch  1 taken 2
-branch  2 taken 1 (fallthrough)
-        -:   35:    {
-        2:   36:        if(get_tip(lista_tranzactii[i])==tip)
-        2:   36-block  0
+call    1 returned 3
+        -:   15:}
+function ordonat_service called 2 returned 100% blocks executed 100%
+        2:   16:lista* ordonat_service(lista* l, int criteriu)
+        -:   17:{
+        2:   18:    lista* lista_returnat = creaza_lista();
+        2:   18-block  0
 call    0 returned 2
-branch  1 taken 1 (fallthrough)
-branch  2 taken 1
-        -:   37:        {
-        1:   38:            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
-        1:   38-block  0
-call    0 returned 1
-        -:   39:
-        -:   40:        }
-        -:   41:    }
-        -:   42:
-        -:   43:
-        -:   44:    /*for(int i =0; i< numar_elemente(l); i++)
-        -:   45:    {
-        -:   46:        free(lista_tranzactii[i]);
-        -:   47:    }
-        -:   48:     */
-        1:   49:    free(lista_tranzactii);
-        1:   50:    return lista_returnat;
-        1:   50-block  0
-        -:   51:}
-        -:   52:
-function modificare_service called 2 returned 100% blocks executed 100%
-        2:   53:int modificare_service(int id_de_schimbat, int suma, int ziua, enum tip tip, char* descriere, lista* l)
-        -:   54:{
-        2:   55:Tranzactie* tranz = creaza_tranzactie(id_de_schimbat,suma,ziua,tip,descriere);
-        2:   55-block  0
+        -:   19:
+        2:   20:    Tranzactie** lista_tranzactii = get_all(l);
 call    0 returned 2
-        -:   56:
-        2:   57:Tranzactie* tranz_cautata = get_tranzactie(l,id_de_schimbat);
-call    0 returned 2
-        2:   58:if(tranz_cautata == (Tranzactie*)NULL || !tranzactie_valida(tranz))
+        -:   21:
+        8:   22:    for(int i=0; i< numar_elemente(l); i++)
+        8:   22-block  0
+call    0 returned 8
+branch  1 taken 6
+branch  2 taken 2 (fallthrough)
+        -:   23:    {
+        6:   24:            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+        6:   24-block  0
+call    0 returned 6
+        -:   25:    }
+        2:   26:    if(criteriu > 0)
+        2:   26-block  0
 branch  0 taken 1 (fallthrough)
 branch  1 taken 1
-        1:   58-block  0
+        1:   27:    qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncCrescator);
+        1:   27-block  0
+call    0 returned 1
+call    1 returned 1
+        -:   28:    else
+        1:   29:        qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncDescrescator);
+        1:   29-block  0
+call    0 returned 1
+call    1 returned 1
+        2:   30:    return lista_returnat;
+        2:   30-block  0
+        -:   31:
+        -:   32:}
+function criteriu_suma_service called 1 returned 100% blocks executed 100%
+        1:   33:lista* criteriu_suma_service(lista* l, int suma, int comparatie)
+        -:   34:{
+        1:   35:    lista* lista_returnat = creaza_lista();
+        1:   35-block  0
+call    0 returned 1
+        -:   36:
+        1:   37:    Tranzactie** lista_tranzactii = get_all(l);
+call    0 returned 1
+        -:   38:
+        3:   39:    for(int i=0; i< numar_elemente(l); i++)
+        2:   39-block  0
+        3:   39-block  1
+call    0 returned 3
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+        -:   40:    {
+        2:   41:        if(get_suma(lista_tranzactii[i])*comparatie > suma*comparatie)
+        2:   41-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        -:   42:        {
+        1:   43:            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+        1:   43-block  0
+call    0 returned 1
+        -:   44:
+        -:   45:        }
+        -:   46:    }
+        1:   47:    free(lista_tranzactii);
+        1:   48:    return lista_returnat;
+        1:   48-block  0
+        -:   49:
+        -:   50:
+        -:   51:}
+function criteriu_tip_service called 1 returned 100% blocks executed 100%
+        1:   52:lista* criteriu_tip_service(lista* l, enum tip tip)
+        -:   53:{
+        1:   54:    lista* lista_returnat = creaza_lista();
+        1:   54-block  0
+call    0 returned 1
+        -:   55:
+        1:   56:    Tranzactie** lista_tranzactii = get_all(l);
+call    0 returned 1
+        -:   57:
+        3:   58:    for(int i=0; i< numar_elemente(l); i++)
+        2:   58-block  0
+        3:   58-block  1
+call    0 returned 3
+branch  1 taken 2
+branch  2 taken 1 (fallthrough)
+        -:   59:    {
+        2:   60:        if(get_tip(lista_tranzactii[i])==tip)
+        2:   60-block  0
+call    0 returned 2
+branch  1 taken 1 (fallthrough)
+branch  2 taken 1
+        -:   61:        {
+        1:   62:            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+        1:   62-block  0
+call    0 returned 1
+        -:   63:
+        -:   64:        }
+        -:   65:    }
+        -:   66:
+        -:   67:
+        -:   68:    /*for(int i =0; i< numar_elemente(l); i++)
+        -:   69:    {
+        -:   70:        free(lista_tranzactii[i]);
+        -:   71:    }
+        -:   72:     */
+        1:   73:    free(lista_tranzactii);
+        1:   74:    return lista_returnat;
+        1:   74-block  0
+        -:   75:}
+        -:   76:
+function modificare_service called 2 returned 100% blocks executed 100%
+        2:   77:int modificare_service(int id_de_schimbat, int suma, int ziua, enum tip tip, char* descriere, lista* l)
+        -:   78:{
+        2:   79:Tranzactie* tranz = creaza_tranzactie(id_de_schimbat,suma,ziua,tip,descriere);
+        2:   79-block  0
+call    0 returned 2
+        -:   80:
+        2:   81:Tranzactie* tranz_cautata = get_tranzactie(l,id_de_schimbat);
+call    0 returned 2
+        2:   82:if(tranz_cautata == (Tranzactie*)NULL || !tranzactie_valida(tranz))
+branch  0 taken 1 (fallthrough)
+branch  1 taken 1
+        1:   82-block  0
 call    2 returned 1
 branch  3 taken 0 (fallthrough)
 branch  4 taken 1
-        1:   59:{ free(tranz);
-        1:   60:    return 0;
-        1:   60-block  0
-        -:   61:}
-        -:   62:
-        -:   63:
-        1:   64:modificare_tranzactie(l,tranz, id_de_schimbat);
-        1:   64-block  0
+        1:   83:{ free(tranz);
+        1:   84:    return 0;
+        1:   84-block  0
+        -:   85:}
+        -:   86:
+        -:   87:
+        1:   88:modificare_tranzactie(l,tranz, id_de_schimbat);
+        1:   88-block  0
 call    0 returned 1
-        1:   65:free(tranz);
-        1:   66:return 1;
-        -:   67:
-        -:   68:
-        -:   69:}
+        1:   89:free(tranz);
+        1:   90:return 1;
+        -:   91:
+        -:   92:
+        -:   93:}
 function afisare_service called 2 returned 100% blocks executed 100%
-        2:   70:char* afisare_service(lista* l)
-        -:   71:{
-        2:   72:    char* descriere_returnat = (char*)malloc(sizeof (char)*500* numar_elemente(l));
-        2:   72-block  0
+        2:   94:char* afisare_service(lista* l)
+        -:   95:{
+        2:   96:    char* descriere_returnat = (char*)malloc(sizeof (char)*500* numar_elemente(l));
+        2:   96-block  0
 call    0 returned 2
-        -:   73:
-        2:   74:    descriere_returnat[0] = '\0';
-        2:   75:    if(numar_elemente(l) == 0)
+        -:   97:
+        2:   98:    descriere_returnat[0] = '\0';
+        2:   99:    if(numar_elemente(l) == 0)
 call    0 returned 2
 branch  1 taken 1 (fallthrough)
 branch  2 taken 1
-        1:   76:        return descriere_returnat;
-        1:   76-block  0
-        1:   77:    Tranzactie** lista_tranzactii = get_all(l);
-        1:   77-block  0
+        1:  100:        return descriere_returnat;
+        1:  100-block  0
+        1:  101:    Tranzactie** lista_tranzactii = get_all(l);
+        1:  101-block  0
 call    0 returned 1
-        -:   78:
-        -:   79:    char* temp_char;
-        1:   80:    temp_char  =string_tranzactie(lista_tranzactii[0]);
+        -:  102:
+        -:  103:    char* temp_char;
+        1:  104:    temp_char  =string_tranzactie(lista_tranzactii[0]);
 call    0 returned 1
-        1:   81:    strcpy(descriere_returnat,temp_char);
-        -:   82:
-        1:   83:    free(temp_char);
-        -:   84:   // free(descriere_returnat);
-        1:   85:    strcat(descriere_returnat, "\n");
-        -:   86:
-        -:   87:
-        2:   88:    for(int i =1; i< numar_elemente(l); i++)
-        2:   88-block  0
+        1:  105:    strcpy(descriere_returnat,temp_char);
+        -:  106:
+        1:  107:    free(temp_char);
+        -:  108:   // free(descriere_returnat);
+        1:  109:    strcat(descriere_returnat, "\n");
+        -:  110:
+        -:  111:
+        2:  112:    for(int i =1; i< numar_elemente(l); i++)
+        2:  112-block  0
 call    0 returned 2
 branch  1 taken 1
 branch  2 taken 1 (fallthrough)
-        -:   89:    {
-        1:   90:        temp_char  =string_tranzactie(lista_tranzactii[i]);
-        1:   90-block  0
+        -:  113:    {
+        1:  114:        temp_char  =string_tranzactie(lista_tranzactii[i]);
+        1:  114-block  0
 call    0 returned 1
-        1:   91:        strcat(descriere_returnat, temp_char);
-        1:   92:        free(temp_char);
-        1:   93:        strcat(descriere_returnat, "\n");
-        -:   94:    }
-        -:   95:
-        3:   96:    for(int i =0; i< numar_elemente(l); i++)
-        1:   96-block  0
-        3:   96-block  1
+        1:  115:        strcat(descriere_returnat, temp_char);
+        1:  116:        free(temp_char);
+        1:  117:        strcat(descriere_returnat, "\n");
+        -:  118:    }
+        -:  119:
+        3:  120:    for(int i =0; i< numar_elemente(l); i++)
+        1:  120-block  0
+        3:  120-block  1
 call    0 returned 3
 branch  1 taken 2
 branch  2 taken 1 (fallthrough)
-        -:   97:    {
-        2:   98:        free(lista_tranzactii[i]);
-        2:   98-block  0
-        -:   99:    }
-        1:  100:    free(lista_tranzactii);
-        -:  101:
-        1:  102:    return descriere_returnat;
-        1:  102-block  0
-        -:  103:
-        -:  104:}
-        -:  105:
+        -:  121:    {
+        2:  122:        free(lista_tranzactii[i]);
+        2:  122-block  0
+        -:  123:    }
+        1:  124:    free(lista_tranzactii);
+        -:  125:
+        1:  126:    return descriere_returnat;
+        1:  126-block  0
+        -:  127:
+        -:  128:}
+        -:  129:
 function stergere_service called 3 returned 100% blocks executed 100%
-        3:  106:int stergere_service(int id_de_sters, lista* l)
-        -:  107:{
-        -:  108:
-        3:  109:    return sterge_tranzactie(l, id_de_sters);
-        3:  109-block  0
+        3:  130:int stergere_service(int id_de_sters, lista* l)
+        -:  131:{
+        -:  132:
+        3:  133:    return sterge_tranzactie(l, id_de_sters);
+        3:  133-block  0
 call    0 returned 3
-        -:  110:}
-        -:  111:
-function adaugare_service called 5 returned 100% blocks executed 100%
-        5:  112:int adaugare_service(int id, int suma, int ziua, enum tip tip, char* descriere, lista* l)
-        -:  113:{
-        -:  114:
-        5:  115:    Tranzactie* tranz = creaza_tranzactie(id,suma,ziua,tip,descriere);
-        5:  115-block  0
-call    0 returned 5
-        -:  116:
-        5:  117:    if(tranzactie_valida(tranz))
-call    0 returned 5
-branch  1 taken 4 (fallthrough)
+        -:  134:}
+        -:  135:
+function adaugare_service called 8 returned 100% blocks executed 100%
+        8:  136:int adaugare_service(int id, int suma, int ziua, enum tip tip, char* descriere, lista* l)
+        -:  137:{
+        -:  138:
+        8:  139:    Tranzactie* tranz = creaza_tranzactie(id,suma,ziua,tip,descriere);
+        8:  139-block  0
+call    0 returned 8
+        -:  140:
+        8:  141:    if(tranzactie_valida(tranz))
+call    0 returned 8
+branch  1 taken 7 (fallthrough)
 branch  2 taken 1
-        -:  118:    {
-        4:  119:        adaugare_tranzactie(l,tranz);
-        4:  119-block  0
-call    0 returned 4
-        4:  120:        return 1;
-        -:  121:    }
-        -:  122:    else 
-        1:  123:    { free(tranz);
-        1:  124:        return 0;
-        1:  124-block  0
-        -:  125:    }
-        -:  126:
-        -:  127:}
+        -:  142:    {
+        7:  143:        adaugare_tranzactie(l,tranz);
+        7:  143-block  0
+call    0 returned 7
+        7:  144:        return 1;
+        -:  145:    }
+        -:  146:    else 
+        1:  147:    { free(tranz);
+        1:  148:        return 0;
+        1:  148-block  0
+        -:  149:    }
+        -:  150:
+        -:  151:}

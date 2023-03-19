@@ -1,6 +1,12 @@
 #include "..\Infrastructura\repo.h"
-///
 
+int cmpfuncDescrescator(const void* el1, const void* el2);
+int cmpfuncCrescator(const void* el1, const void* el2);
+///
+/// \param l -lista elementelor de tip tranzactie
+/// \param criteriu - pentru a determina cum sortam. > 0 crescator,< 0 descrescator
+/// \return
+lista* ordonat_service(lista* l, int criteriu);
 /// \param l -lista elementelor de tip tranzactie
 /// \param suma -suma dupa care returnam o noua lista de elemente
 /// \param comparatie -2 valori posibile >0 daca vrem mai >suma, si <0 daca vrem <suma

@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "..\Infrastructura\domain.h"
-#include "..\Infrastructura\repo.h"
-#include "..\Validation\valid.h"
+#include "../Infrastructura/domain.h"
+#include "../Infrastructura/repo.h"
+#include "../Validation/valid.h"
 
 int cmpfuncDescrescator(const void* el1, const void* el2)
 {
@@ -27,6 +27,8 @@ lista* ordonat_service(lista* l, int criteriu)
     qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncCrescator);
     else
         qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncDescrescator);
+
+    free(lista_tranzactii);
     return lista_returnat;
 
 }
@@ -41,6 +43,12 @@ lista* criteriu_suma_service(lista* l, int suma, int comparatie)
         if(get_suma(lista_tranzactii[i])*comparatie > suma*comparatie)
         {
             adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+
+        }
+        else
+        {
+            free(lista_tranzactii[i]->descriere);
+            free(lista_tranzactii[i]);
 
         }
     }
@@ -60,6 +68,12 @@ lista* criteriu_tip_service(lista* l, enum tip tip)
         if(get_tip(lista_tranzactii[i])==tip)
         {
             adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+
+        }
+        else
+        {
+            free(lista_tranzactii[i]->descriere);
+            free(lista_tranzactii[i]);
 
         }
     }
@@ -86,14 +100,19 @@ if(tranz_cautata == (Tranzactie*)NULL || !tranzactie_valida(tranz))
 
 
 modificare_tranzactie(l,tranz, id_de_schimbat);
-free(tranz);
+
 return 1;
 
 
 }
+
 char* afisare_service(lista* l)
-{
-    char* descriere_returnat = (char*)malloc(sizeof (char)*500* numar_elemente(l));
+{   char* descriere_returnat;
+    if(numar_elemente(l)!=0)
+        descriere_returnat= (char*)malloc(sizeof (char)*500* numar_elemente(l));
+    else
+        descriere_returnat= (char*)malloc(sizeof (char));
+
 
     descriere_returnat[0] = '\0';
     if(numar_elemente(l) == 0)
@@ -119,9 +138,10 @@ char* afisare_service(lista* l)
 
     for(int i =0; i< numar_elemente(l); i++)
     {
+        free(lista_tranzactii[i]->descriere);
         free(lista_tranzactii[i]);
     }
-    free(lista_tranzactii);
+ free(lista_tranzactii);
 
     return descriere_returnat;
 

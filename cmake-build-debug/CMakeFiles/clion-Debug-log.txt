@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2022.3.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2022.3.3/bin/ninja/win/x64/ninja.exe" -G Ninja -S C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar- -B C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug
+/home/axx/Documents/CLion/clion-2022.3.3/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/axx/Desktop/Lab_2-Gestiune_cont_bancar- -B /home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug
+-- Build files have been written to: /home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug

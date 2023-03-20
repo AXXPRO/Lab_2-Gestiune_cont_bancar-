@@ -1,9 +1,9 @@
-        -:    0:Source:C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Validation/valid.c
-        -:    0:Graph:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Validation\valid.c.gcno
-        -:    0:Data:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Validation\valid.c.gcda
+        -:    0:Source:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/Validation/valid.c
+        -:    0:Graph:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.gcno
+        -:    0:Data:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Validation/valid.c.gcda
         -:    0:Runs:1
         -:    1:#include <string.h>
-        -:    2:#include "..\Infrastructura\domain.h"
+        -:    2:#include "../Infrastructura/domain.h"
 function tranzactie_valida called 10 returned 100% blocks executed 100%
        10:    3:int tranzactie_valida(Tranzactie* tranz)
         -:    4:{

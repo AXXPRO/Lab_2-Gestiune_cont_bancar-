@@ -1,7 +1,7 @@
 #include <assert.h>
-#include "..\Infrastructura\domain.h"
-#include "..\Infrastructura\repo.h"
-#include "..\Service\service.h"
+#include "../Infrastructura/domain.h"
+#include "../Infrastructura/repo.h"
+#include "../Service/service.h"
 #include "../Validation/valid.h"
 #include <string.h>
 #include <stdlib.h>
@@ -35,9 +35,10 @@ void teste_service()
     int suma_1  =50;
     int ziua_1 = 23;
     enum tip tip_1 = intrare;
-    char* descriere = (char*)malloc(sizeof(char));
+    char* descriere = (char*)malloc(sizeof(char)*50);
+    char* descriere2 = (char*)malloc(sizeof(char)*50);
     strcpy(descriere, "Lemne");
-
+    strcpy(descriere2, "Lemne");
     lista* lista_test = creaza_lista();
 
     char* var_afisare;
@@ -45,7 +46,7 @@ void teste_service()
     assert(var_afisare[0]=='\0');
     free(var_afisare);
     adaugare_service(id_1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
-    adaugare_service(1,  suma_1, ziua_1,  tip_1, descriere, lista_test);
+    adaugare_service(1,  suma_1, ziua_1,  tip_1, descriere2, lista_test);
     var_afisare = afisare_service(lista_test);
     assert(strcmp("Tranzactia cu id-ul 0 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\nTranzactia cu id-ul 1 si suma 50 din ziua 23 de tipul intrare are descrierea Lemne\n", var_afisare)==0);
 
@@ -54,8 +55,11 @@ void teste_service()
    assert(adaugare_service(-3,  suma_1, ziua_1,  tip_1, descriere, lista_test)==0);
     assert(get_tranzactie(lista_test, 0) != (Tranzactie*)NULL);
 
+
+    descriere2 = (char*)malloc(sizeof(char)*50);
+    strcpy(descriere2, "Lemne");
    assert(modificare_service(1,suma_1+1, ziua_1,  tip_1, descriere, lista_test) == 0 );
-    assert(modificare_service(0,suma_1+1, ziua_1,  tip_1, descriere, lista_test) == 1 );
+    assert(modificare_service(0,suma_1+1, ziua_1,  tip_1, descriere2, lista_test) == 1 );
 
     Tranzactie* tranz_modificata = get_tranzactie(lista_test, 0);
     assert(get_suma(tranz_modificata)==51);
@@ -76,7 +80,7 @@ void teste_service()
     strcpy(descriere1, "Prima");
    adaugare_service(0,  100, 2,  intrare, descriere1, lista_test);
 
-    char* descriere2 = (char*)malloc(sizeof(char)*50);
+  descriere2 = (char*)malloc(sizeof(char)*50);
     strcpy(descriere2, "Doua");
     adaugare_service(1,  300, 3,  iesire, descriere2, lista_test);
 
@@ -84,15 +88,32 @@ void teste_service()
 
     lista_temp = criteriu_tip_service(lista_test,intrare);
     assert(numar_elemente(lista_temp)==1);
-    assert(get_id(get_all(lista_temp)[0]) == 0);
+    Tranzactie** temp ;
+    temp = get_all(lista_temp);
 
-    free(lista_temp);
+    assert(get_id(temp[0]) == 0);
+
+    for (int i =0; i< numar_elemente(lista_temp); i++)
+    {
+        free(temp[i]->descriere);
+        free(temp[i]);
+    }
+    free(temp);
+    distruge(lista_temp);
 
     lista_temp = criteriu_suma_service(lista_test,150,1);
     assert(numar_elemente(lista_temp)==1);
-    assert(get_id(get_all(lista_temp)[0]) == 1);
+     temp =get_all(lista_temp);
+    assert(get_id(temp[0]) == 1);
 
-    free(lista_temp);
+    for(int i =0; i< numar_elemente(lista_temp); i++)
+    {
+        free(temp[i]->descriere);
+        free(temp[i]);
+    }
+    free(temp);
+
+    distruge(lista_temp);
     distruge(lista_test);
 
     lista_test = creaza_lista();
@@ -115,13 +136,13 @@ void teste_service()
     assert(get_id(lista_temp->elemente[0]) ==1);
     assert(get_id(lista_temp->elemente[2]) ==0);
 
-    free(lista_temp);
+    distruge(lista_temp);
     lista_temp = ordonat_service(lista_test,-1);
     assert(get_id(lista_temp->elemente[0]) ==0);
     assert(get_id(lista_temp->elemente[2]) ==1);
 
-    free(lista_temp);
-    free(lista_test);
+    distruge(lista_temp);
+    distruge(lista_test);
 
 
 
@@ -159,11 +180,18 @@ void teste_repository()
 
     sterge_tranzactie(l, 1);
 
+    d2 = (char*)malloc(sizeof(char)*10);
+    d2[0] = '\n';
+    strcpy(d2,"cerere");
+    tranz2 = creaza_tranzactie(1,15,2,iesire,d2);
+
     adaugare_tranzactie(l, tranz2);
     tranz2 = creaza_tranzactie(1,15,2,iesire,d2);
     tranz = get_tranzactie(l, 1);
     assert(get_suma(tranz)==get_suma(tranz2));
 
+//    free(tranz2->descriere);
+    free(tranz2);
     tranz = get_tranzactie(l, 3);
     assert(tranz==NULL);
    
@@ -195,7 +223,7 @@ void teste_repository()
     assert(get_id(lista_tranzactii[1])==1);
 
     for(int i =0; i< numar_elemente(l); i++)
-    {
+    {   free(lista_tranzactii[i]->descriere);
         free(lista_tranzactii[i]);
     }
     free(lista_tranzactii);
@@ -241,12 +269,13 @@ void teste_domain()
     assert(ziua_nou==get_ziua(tranz));
     assert(strcmp(descriere_nou, get_descriere(tranz))==0);
     
-    char* string_tranz = (char*)malloc(sizeof(char));
+    char* string_tranz;
 
    string_tranz = string_tranzactie(tranz);
    // printf("%s\n", string_tranz);
     assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul iesire are descrierea cerere" ) == 0);
 
+    free(string_tranz);
     set_tip(tranz,intrare);
     string_tranz = string_tranzactie(tranz);
     assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul intrare are descrierea cerere" ) == 0);
@@ -264,6 +293,6 @@ void teste_validation()
     Tranzactie* tranz_invalida = creaza_tranzactie(-2,-23,90,iesire,"");
 
    assert (tranzactie_valida(tranz_invalida) ==0);
-
+    free(tranz_invalida);
 
 }

@@ -1,21 +1,21 @@
-        -:    0:Source:C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Service/service.c
-        -:    0:Graph:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Service\service.c.gcno
-        -:    0:Data:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Service\service.c.gcda
+        -:    0:Source:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/Service/service.c
+        -:    0:Graph:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.gcno
+        -:    0:Data:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.gcda
         -:    0:Runs:1
         -:    1:#include <stdio.h>
         -:    2:#include <stdlib.h>
         -:    3:#include <string.h>
-        -:    4:#include "..\Infrastructura\domain.h"
-        -:    5:#include "..\Infrastructura\repo.h"
-        -:    6:#include "..\Validation\valid.h"
+        -:    4:#include "../Infrastructura/domain.h"
+        -:    5:#include "../Infrastructura/repo.h"
+        -:    6:#include "../Validation/valid.h"
         -:    7:
-function cmpfuncDescrescator called 3 returned 100% blocks executed 100%
-        3:    8:int cmpfuncDescrescator(const void* el1, const void* el2)
+function cmpfuncDescrescator called 2 returned 100% blocks executed 100%
+        2:    8:int cmpfuncDescrescator(const void* el1, const void* el2)
         -:    9:{
-        3:   10:return (get_suma(*((Tranzactie**)el2)) -  get_suma(*((Tranzactie**)el1)));
-        3:   10-block  0
-call    0 returned 3
-call    1 returned 3
+        2:   10:return (get_suma(*((Tranzactie**)el2)) -  get_suma(*((Tranzactie**)el1)));
+        2:   10-block  0
+call    0 returned 2
+call    1 returned 2
         -:   11:}
 function cmpfuncCrescator called 3 returned 100% blocks executed 100%
         3:   12:int cmpfuncCrescator(const void* el1, const void* el2)

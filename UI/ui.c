@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "..\Service\service.h"
+#include "../Service/service.h"
 #include "ui.h"
 //#include <stdlib.h>
 
@@ -137,7 +137,7 @@ void ordonat(lista* l)
 
 
             afisare(lista_ordonata);
-            free(lista_ordonata);
+            distruge(lista_ordonata);
 
 
         }
@@ -183,7 +183,7 @@ void criteriu_suma(lista* l)
                    l_temporara= criteriu_suma_service(l,suma_numar,-1);
                 }
                 afisare(l_temporara);
-                free(l_temporara);
+                distruge(l_temporara);
             }
             else{
                 printf("Suma invalida!");
@@ -224,7 +224,7 @@ void criteriu_tip(lista* l)
             l_temporara = criteriu_tip_service(l, tipul);
             afisare(l_temporara);
 
-            free(l_temporara);
+            distruge(l_temporara);
 
         }
 

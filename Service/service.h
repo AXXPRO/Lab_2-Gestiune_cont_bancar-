@@ -1,4 +1,4 @@
-#include "..\Infrastructura\repo.h"
+#include "../Infrastructura/repo.h"
 
 int cmpfuncDescrescator(const void* el1, const void* el2);
 int cmpfuncCrescator(const void* el1, const void* el2);

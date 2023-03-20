@@ -18,6 +18,7 @@ int sterge_tranzactie(lista* l, int id)
         if(get_id(l->elemente[i]) == id)
         {
                 ok = 1;
+                free(l->elemente[i]->descriere);
             free(l->elemente[i]);
 
             for(int j=i; j<l->lungime_actuala-1; j++)
@@ -88,6 +89,7 @@ void modificare_tranzactie(lista* l, Tranzactie* tranz_noua, int id)
             set_descriere(l->elemente[i],get_descriere(tranz_noua));
         }
     }
+free(tranz_noua);
 }
 
 int numar_elemente(lista* l)

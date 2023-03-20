@@ -1,6 +1,6 @@
-        -:    0:Source:C:/Users/Gabi/Desktop/Lab_2-Gestiune_cont_bancar-/Infrastructura/repo.c
-        -:    0:Graph:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\repo.c.gcno
-        -:    0:Data:C:\Users\Gabi\Desktop\Lab_2-Gestiune_cont_bancar-\cmake-build-debug-coverage\CMakeFiles\Lab_2_Gestiune_cont_bancar_.dir\Infrastructura\repo.c.gcda
+        -:    0:Source:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/Infrastructura/repo.c
+        -:    0:Graph:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/repo.c.gcno
+        -:    0:Data:/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug-coverage/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/repo.c.gcda
         -:    0:Runs:1
         -:    1:#include <stdlib.h>
         -:    2:#include <stdio.h>

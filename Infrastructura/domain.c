@@ -1,5 +1,8 @@
 
-#include "..\Infrastructura\domain.h"
+#include "../Infrastructura/domain.h"
+
+#include <math.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
@@ -69,14 +72,21 @@ char* string_tranzactie(Tranzactie* tranz)
 
    // char id[100], suma[100], ziua[100]
    char id[10] ,suma[10],ziua[10];
-     itoa(get_id(tranz),id,10);
+  int id_get = get_id(tranz);
+  int suma_get = get_suma(tranz);
+  int ziua_get = get_ziua(tranz);
+
+
+    sprintf(id,"%d",id_get);
+    sprintf(ziua,"%d",ziua_get);
+    sprintf(suma,"%d",suma_get);
     strcat(string,id);
     strcat(string," si suma ");
-     itoa(get_suma(tranz),suma,10);
+
     strcat(string,suma);
 
     strcat(string," din ziua ");
-     itoa(get_ziua(tranz),ziua,10);
+
     strcat(string,ziua);
 
     strcat(string," de tipul ");

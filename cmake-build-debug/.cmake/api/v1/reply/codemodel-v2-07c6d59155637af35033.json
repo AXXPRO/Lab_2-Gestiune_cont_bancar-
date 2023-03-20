@@ -1,0 +1,60 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.24"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Lab_2_Gestiune_cont_bancar_",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Lab_2_Gestiune_cont_bancar_::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Lab_2_Gestiune_cont_bancar_-Debug-b2cb646e56b9d5787a59.json",
+					"name" : "Lab_2_Gestiune_cont_bancar_",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug",
+		"source" : "/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

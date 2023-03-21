@@ -7,7 +7,7 @@ lista* creaza_lista()
     lista* v = (lista*)malloc(sizeof(lista));
     v->lungime_actuala=0;
     v->capacitate_maxima=2;
-    v->elemente = (Tranzactie**)malloc(sizeof(Tranzactie*)*v->capacitate_maxima);
+    v->elemente = (void**)malloc(sizeof(void*)*v->capacitate_maxima);
     return v;
 }
 

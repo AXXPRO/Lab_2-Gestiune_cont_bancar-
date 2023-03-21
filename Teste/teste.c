@@ -248,18 +248,18 @@ void teste_domain()
     assert(ziua==get_ziua(tranz));
     assert(strcmp(descriere, get_descriere(tranz))==0);
    
-   //int id_nou = 7;
+   int id_nou = 7;
    int suma_nou = 100;
    int ziua_nou=9;
    enum tip tip_nou = iesire;
    char descriere_nou[] = "cerere";
-
+    set_id(tranz,id_nou);
    set_suma(tranz,suma_nou);
    set_ziua(tranz,ziua_nou);
    set_tip(tranz,tip_nou);
    set_descriere(tranz,descriere_nou);
 
-   assert(id==get_id(tranz));
+   assert(id_nou==get_id(tranz));
     assert(suma_nou==get_suma(tranz));
     assert(ziua_nou==get_ziua(tranz));
     assert(strcmp(descriere_nou, get_descriere(tranz))==0);
@@ -268,12 +268,12 @@ void teste_domain()
 
    string_tranz = string_tranzactie(tranz);
    // printf("%s\n", string_tranz);
-    assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul iesire are descrierea cerere" ) == 0);
+    assert(strcmp(string_tranz,"Tranzactia cu id-ul 7 si suma 100 din ziua 9 de tipul iesire are descrierea cerere" ) == 0);
 
     free(string_tranz);
     set_tip(tranz,intrare);
     string_tranz = string_tranzactie(tranz);
-    assert(strcmp(string_tranz,"Tranzactia cu id-ul 1 si suma 100 din ziua 9 de tipul intrare are descrierea cerere" ) == 0);
+    assert(strcmp(string_tranz,"Tranzactia cu id-ul 7 si suma 100 din ziua 9 de tipul intrare are descrierea cerere" ) == 0);
 
     free(string_tranz);
     free(tranz);

@@ -5,7 +5,7 @@
 Vectorul dinamic ce va fi practic o lista
 */
 typedef struct {
-Tranzactie** elemente;
+void** elemente;
 int lungime_actuala;
 int capacitate_maxima;
 }lista;
@@ -77,5 +77,5 @@ void distruge(lista* l);
 /// Returnam un pointer la o lista cu toate elementele
 /// \param l - lista la care ii facem o copie si o returnam
 /// \return
-Tranzactie ** get_all(lista* l);
+lista* get_all(lista* l);
 

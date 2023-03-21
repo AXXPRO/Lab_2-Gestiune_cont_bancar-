@@ -17,6 +17,13 @@ Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* de
     return tranz;
 }
 
+Tranzactie * copie_tranzactie(Tranzactie* tranz)
+{
+    char* descriere = (char*) malloc(sizeof (char)*50);
+    strcpy(descriere, get_descriere(tranz));
+    return creaza_tranzactie(get_id(tranz), get_suma(tranz), get_ziua(tranz), get_tip(tranz),descriere);
+
+}
 int get_id(Tranzactie* tranzactie)
 {
     return tranzactie->id;

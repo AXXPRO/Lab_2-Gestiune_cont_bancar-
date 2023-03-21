@@ -242,7 +242,8 @@ call    0 never executed
     #####:  139:            afisare(lista_ordonata);
     %%%%%:  139-block  0
 call    0 never executed
-    #####:  140:            free(lista_ordonata);
+    #####:  140:            distruge(lista_ordonata);
+call    0 never executed
         -:  141:
         -:  142:
         -:  143:        }
@@ -322,7 +323,8 @@ call    0 never executed
     #####:  185:                afisare(l_temporara);
     %%%%%:  185-block  0
 call    0 never executed
-    #####:  186:                free(l_temporara);
+    #####:  186:                distruge(l_temporara);
+call    0 never executed
         -:  187:            }
         -:  188:            else{
     #####:  189:                printf("Suma invalida!");
@@ -393,7 +395,8 @@ call    0 never executed
     #####:  225:            afisare(l_temporara);
 call    0 never executed
         -:  226:
-    #####:  227:            free(l_temporara);
+    #####:  227:            distruge(l_temporara);
+call    0 never executed
         -:  228:
         -:  229:        }
         -:  230:

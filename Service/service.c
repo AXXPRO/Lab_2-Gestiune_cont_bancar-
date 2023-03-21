@@ -17,18 +17,18 @@ lista* ordonat_service(lista* l, int criteriu)
 {
     lista* lista_returnat = creaza_lista();
 
-    Tranzactie** lista_tranzactii = get_all(l);
+   lista* lista_tranzactii = get_all(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
-            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+            adaugare_tranzactie(lista_returnat,copie_tranzactie(lista_tranzactii->elemente[i]));
     }
     if(criteriu > 0)
     qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncCrescator);
     else
         qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncDescrescator);
 
-    free(lista_tranzactii);
+    distruge(lista_tranzactii);
     return lista_returnat;
 
 }
@@ -36,23 +36,19 @@ lista* criteriu_suma_service(lista* l, int suma, int comparatie)
 {
     lista* lista_returnat = creaza_lista();
 
-    Tranzactie** lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
-        if(get_suma(lista_tranzactii[i])*comparatie > suma*comparatie)
+        if(get_suma(lista_tranzactii->elemente[i])*comparatie > suma*comparatie)
         {
-            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+
+            adaugare_tranzactie(lista_returnat,copie_tranzactie(lista_tranzactii->elemente[i]));
 
         }
-        else
-        {
-            free(lista_tranzactii[i]->descriere);
-            free(lista_tranzactii[i]);
 
-        }
     }
-    free(lista_tranzactii);
+    distruge(lista_tranzactii);
     return lista_returnat;
 
 
@@ -61,21 +57,16 @@ lista* criteriu_tip_service(lista* l, enum tip tip)
 {
     lista* lista_returnat = creaza_lista();
 
-    Tranzactie** lista_tranzactii = get_all(l);
+    lista* lista_tranzactii = get_all(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
-        if(get_tip(lista_tranzactii[i])==tip)
+        if(get_tip(lista_tranzactii->elemente[i])==tip)
         {
-            adaugare_tranzactie(lista_returnat,lista_tranzactii[i]);
+            adaugare_tranzactie(lista_returnat,copie_tranzactie(lista_tranzactii->elemente[i]));
 
         }
-        else
-        {
-            free(lista_tranzactii[i]->descriere);
-            free(lista_tranzactii[i]);
 
-        }
     }
 
 
@@ -84,7 +75,7 @@ lista* criteriu_tip_service(lista* l, enum tip tip)
         free(lista_tranzactii[i]);
     }
      */
-    free(lista_tranzactii);
+    distruge(lista_tranzactii);
     return lista_returnat;
 }
 
@@ -117,10 +108,10 @@ char* afisare_service(lista* l)
     descriere_returnat[0] = '\0';
     if(numar_elemente(l) == 0)
         return descriere_returnat;
-    Tranzactie** lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all(l);
 
     char* temp_char;
-    temp_char  =string_tranzactie(lista_tranzactii[0]);
+    temp_char  =string_tranzactie(lista_tranzactii->elemente[0]);
     strcpy(descriere_returnat,temp_char);
 
     free(temp_char);
@@ -130,18 +121,14 @@ char* afisare_service(lista* l)
 
     for(int i =1; i< numar_elemente(l); i++)
     {
-        temp_char  =string_tranzactie(lista_tranzactii[i]);
+        temp_char  =string_tranzactie(lista_tranzactii->elemente[i]);
         strcat(descriere_returnat, temp_char);
         free(temp_char);
         strcat(descriere_returnat, "\n");
     }
 
-    for(int i =0; i< numar_elemente(l); i++)
-    {
-        free(lista_tranzactii[i]->descriere);
-        free(lista_tranzactii[i]);
-    }
- free(lista_tranzactii);
+
+ distruge(lista_tranzactii);
 
     return descriere_returnat;
 

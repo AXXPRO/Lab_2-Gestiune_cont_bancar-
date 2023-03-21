@@ -9,18 +9,18 @@
         -:    5:#include <stdio.h>
         -:    6:#include <stdlib.h>
         -:    7:#include <string.h>
-function creaza_tranzactie called 17 returned 100% blocks executed 100%
-       17:    8:Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
+function creaza_tranzactie called 18 returned 100% blocks executed 100%
+       18:    8:Tranzactie* creaza_tranzactie(int id, int suma, int ziua, enum tip tip, char* descriere)
         -:    9:{
-       17:   10:    Tranzactie* tranz =  (Tranzactie*)malloc(sizeof(Tranzactie));
-       17:   11:    tranz->id = id;
-       17:   12:    tranz->suma = suma;
-       17:   13:    tranz->ziua = ziua;
-       17:   14:    tranz->tip = tip;
-       17:   15:    tranz->descriere = descriere;
+       18:   10:    Tranzactie* tranz =  (Tranzactie*)malloc(sizeof(Tranzactie));
+       18:   11:    tranz->id = id;
+       18:   12:    tranz->suma = suma;
+       18:   13:    tranz->ziua = ziua;
+       18:   14:    tranz->tip = tip;
+       18:   15:    tranz->descriere = descriere;
         -:   16:
-       17:   17:    return tranz;
-       17:   17-block  0
+       18:   17:    return tranz;
+       18:   17-block  0
         -:   18:}
         -:   19:
 function get_id called 107 returned 100% blocks executed 100%

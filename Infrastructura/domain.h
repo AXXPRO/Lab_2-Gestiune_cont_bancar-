@@ -15,6 +15,10 @@ typedef struct
     int id;
 }Tranzactie;
 
+///
+/// \param tranz -tranzactia la care ii facem o copie
+/// \return  un pointer la o tranzactie noua, identica cu tranz
+Tranzactie * copie_tranzactie(Tranzactie* tranz);
 /*
 Functia returneaza un pointer la un string ce contine datele tranz
 Preconditii: tranz este tranzactie

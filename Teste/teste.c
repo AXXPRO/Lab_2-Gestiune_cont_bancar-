@@ -88,30 +88,29 @@ void teste_service()
 
     lista_temp = criteriu_tip_service(lista_test,intrare);
     assert(numar_elemente(lista_temp)==1);
-    Tranzactie** temp ;
+    lista* temp ;
     temp = get_all(lista_temp);
 
-    assert(get_id(temp[0]) == 0);
+    assert(get_id(temp->elemente[0]) == 0);
 
-    for (int i =0; i< numar_elemente(lista_temp); i++)
-    {
-        free(temp[i]->descriere);
-        free(temp[i]);
-    }
-    free(temp);
+    distruge(temp);
     distruge(lista_temp);
 
     lista_temp = criteriu_suma_service(lista_test,150,1);
     assert(numar_elemente(lista_temp)==1);
      temp =get_all(lista_temp);
-    assert(get_id(temp[0]) == 1);
+    assert(get_id(temp->elemente[0]) == 1);
 
-    for(int i =0; i< numar_elemente(lista_temp); i++)
+   /* for(int i =0; i< numar_elemente(lista_temp); i++)
     {
-        free(temp[i]->descriere);
-        free(temp[i]);
+        free(((Tranzactie*)temp->elemente[i])->descriere);
+
+        free(temp->elemente[i]);
+
     }
-    free(temp);
+    free(temp);*/
+
+    distruge(temp);
 
     distruge(lista_temp);
     distruge(lista_test);
@@ -217,16 +216,12 @@ void teste_repository()
     assert(numar_elemente(l) == 2);
 
 
-    Tranzactie ** lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all(l);
 
-    assert(get_id(lista_tranzactii[0])==0);
-    assert(get_id(lista_tranzactii[1])==1);
+    assert(get_id(lista_tranzactii->elemente[0])==0);
+    assert(get_id(lista_tranzactii->elemente[1])==1);
 
-    for(int i =0; i< numar_elemente(l); i++)
-    {   free(lista_tranzactii[i]->descriere);
-        free(lista_tranzactii[i]);
-    }
-    free(lista_tranzactii);
+    distruge(lista_tranzactii);
     distruge(l);
 
 

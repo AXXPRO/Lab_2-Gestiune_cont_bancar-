@@ -18,7 +18,9 @@ int sterge_tranzactie(lista* l, int id)
         if(get_id(l->elemente[i]) == id)
         {
                 ok = 1;
-                free(l->elemente[i]->descriere);
+
+
+                free(((Tranzactie*) (l->elemente[i]))->descriere);
             free(l->elemente[i]);
 
             for(int j=i; j<l->lungime_actuala-1; j++)
@@ -53,7 +55,7 @@ l->lungime_actuala++;
 void resize(lista* l)
 {
      int capacitate_noua = 2*l->capacitate_maxima;
- Tranzactie** elemente_noi=(Tranzactie**)malloc(sizeof(Tranzactie*)*capacitate_noua);
+ void** elemente_noi=(void**)malloc(sizeof(void*)*capacitate_noua);
 //copiez din vectorul existent
  int i;
  for (i = 0; i < l->lungime_actuala; i++) {
@@ -85,7 +87,7 @@ void modificare_tranzactie(lista* l, Tranzactie* tranz_noua, int id)
             set_ziua(l->elemente[i],get_ziua(tranz_noua));
             set_tip(l->elemente[i],get_tip(tranz_noua));
 
-            free(l->elemente[i]->descriere);
+            free(((Tranzactie*) (l->elemente[i]))->descriere);
             set_descriere(l->elemente[i],get_descriere(tranz_noua));
         }
     }
@@ -102,7 +104,7 @@ void distruge(lista* l)
     int i;
 for (i = 0; i < l->lungime_actuala; i++) 
 {
-free(l->elemente[i]->descriere);
+    free(((Tranzactie*) (l->elemente[i]))->descriere);
 free(l->elemente[i]);
 }
 
@@ -123,26 +125,29 @@ void afisare_tranzactii(lista* l)
 }
 */
 
-Tranzactie ** get_all(lista* l)
+lista* get_all(lista* l)
 {
-    Tranzactie ** vector_tranzactii = (Tranzactie**)malloc(sizeof(Tranzactie*)*l->lungime_actuala);
+
+    lista* lista_returnat = creaza_lista();
+   // Tranzactie ** vector_tranzactii = (Tranzactie**)malloc(sizeof(Tranzactie*)*l->lungime_actuala);
 
     //Tranzactie* tranzactie_copie = (Tranzactie*) malloc(sizeof(Tranzactie));
     char* descriere_copie;
 
+    Tranzactie* tranz_noua;
+
+   // tranz_noua= creaza_tranzactie(get_id(l->elemente[i]),get_suma(l->elemente[i]),get_zi(l->elemente[i]), get_tip(l->elemente[i]),descriere_copie);
+   // adaugare_tranzactie(lista_returnat,tranz_noua);
 
     for(int i=0; i<l->lungime_actuala; i++)
     {descriere_copie = (char*)malloc(sizeof(char)*50);
         strcpy(descriere_copie, get_descriere(l->elemente[i]));
-        vector_tranzactii[i] = (Tranzactie*) malloc(sizeof (Tranzactie));
-        set_descriere(vector_tranzactii[i], descriere_copie);
-        set_suma(vector_tranzactii[i], get_suma(l->elemente[i]))  ;
-        set_tip(vector_tranzactii[i], get_tip(l->elemente[i]));
-        set_ziua(vector_tranzactii[i], get_ziua(l->elemente[i]));
-        set_id(vector_tranzactii[i], get_id(l->elemente[i]));
+
+        tranz_noua= creaza_tranzactie(get_id(l->elemente[i]),get_suma(l->elemente[i]),get_ziua(l->elemente[i]), get_tip(l->elemente[i]),descriere_copie);
+        adaugare_tranzactie(lista_returnat,tranz_noua);
 
     }
 
-    return vector_tranzactii;
+    return lista_returnat;
 
 }

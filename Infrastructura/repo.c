@@ -1,12 +1,13 @@
 #include <stdlib.h>
 #include "repo.h"
 #include <string.h>
-lista* creaza_lista()
+lista* creaza_lista( tip_lista tip)
 {
     lista* v = (lista*)malloc(sizeof(lista));
     v->lungime_actuala=0;
     v->capacitate_maxima=2;
     v->elemente = (void**)malloc(sizeof(void*)*v->capacitate_maxima);
+    v->tip = tip;
     return v;
 }
 
@@ -98,7 +99,7 @@ int numar_elemente(lista* l)
     return l->lungime_actuala;
 }
 
-void distruge(lista* l)
+void distruge_lista_tranzactii(lista* l)
 {
     int i;
 for (i = 0; i < l->lungime_actuala; i++) 
@@ -113,10 +114,10 @@ free(l);
 
 
 
-lista* get_all(lista* l)
+lista* get_all_tranzactii(lista* l)
 {
 
-    lista* lista_returnat = creaza_lista();
+    lista* lista_returnat = creaza_lista(tranzactii);
    // Tranzactie ** vector_tranzactii = (Tranzactie**)malloc(sizeof(Tranzactie*)*l->lungime_actuala);
 
     //Tranzactie* tranzactie_copie = (Tranzactie*) malloc(sizeof(Tranzactie));

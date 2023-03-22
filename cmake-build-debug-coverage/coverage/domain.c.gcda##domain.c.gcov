@@ -5,7 +5,7 @@
         -:    1:
         -:    2:#include "../Infrastructura/domain.h"
         -:    3:
-        -:    4:#include <math.h>
+        -:    4:
         -:    5:#include <stdio.h>
         -:    6:#include <stdlib.h>
         -:    7:#include <string.h>

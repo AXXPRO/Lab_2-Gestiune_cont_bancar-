@@ -28,11 +28,11 @@ call    1 returned 3
 function ordonat_service called 2 returned 100% blocks executed 100%
         2:   16:lista* ordonat_service(lista* l, int criteriu)
         -:   17:{
-        2:   18:    lista* lista_returnat = creaza_lista();
+        2:   18:    lista* lista_returnat = creaza_lista(tranzactii);
         2:   18-block  0
 call    0 returned 2
         -:   19:
-        2:   20:   lista* lista_tranzactii = get_all(l);
+        2:   20:   lista* lista_tranzactii = get_all_tranzactii(l);
 call    0 returned 2
         -:   21:
         8:   22:    for(int i=0; i< numar_elemente(l); i++)
@@ -60,7 +60,7 @@ call    1 returned 1
 call    0 returned 1
 call    1 returned 1
         -:   30:
-        2:   31:    distruge(lista_tranzactii);
+        2:   31:    distruge_lista_tranzactii(lista_tranzactii);
         2:   31-block  0
 call    0 returned 2
         2:   32:    return lista_returnat;
@@ -69,11 +69,11 @@ call    0 returned 2
 function criteriu_suma_service called 1 returned 100% blocks executed 100%
         1:   35:lista* criteriu_suma_service(lista* l, int suma, int comparatie)
         -:   36:{
-        1:   37:    lista* lista_returnat = creaza_lista();
+        1:   37:    lista* lista_returnat = creaza_lista(tranzactii);
         1:   37-block  0
 call    0 returned 1
         -:   38:
-        1:   39:    lista * lista_tranzactii = get_all(l);
+        1:   39:    lista * lista_tranzactii = get_all_tranzactii(l);
 call    0 returned 1
         -:   40:
         3:   41:    for(int i=0; i< numar_elemente(l); i++)
@@ -98,7 +98,7 @@ call    1 returned 1
         -:   48:        }
         -:   49:
         -:   50:    }
-        1:   51:    distruge(lista_tranzactii);
+        1:   51:    distruge_lista_tranzactii(lista_tranzactii);
         1:   51-block  0
 call    0 returned 1
         1:   52:    return lista_returnat;
@@ -108,11 +108,11 @@ call    0 returned 1
 function criteriu_tip_service called 1 returned 100% blocks executed 100%
         1:   56:lista* criteriu_tip_service(lista* l, enum tip tip)
         -:   57:{
-        1:   58:    lista* lista_returnat = creaza_lista();
+        1:   58:    lista* lista_returnat = creaza_lista(tranzactii);
         1:   58-block  0
 call    0 returned 1
         -:   59:
-        1:   60:    lista* lista_tranzactii = get_all(l);
+        1:   60:    lista* lista_tranzactii = get_all_tranzactii(l);
 call    0 returned 1
         -:   61:
         3:   62:    for(int i=0; i< numar_elemente(l); i++)
@@ -143,7 +143,7 @@ call    1 returned 1
         -:   75:        free(lista_tranzactii[i]);
         -:   76:    }
         -:   77:     */
-        1:   78:    distruge(lista_tranzactii);
+        1:   78:    distruge_lista_tranzactii(lista_tranzactii);
         1:   78-block  0
 call    0 returned 1
         1:   79:    return lista_returnat;
@@ -204,7 +204,7 @@ branch  1 taken 1 (fallthrough)
 branch  2 taken 1
         1:  110:        return descriere_returnat;
         1:  110-block  0
-        1:  111:    lista * lista_tranzactii = get_all(l);
+        1:  111:    lista * lista_tranzactii = get_all_tranzactii(l);
         1:  111-block  0
 call    0 returned 1
         -:  112:
@@ -233,7 +233,7 @@ call    0 returned 1
         -:  128:    }
         -:  129:
         -:  130:
-        1:  131: distruge(lista_tranzactii);
+        1:  131:    distruge_lista_tranzactii(lista_tranzactii);
         1:  131-block  0
 call    0 returned 1
         -:  132:

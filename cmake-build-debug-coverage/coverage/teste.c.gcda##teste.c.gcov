@@ -54,7 +54,7 @@ function teste_service called 1 returned 100% blocks executed 69%
         1:   39:    char* descriere2 = (char*)malloc(sizeof(char)*50);
         1:   40:    strcpy(descriere, "Lemne");
         1:   41:    strcpy(descriere2, "Lemne");
-        1:   42:    lista* lista_test = creaza_lista();
+        1:   42:    lista* lista_test = creaza_lista(tranzactii);
         1:   42-block  0
 call    0 returned 1
         -:   43:
@@ -159,7 +159,7 @@ branch  1 taken 1
 call    2 never executed
         1:   70-block  1
         -:   71:
-        1:   72:    distruge(lista_test);
+        1:   72:    distruge_lista_tranzactii(lista_test);
         1:   72-block  0
 call    0 returned 1
         -:   73:
@@ -167,7 +167,7 @@ call    0 returned 1
         -:   75:
         -:   76:    //TESTE CRITERII
         -:   77:
-        1:   78:    lista_test = creaza_lista();
+        1:   78:    lista_test = creaza_lista(tranzactii);
 call    0 returned 1
         1:   79:    char* descriere1 = (char*)malloc(sizeof(char)*50);
         1:   80:    strcpy(descriere1, "Prima");
@@ -191,7 +191,7 @@ branch  2 taken 1
 call    3 never executed
         1:   90-block  1
         -:   91:    lista* temp ;
-        1:   92:    temp = get_all(lista_temp);
+        1:   92:    temp = get_all_tranzactii(lista_temp);
         1:   92-block  0
 call    0 returned 1
         -:   93:
@@ -203,10 +203,10 @@ branch  2 taken 1
 call    3 never executed
         1:   94-block  1
         -:   95:
-        1:   96:    distruge(temp);
+        1:   96:    distruge_lista_tranzactii(temp);
         1:   96-block  0
 call    0 returned 1
-        1:   97:    distruge(lista_temp);
+        1:   97:    distruge_lista_tranzactii(lista_temp);
 call    0 returned 1
         -:   98:
         1:   99:    lista_temp = criteriu_suma_service(lista_test,150,1);
@@ -218,7 +218,7 @@ branch  2 taken 1
     %%%%%:  100-block  0
 call    3 never executed
         1:  100-block  1
-        1:  101:     temp =get_all(lista_temp);
+        1:  101:     temp =get_all_tranzactii(lista_temp);
         1:  101-block  0
 call    0 returned 1
        1*:  102:    assert(get_id(temp->elemente[0]) == 1);
@@ -238,16 +238,16 @@ call    3 never executed
         -:  110:    }
         -:  111:    free(temp);*/
         -:  112:
-        1:  113:    distruge(temp);
+        1:  113:    distruge_lista_tranzactii(temp);
         1:  113-block  0
 call    0 returned 1
         -:  114:
-        1:  115:    distruge(lista_temp);
+        1:  115:    distruge_lista_tranzactii(lista_temp);
 call    0 returned 1
-        1:  116:    distruge(lista_test);
+        1:  116:    distruge_lista_tranzactii(lista_test);
 call    0 returned 1
         -:  117:
-        1:  118:    lista_test = creaza_lista();
+        1:  118:    lista_test = creaza_lista(tranzactii);
 call    0 returned 1
         1:  119:     descriere1 = (char*)malloc(sizeof(char)*50);
         1:  120:    descriere2 = (char*)malloc(sizeof(char)*50);
@@ -285,7 +285,7 @@ branch  2 taken 1
 call    3 never executed
         1:  136-block  2
         -:  137:
-        1:  138:    distruge(lista_temp);
+        1:  138:    distruge_lista_tranzactii(lista_temp);
         1:  138-block  0
 call    0 returned 1
         1:  139:    lista_temp = ordonat_service(lista_test,-1);
@@ -306,10 +306,10 @@ branch  2 taken 1
 call    3 never executed
         1:  141-block  2
         -:  142:
-        1:  143:    distruge(lista_temp);
+        1:  143:    distruge_lista_tranzactii(lista_temp);
         1:  143-block  0
 call    0 returned 1
-        1:  144:    distruge(lista_test);
+        1:  144:    distruge_lista_tranzactii(lista_test);
 call    0 returned 1
         -:  145:
         -:  146:
@@ -322,7 +322,7 @@ call    0 returned 1
 function teste_repository called 1 returned 100% blocks executed 71%
         1:  153:void teste_repository()
         -:  154:{ 
-        1:  155:    lista* l = creaza_lista();
+        1:  155:    lista* l = creaza_lista(tranzactii);
         1:  155-block  0
 call    0 returned 1
        1*:  156:    assert(numar_elemente(l) == 0);
@@ -474,7 +474,7 @@ call    3 never executed
         1:  216-block  2
         -:  217:
         -:  218:
-        1:  219:    lista * lista_tranzactii = get_all(l);
+        1:  219:    lista * lista_tranzactii = get_all_tranzactii(l);
         1:  219-block  0
 call    0 returned 1
         -:  220:
@@ -494,10 +494,10 @@ branch  2 taken 1
 call    3 never executed
         1:  222-block  2
         -:  223:
-        1:  224:    distruge(lista_tranzactii);
+        1:  224:    distruge_lista_tranzactii(lista_tranzactii);
         1:  224-block  0
 call    0 returned 1
-        1:  225:    distruge(l);
+        1:  225:    distruge_lista_tranzactii(l);
 call    0 returned 1
         -:  226:
         -:  227:

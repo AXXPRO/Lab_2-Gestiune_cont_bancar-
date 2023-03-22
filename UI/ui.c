@@ -51,7 +51,7 @@ void interface()
 
 
 void run_ui()
-{   lista* lista_tranzactii = creaza_lista();
+{   lista* lista_tranzactii = creaza_lista(tranzactii);
 
 
     char choice[20];
@@ -90,7 +90,7 @@ void run_ui()
                     break;
                     case 7:
                     program_running = 0;
-                    distruge(lista_tranzactii);
+                        distruge_lista_tranzactii(lista_tranzactii);
                     break;
                 default:
                 {
@@ -142,7 +142,7 @@ void ordonat(lista* l)
 
 
             afisare(lista_ordonata);
-            distruge(lista_ordonata);
+            distruge_lista_tranzactii(lista_ordonata);
 
 
         }
@@ -188,7 +188,7 @@ void criteriu_suma(lista* l)
                    l_temporara= criteriu_suma_service(l,suma_numar,-1);
                 }
                 afisare(l_temporara);
-                distruge(l_temporara);
+                distruge_lista_tranzactii(l_temporara);
             }
             else{
                 printf("Suma invalida!");
@@ -229,7 +229,7 @@ void criteriu_tip(lista* l)
             l_temporara = criteriu_tip_service(l, tipul);
             afisare(l_temporara);
 
-            distruge(l_temporara);
+            distruge_lista_tranzactii(l_temporara);
 
         }
 

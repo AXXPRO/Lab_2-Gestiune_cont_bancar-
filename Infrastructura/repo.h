@@ -1,6 +1,8 @@
 #pragma once
 #include "domain.h"
 
+typedef enum {tranzactii, liste}tip_lista;
+
 /*
 Vectorul dinamic ce va fi practic o lista
 */
@@ -8,16 +10,17 @@ typedef struct {
 void** elemente;
 int lungime_actuala;
 int capacitate_maxima;
+ tip_lista tip;
 }lista;
 
 
 
 /*
 Constructorul unei liste, va returna un pointer catre o lista
-Preconditii: Nimic
+Preconditii: tip_lista - tipul listei pe care o vom folosii. (tranazctii, sau lista de liste)
 Postconditii: returneaza o lista goala
 */
-lista* creaza_lista();
+lista* creaza_lista(tip_lista);
 
 /*
 Va adauga tranzactia tranz in lista l
@@ -68,11 +71,11 @@ Operatie necesara pentru vectori dinamici. Elibereaza memoria ocupata de lista
 Preconditii: l este o lista
 Postconditii: l nu mai este o lista si memoria este eliberata
 */
-void distruge(lista* l);
+void distruge_lista_tranzactii(lista* l);
 
 
 /// Returnam un pointer la o lista cu toate elementele
 /// \param l - lista la care ii facem o copie si o returnam
 /// \return
-lista* get_all(lista* l);
+lista* get_all_tranzactii(lista* l);
 

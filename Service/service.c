@@ -15,9 +15,9 @@ int cmpfuncCrescator(const void* el1, const void* el2)
 }
 lista* ordonat_service(lista* l, int criteriu)
 {
-    lista* lista_returnat = creaza_lista();
+    lista* lista_returnat = creaza_lista(tranzactii);
 
-   lista* lista_tranzactii = get_all(l);
+   lista* lista_tranzactii = get_all_tranzactii(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
@@ -28,15 +28,15 @@ lista* ordonat_service(lista* l, int criteriu)
     else
         qsort((void**)(lista_returnat->elemente), numar_elemente(lista_returnat),sizeof(Tranzactie*),cmpfuncDescrescator);
 
-    distruge(lista_tranzactii);
+    distruge_lista_tranzactii(lista_tranzactii);
     return lista_returnat;
 
 }
 lista* criteriu_suma_service(lista* l, int suma, int comparatie)
 {
-    lista* lista_returnat = creaza_lista();
+    lista* lista_returnat = creaza_lista(tranzactii);
 
-    lista * lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all_tranzactii(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
@@ -48,16 +48,16 @@ lista* criteriu_suma_service(lista* l, int suma, int comparatie)
         }
 
     }
-    distruge(lista_tranzactii);
+    distruge_lista_tranzactii(lista_tranzactii);
     return lista_returnat;
 
 
 }
 lista* criteriu_tip_service(lista* l, enum tip tip)
 {
-    lista* lista_returnat = creaza_lista();
+    lista* lista_returnat = creaza_lista(tranzactii);
 
-    lista* lista_tranzactii = get_all(l);
+    lista* lista_tranzactii = get_all_tranzactii(l);
 
     for(int i=0; i< numar_elemente(l); i++)
     {
@@ -75,7 +75,7 @@ lista* criteriu_tip_service(lista* l, enum tip tip)
         free(lista_tranzactii[i]);
     }
      */
-    distruge(lista_tranzactii);
+    distruge_lista_tranzactii(lista_tranzactii);
     return lista_returnat;
 }
 
@@ -108,7 +108,7 @@ char* afisare_service(lista* l)
     descriere_returnat[0] = '\0';
     if(numar_elemente(l) == 0)
         return descriere_returnat;
-    lista * lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all_tranzactii(l);
 
     char* temp_char;
     temp_char  =string_tranzactie(lista_tranzactii->elemente[0]);
@@ -128,7 +128,7 @@ char* afisare_service(lista* l)
     }
 
 
- distruge(lista_tranzactii);
+    distruge_lista_tranzactii(lista_tranzactii);
 
     return descriere_returnat;
 

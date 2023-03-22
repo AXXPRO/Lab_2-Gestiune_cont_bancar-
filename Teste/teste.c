@@ -39,7 +39,7 @@ void teste_service()
     char* descriere2 = (char*)malloc(sizeof(char)*50);
     strcpy(descriere, "Lemne");
     strcpy(descriere2, "Lemne");
-    lista* lista_test = creaza_lista();
+    lista* lista_test = creaza_lista(tranzactii);
 
     char* var_afisare;
     var_afisare = afisare_service(lista_test);
@@ -69,13 +69,13 @@ void teste_service()
   tranz_modificata = get_tranzactie(lista_test, 0);
     assert(tranz_modificata == (Tranzactie*)NULL);
 
-    distruge(lista_test);
+    distruge_lista_tranzactii(lista_test);
 
 
 
     //TESTE CRITERII
 
-    lista_test = creaza_lista();
+    lista_test = creaza_lista(tranzactii);
     char* descriere1 = (char*)malloc(sizeof(char)*50);
     strcpy(descriere1, "Prima");
    adaugare_service(0,  100, 2,  intrare, descriere1, lista_test);
@@ -89,16 +89,16 @@ void teste_service()
     lista_temp = criteriu_tip_service(lista_test,intrare);
     assert(numar_elemente(lista_temp)==1);
     lista* temp ;
-    temp = get_all(lista_temp);
+    temp = get_all_tranzactii(lista_temp);
 
     assert(get_id(temp->elemente[0]) == 0);
 
-    distruge(temp);
-    distruge(lista_temp);
+    distruge_lista_tranzactii(temp);
+    distruge_lista_tranzactii(lista_temp);
 
     lista_temp = criteriu_suma_service(lista_test,150,1);
     assert(numar_elemente(lista_temp)==1);
-     temp =get_all(lista_temp);
+     temp =get_all_tranzactii(lista_temp);
     assert(get_id(temp->elemente[0]) == 1);
 
    /* for(int i =0; i< numar_elemente(lista_temp); i++)
@@ -110,12 +110,12 @@ void teste_service()
     }
     free(temp);*/
 
-    distruge(temp);
+    distruge_lista_tranzactii(temp);
 
-    distruge(lista_temp);
-    distruge(lista_test);
+    distruge_lista_tranzactii(lista_temp);
+    distruge_lista_tranzactii(lista_test);
 
-    lista_test = creaza_lista();
+    lista_test = creaza_lista(tranzactii);
      descriere1 = (char*)malloc(sizeof(char)*50);
     descriere2 = (char*)malloc(sizeof(char)*50);
     char* descriere3 = (char*)malloc(sizeof(char)*50);
@@ -135,13 +135,13 @@ void teste_service()
     assert(get_id(lista_temp->elemente[0]) ==1);
     assert(get_id(lista_temp->elemente[2]) ==0);
 
-    distruge(lista_temp);
+    distruge_lista_tranzactii(lista_temp);
     lista_temp = ordonat_service(lista_test,-1);
     assert(get_id(lista_temp->elemente[0]) ==0);
     assert(get_id(lista_temp->elemente[2]) ==1);
 
-    distruge(lista_temp);
-    distruge(lista_test);
+    distruge_lista_tranzactii(lista_temp);
+    distruge_lista_tranzactii(lista_test);
 
 
 
@@ -152,7 +152,7 @@ Teste pentru functiile legate de repository
 */
 void teste_repository()
 { 
-    lista* l = creaza_lista();
+    lista* l = creaza_lista(tranzactii);
     assert(numar_elemente(l) == 0);
     Tranzactie *tranz,*tranz1,*tranz2,*tranz3, *tranz_noua;
     char *d1,*d2,*d3, *d4;
@@ -216,13 +216,13 @@ void teste_repository()
     assert(numar_elemente(l) == 2);
 
 
-    lista * lista_tranzactii = get_all(l);
+    lista * lista_tranzactii = get_all_tranzactii(l);
 
     assert(get_id(lista_tranzactii->elemente[0])==0);
     assert(get_id(lista_tranzactii->elemente[1])==1);
 
-    distruge(lista_tranzactii);
-    distruge(l);
+    distruge_lista_tranzactii(lista_tranzactii);
+    distruge_lista_tranzactii(l);
 
 
 

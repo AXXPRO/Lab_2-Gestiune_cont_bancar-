@@ -24,3 +24,16 @@
 130	256	7011339916844665	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1
 4	135	7011340211137432	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj	47d3d447306212
 135	262	7011340212367448	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1
+3	289	7011836069599938	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj	da38860a65c2090c
+290	769	7011836074329950	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1
+16	170	7011848434947175	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj	da38860a65c2090c
+4	232	7011848435567177	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/domain.c.obj	aa80ae13886e48e
+34	239	7011848435637178	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Infrastructura/repo.c.obj	c823ed71aa98b2c6
+24	250	7011848435767191	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Service/service.c.obj	e9e6252b7e733126
+43	277	7011848436057164	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj	2e22efd53fc52d34
+53	292	7011848436207162	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/Teste/teste.c.obj	47d3d447306212
+293	485	7011848438087139	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1
+4	111	7011848526127431	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/main.c.obj	da38860a65c2090c
+111	285	7011848527827425	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1
+4	173	7011849871855000	CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir/UI/ui.c.obj	2e22efd53fc52d34
+174	361	7011849873684989	Lab_2_Gestiune_cont_bancar_.exe	c40d26a7ff69aca1

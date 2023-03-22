@@ -16,13 +16,17 @@ int is_number(char* s)
 {   
 
     if (strlen(s)==0)
-    return 0;
+        return 0;
+    int i=0;
     if(s[0]=='-')
-    return is_number(s+1);
-    for(int i = 0; i<strlen(s); i++)
+        i=1;
+
+
+
+    for(; i<strlen(s); i++)
     {
         if(s[i] - '0' < 0 || s[i]- '0' > 9)
-        return 0;
+            return 0;
     }
 
     return 1;
@@ -48,7 +52,8 @@ void interface()
 
 void run_ui()
 {   lista* lista_tranzactii = creaza_lista();
-    
+
+
     char choice[20];
     int program_running = 1;
     int number_choice;
@@ -81,7 +86,6 @@ void run_ui()
                     break;
                     case 6:
                    afisare(lista_tranzactii);
-                    getchar();
 
                     break;
                     case 7:
@@ -110,7 +114,8 @@ void run_ui()
 
 }
 
-
+//This pointer is requiered to call the strtol function
+char* strtol_pointer;
 void ordonat(lista* l)
 {
     char alegere[50];
@@ -120,7 +125,7 @@ void ordonat(lista* l)
 
     if(is_number(alegere))
     {
-        int numar = atoi(alegere);
+        int numar = strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -159,7 +164,7 @@ void criteriu_suma(lista* l)
 
     if(is_number(alegere))
     {
-        int numar = atoi(alegere);
+        int numar = strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -172,7 +177,7 @@ void criteriu_suma(lista* l)
             gets(suma);
             if(is_number(suma))
             {
-                int suma_numar = atoi(suma);
+                int suma_numar = strtol(suma,&strtol_pointer,10);
                 lista* l_temporara;
                 if(numar == 1)
                 {
@@ -206,7 +211,7 @@ void criteriu_tip(lista* l)
     gets(alegere);
     if(is_number(alegere))
     {
-        int numar = atoi(alegere);
+        int numar = strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -245,7 +250,7 @@ void criteriu(lista* l)
  gets(alegere);
   if(is_number(alegere))
   {
-int numar = atoi(alegere);
+int numar = strtol(alegere,&strtol_pointer,10);
 
 switch(numar)
 
@@ -320,7 +325,7 @@ getchar();
       {tip = iesire; ok=1;}
 
 
-    for(int i =0; i<3; i++)
+    for(i =0; i<3; i++)
     {
         if(!is_number(true_params[i]))
         ok = 0;
@@ -331,9 +336,9 @@ getchar();
     {
     char* descriere=(char*)malloc(sizeof(char)*50);
     strcpy(descriere, true_params[4]);
-    int id = atoi(true_params[0]);
-    int ziua = atoi(true_params[1]);
-    int suma = atoi(true_params[2]);
+    int id = strtol(true_params[0],&strtol_pointer,10);
+    int ziua = strtol(true_params[1],&strtol_pointer,10);
+    int suma =strtol(true_params[2],&strtol_pointer,10);
 
       if( adaugare_service(id,suma,ziua,tip,descriere,l)==0)
       {
@@ -342,7 +347,7 @@ getchar();
       }
            // free(descriere);
     }
-    else 
+ else
     {
 printf("Paramtetrii invalizi!");
 getchar();
@@ -366,7 +371,7 @@ int ok = 1;
 
     }
     else
-    {       int id = atoi(params);
+    {       int id = strtol(params,&strtol_pointer,10);
             if(!stergere_service(id, l))
             {
                 printf("Stergere neefectuata!");
@@ -417,7 +422,7 @@ getchar();
       {tip = iesire; ok=1;}
 
 
-    for(int i =0; i<3; i++)
+    for( i =0; i<3; i++)
     {
         if(!is_number(true_params[i]))
         ok = 0;
@@ -428,13 +433,13 @@ getchar();
     {
     char* descriere=(char*)malloc(sizeof(char)*50);
     strcpy(descriere, true_params[4]);
-    int id = atoi(true_params[0]);
-    int ziua = atoi(true_params[1]);
-    int suma = atoi(true_params[2]);
+    int id = strtol(true_params[0],&strtol_pointer,10);
+    int ziua = strtol(true_params[1],&strtol_pointer,10);
+    int suma = strtol(true_params[2],&strtol_pointer,10);
     ///MODIFICARE SERVICE
 
         
-       if( !modificare_service(id,suma,ziua,tip,descriere,l))
+        if( !modificare_service(id,suma,ziua,tip,descriere,l))
        {
 
     printf("Modificare neefectuata!");
@@ -442,7 +447,7 @@ getchar();
        }
            // free(descriere);
     }
-    else 
+ else
     {
 printf("Paramtetrii invalizi!");
 getchar();

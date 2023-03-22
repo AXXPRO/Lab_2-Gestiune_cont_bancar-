@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
 #include "repo.h"
 #include <string.h>
 lista* creaza_lista()
@@ -47,8 +46,8 @@ for (int i =0; i<l->lungime_actuala; i++)
 if(l->lungime_actuala == l->capacitate_maxima)
 resize(l);
 
-l->elemente[l->lungime_actuala] = tranz;
-l->lungime_actuala++;
+    l->elemente[l->lungime_actuala] = tranz;
+    l->lungime_actuala++;
 
 
 }
@@ -112,18 +111,7 @@ free(l->elemente);
 free(l);
 }
 
-/*
-void afisare_tranzactii(lista* l)
-{char* text;
-    for(int i=0; i<l->lungime_actuala; i++)
-    {
-       text =string_tranzactie(l->elemente[i]);
-        printf("%s\n", text);
-        free(text);
 
-    }
-}
-*/
 
 lista* get_all(lista* l)
 {

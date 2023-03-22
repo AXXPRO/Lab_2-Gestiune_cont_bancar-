@@ -10,11 +10,8 @@ int lungime_actuala;
 int capacitate_maxima;
 }lista;
 
-/*
-Va afisa tranzactii
 
-*/
-void afisare_tranzactii(lista* l);
+
 /*
 Constructorul unei liste, va returna un pointer catre o lista
 Preconditii: Nimic

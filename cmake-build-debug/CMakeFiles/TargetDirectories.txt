@@ -1,3 +1,0 @@
-/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/Lab_2_Gestiune_cont_bancar_.dir
-/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/axx/Desktop/Lab_2-Gestiune_cont_bancar-/cmake-build-debug/CMakeFiles/rebuild_cache.dir

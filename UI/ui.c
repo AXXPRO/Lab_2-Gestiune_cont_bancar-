@@ -23,10 +23,11 @@ int is_number(char* s)
 
 
 
-    for(; i<strlen(s); i++)
+    for(; i<(int)strlen(s); i++)
     {
         if(s[i] - '0' < 0 || s[i]- '0' > 9)
-            return 0;
+            if(!(i == (int) strlen(s)-1 && s[i]=='\n'))
+                return 0;
     }
 
     return 1;
@@ -61,8 +62,10 @@ void run_ui()
     {
         interface();
         //scanf("%s", choice);
-        gets(choice);
-        if(strlen(choice)==1)
+        fgets(choice,20, stdin);
+       // printf("%d", (int)strlen(choice));
+       // getchar();
+        if(strlen(choice)==2)
         {
            
             //Run program
@@ -95,7 +98,7 @@ void run_ui()
                 default:
                 {
                 printf("Varianta inexistenta!\n");
-                gets(choice);
+                    fgets(choice,20, stdin);
                 }
                     break;
                 }
@@ -105,7 +108,7 @@ void run_ui()
           
         }
         else{printf("Varianta inexistenta!\n");
-                gets(choice);}
+            fgets(choice,20, stdin);}
 
 
 
@@ -120,12 +123,12 @@ void ordonat(lista* l)
 {
     char alegere[50];
     printf("Cum doriti sa sortam lista?\n1. Crescator\n2. Descrescator\n");
-    gets(alegere);
+    fgets(alegere,50, stdin);
 
 
     if(is_number(alegere))
     {
-        int numar = strtol(alegere,&strtol_pointer,10);
+        int numar = (int)strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -160,11 +163,11 @@ void criteriu_suma(lista* l)
     char alegere[50];
     char suma[50];
     printf("Cum doriti sa filtram dupa suma?\n1. Mai mari decat o suma data\n2. Mai mici decat o suma data\n");
-    gets(alegere);
+    fgets(alegere,50, stdin);
 
     if(is_number(alegere))
     {
-        int numar = strtol(alegere,&strtol_pointer,10);
+        int numar = (int)strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -174,10 +177,10 @@ void criteriu_suma(lista* l)
 
         {
             printf("Dati suma cu care comparam\n");
-            gets(suma);
+            fgets(suma,50, stdin);
             if(is_number(suma))
             {
-                int suma_numar = strtol(suma,&strtol_pointer,10);
+                int suma_numar = (int)strtol(suma,&strtol_pointer,10);
                 lista* l_temporara;
                 if(numar == 1)
                 {
@@ -208,10 +211,10 @@ void criteriu_suma(lista* l)
 void criteriu_tip(lista* l)
 {char alegere[50];
     printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
-    gets(alegere);
+    fgets(alegere,50, stdin);
     if(is_number(alegere))
     {
-        int numar = strtol(alegere,&strtol_pointer,10);
+        int numar = (int)strtol(alegere,&strtol_pointer,10);
         if(numar <1 || numar >2)
         {
             printf("Varianta inexistenta!");
@@ -247,10 +250,10 @@ void criteriu(lista* l)
 {
     char alegere[50];
   printf("Ce criteriu de sortare doriti?\n 1. Dupa tip\n 2. Dupa suma\n");
- gets(alegere);
+    fgets(alegere,50, stdin);
   if(is_number(alegere))
   {
-int numar = strtol(alegere,&strtol_pointer,10);
+int numar = (int)strtol(alegere,&strtol_pointer,10);
 
 switch(numar)
 
@@ -298,7 +301,7 @@ void adaugare(lista* l)
     //printf
     printf("Dati id-ul, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
      //getchar();
-    gets(params);
+    fgets(params,100, stdin);
     //scanf("%s",params);
     cuvant = strtok(params, ";");
     int i;
@@ -336,9 +339,9 @@ getchar();
     {
     char* descriere=(char*)malloc(sizeof(char)*50);
     strcpy(descriere, true_params[4]);
-    int id = strtol(true_params[0],&strtol_pointer,10);
-    int ziua = strtol(true_params[1],&strtol_pointer,10);
-    int suma =strtol(true_params[2],&strtol_pointer,10);
+    int id = (int)strtol(true_params[0],&strtol_pointer,10);
+    int ziua = (int)strtol(true_params[1],&strtol_pointer,10);
+    int suma =(int)strtol(true_params[2],&strtol_pointer,10);
 
       if( adaugare_service(id,suma,ziua,tip,descriere,l)==0)
       {
@@ -359,7 +362,7 @@ void stergere(lista* l)
 {char params[5];
 int ok = 1;
     printf("Dati id-ul tranzactiei pe care dorim sa o stergem: \n");
-    gets(params);
+    fgets(params,5, stdin);
 
      if(!is_number(params))
         ok = 0;
@@ -371,7 +374,7 @@ int ok = 1;
 
     }
     else
-    {       int id = strtol(params,&strtol_pointer,10);
+    {       int id = (int)strtol(params,&strtol_pointer,10);
             if(!stergere_service(id, l))
             {
                 printf("Stergere neefectuata!");
@@ -395,7 +398,7 @@ char params[100];
     //printf
     printf("Dati id-ul tranzactiei pe care doriti sa o modificam, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
      //getchar();
-    gets(params);
+    fgets(params,100, stdin);
     //scanf("%s",params);
     cuvant = strtok(params, ";");
     int i;
@@ -433,15 +436,15 @@ getchar();
     {
     char* descriere=(char*)malloc(sizeof(char)*50);
     strcpy(descriere, true_params[4]);
-    int id = strtol(true_params[0],&strtol_pointer,10);
-    int ziua = strtol(true_params[1],&strtol_pointer,10);
-    int suma = strtol(true_params[2],&strtol_pointer,10);
+    int id = (int)strtol(true_params[0],&strtol_pointer,10);
+    int ziua = (int)strtol(true_params[1],&strtol_pointer,10);
+    int suma = (int)strtol(true_params[2],&strtol_pointer,10);
     ///MODIFICARE SERVICE
 
         
         if( !modificare_service(id,suma,ziua,tip,descriere,l))
        {
-
+    free(descriere);
     printf("Modificare neefectuata!");
     getchar();
        }

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "../Infrastructura/domain.h"
@@ -86,6 +85,7 @@ Tranzactie* tranz = creaza_tranzactie(id_de_schimbat,suma,ziua,tip,descriere);
 Tranzactie* tranz_cautata = get_tranzactie(l,id_de_schimbat);
 if(tranz_cautata == (Tranzactie*)NULL || !tranzactie_valida(tranz))
 { free(tranz);
+
     return 0;
 }
 

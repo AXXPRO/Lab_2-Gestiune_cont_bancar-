@@ -13,8 +13,7 @@ PreconditiiL s - sir de caractere cu \0 la sfarsit
 Postconditii: 1 daca poate fi numar, 0 altfel
 */
 int is_number(char* s)
-{   
-
+{
     if (strlen(s)==0)
         return 0;
     int i=0;

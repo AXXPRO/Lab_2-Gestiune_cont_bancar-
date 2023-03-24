@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.22.1)
 project(Lab_2_Gestiune_cont_bancar_ C)
 
 set(CMAKE_C_STANDARD 17)

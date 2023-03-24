@@ -33,7 +33,7 @@ int is_number(char* s)
 }
 
 void interface()
-{ system("cls");
+{ //system("cls");
   printf("Alegeti optiunea pe care o doriti. Optiunile sunt urmatoarele:\n");
   printf("1.Adaugare de tranzactii.\n");
   printf("2.Modificare tranzactie existenta.\n");
@@ -48,7 +48,7 @@ void interface()
 
 
 
-
+char* strtol_pointer;
 
 void run_ui()
 {   lista* lista_tranzactii = creaza_lista(tranzactii);
@@ -61,7 +61,7 @@ void run_ui()
     {
         interface();
         //scanf("%s", choice);
-        fgets(choice,20, stdin);
+        strtol_pointer= fgets(choice,20, stdin);
        // printf("%d", (int)strlen(choice));
        // getchar();
         if(strlen(choice)==2)
@@ -97,7 +97,7 @@ void run_ui()
                 default:
                 {
                 printf("Varianta inexistenta!\n");
-                    fgets(choice,20, stdin);
+                    strtol_pointer=   fgets(choice,20, stdin);
                 }
                     break;
                 }
@@ -107,7 +107,7 @@ void run_ui()
           
         }
         else{printf("Varianta inexistenta!\n");
-            fgets(choice,20, stdin);}
+            strtol_pointer=  fgets(choice,20, stdin);}
 
 
 
@@ -117,12 +117,12 @@ void run_ui()
 }
 
 //This pointer is requiered to call the strtol function
-char* strtol_pointer;
+
 void ordonat(lista* l)
 {
     char alegere[50];
     printf("Cum doriti sa sortam lista?\n1. Crescator\n2. Descrescator\n");
-    fgets(alegere,50, stdin);
+    strtol_pointer= fgets(alegere,50, stdin);
 
 
     if(is_number(alegere))
@@ -162,7 +162,7 @@ void criteriu_suma(lista* l)
     char alegere[50];
     char suma[50];
     printf("Cum doriti sa filtram dupa suma?\n1. Mai mari decat o suma data\n2. Mai mici decat o suma data\n");
-    fgets(alegere,50, stdin);
+    strtol_pointer= fgets(alegere,50, stdin);
 
     if(is_number(alegere))
     {
@@ -176,7 +176,7 @@ void criteriu_suma(lista* l)
 
         {
             printf("Dati suma cu care comparam\n");
-            fgets(suma,50, stdin);
+            strtol_pointer=  fgets(suma,50, stdin);
             if(is_number(suma))
             {
                 int suma_numar = (int)strtol(suma,&strtol_pointer,10);
@@ -210,7 +210,7 @@ void criteriu_suma(lista* l)
 void criteriu_tip(lista* l)
 {char alegere[50];
     printf("Tranzactiile cu ce tip doriti sa le vedeti?\n1. Intrare\n2. Iesire");
-    fgets(alegere,50, stdin);
+    strtol_pointer= fgets(alegere,50, stdin);
     if(is_number(alegere))
     {
         int numar = (int)strtol(alegere,&strtol_pointer,10);
@@ -249,7 +249,7 @@ void criteriu(lista* l)
 {
     char alegere[50];
   printf("Ce criteriu de sortare doriti?\n 1. Dupa tip\n 2. Dupa suma\n");
-    fgets(alegere,50, stdin);
+    strtol_pointer= fgets(alegere,50, stdin);
   if(is_number(alegere))
   {
 int numar = (int)strtol(alegere,&strtol_pointer,10);
@@ -300,7 +300,7 @@ void adaugare(lista* l)
     //printf
     printf("Dati id-ul, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
      //getchar();
-    fgets(params,100, stdin);
+    strtol_pointer= fgets(params,100, stdin);
     //scanf("%s",params);
     cuvant = strtok(params, ";");
     int i;
@@ -361,7 +361,7 @@ void stergere(lista* l)
 {char params[5];
 int ok = 1;
     printf("Dati id-ul tranzactiei pe care dorim sa o stergem: \n");
-    fgets(params,5, stdin);
+    strtol_pointer= fgets(params,5, stdin);
 
      if(!is_number(params))
         ok = 0;
@@ -397,7 +397,7 @@ char params[100];
     //printf
     printf("Dati id-ul tranzactiei pe care doriti sa o modificam, ziua, suma, tipul, si descrierea tranzactiei, separate prin ; :\n");
      //getchar();
-    fgets(params,100, stdin);
+    strtol_pointer=  fgets(params,100, stdin);
     //scanf("%s",params);
     cuvant = strtok(params, ";");
     int i;

@@ -3,14 +3,12 @@
 #include "../Infrastructura/repo.h"
 #include "../Service/service.h"
 #include "../Validation/valid.h"
+#include "teste.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-void teste_validation();
-void teste_domain();
-void teste_repository();
-void teste_service();
+
 /*
     Functia de rulare a tuturor testelor
 */
@@ -58,8 +56,10 @@ void teste_service()
 
     descriere2 = (char*)malloc(sizeof(char)*50);
     strcpy(descriere2, "Lemne");
-   assert(modificare_service(1,suma_1+1, ziua_1,  tip_1, descriere, lista_test) == 0 );
-    assert(modificare_service(0,suma_1+1, ziua_1,  tip_1, descriere2, lista_test) == 1 );
+    int function_result = modificare_service(1,suma_1+1, ziua_1,  tip_1, descriere, lista_test);
+   assert( function_result== 0 );
+   function_result = modificare_service(0,suma_1+1, ziua_1,  tip_1, descriere2, lista_test);
+    assert( function_result== 1 );
 
     Tranzactie* tranz_modificata = get_tranzactie(lista_test, 0);
     assert(get_suma(tranz_modificata)==51);
@@ -84,6 +84,9 @@ void teste_service()
     strcpy(descriere2, "Doua");
     adaugare_service(1,  300, 3,  iesire, descriere2, lista_test);
 
+    int return_functie;
+    return_functie = adaugare_service(1,  300, 500,  iesire, descriere2, lista_test);
+    assert(return_functie==0);
     lista* lista_temp;
 
     lista_temp = criteriu_tip_service(lista_test,intrare);
@@ -212,6 +215,7 @@ void teste_repository()
     sterge_tranzactie(l, 2);
     tranzactie_cautata_invalida =get_tranzactie(l,2);
     assert(tranzactie_cautata_invalida == (Tranzactie*)NULL);
+
 
     assert(numar_elemente(l) == 2);
 

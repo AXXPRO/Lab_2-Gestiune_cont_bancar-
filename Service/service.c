@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include "../Infrastructura/domain.h"
 #include "../Infrastructura/repo.h"
 #include "../Validation/valid.h"
